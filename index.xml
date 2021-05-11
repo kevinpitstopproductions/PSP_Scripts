@@ -1,2 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="PSP_Scripts"/>
+<index version="1" name="PSP_Scripts" commit="790b9c3520bf90869aea6bd6fa8841c5150e91a3">
+  <category name="Scripts">
+    <reapack name="PSP_Create Regions from Selected Item Source Destinations.lua" type="script" desc="Create Regions for Each Item from Source Destination Names">
+      <version name="1.0" author="GU-on" time="2021-05-11T11:20:01Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/790b9c3520bf90869aea6bd6fa8841c5150e91a3/Scripts/PSP_Create%20Regions%20from%20Selected%20Item%20Source%20Destinations.lua</source>
+      </version>
+    </reapack>
+    <reapack name="PSP_Offset Source Start to 50% Item Length.lua" type="script" desc="PP_Offset Source Start to 50% Item Length.lua">
+      <version name="1.0" author="GU-on" time="2021-05-11T11:20:01Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/790b9c3520bf90869aea6bd6fa8841c5150e91a3/Scripts/PSP_Offset%20Source%20Start%20to%2050%25%20Item%20Length.lua</source>
+      </version>
+    </reapack>
+  </category>
+</index>
