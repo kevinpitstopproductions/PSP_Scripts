@@ -12,10 +12,10 @@ import subprocess
 # For Reaper
 subprocess.run("pip install python-reapy")
 # For STT:
-subprocess.run("SpeechRecognition")
-subprocess.run("google-api-python-client")
-subprocess.run("oauth2client")
-subprocess.run("python-oauth2")
-subprocess.run("pocketsphinx")
+subprocess.run("pip install SpeechRecognition")
+subprocess.run("pip install google-api-python-client")
+subprocess.run("pip install oauth2client")
+subprocess.run("pip install python-oauth2")
+subprocess.run("pip install pocketsphinx")
 # For TTS:
 subprocess.run("pip install pyttsx3")
