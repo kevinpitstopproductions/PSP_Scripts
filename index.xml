@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="PSP_Scripts" commit="3dc2aa77abb2a866dddd3636020d880015ac4d82">
+<index version="1" name="PSP_Scripts" commit="c644f4e380c44ab852ef762f1221709f937c27f5">
   <category name="Scripts">
     <reapack name="PSP_Create Regions from Selected Item Source Destinations.lua" type="script" desc="Create Regions for Each Item from Source Destination Names">
       <version name="1.0" author="GU-on" time="2021-05-11T11:20:01Z">
@@ -9,7 +9,7 @@
     </reapack>
     <reapack name="PSP_Install Libraries.py" type="script" desc="Library Installer">
       <version name="1.0" author="GU-on" time="2021-05-12T13:08:31Z">
-        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/a7a00ea47929ea1159cfa23af28017e0057cf540/Scripts/PSP_Install%20Libraries.py</source>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/c644f4e380c44ab852ef762f1221709f937c27f5/Scripts/PSP_Install%20Libraries.py</source>
       </version>
     </reapack>
     <reapack name="PSP_Offset Source Start to 50% Item Length.lua" type="script" desc="PP_Offset Source Start to 50% Item Length.lua">
@@ -41,7 +41,7 @@
     </reapack>
     <reapack name="PSP_TTS Easy.py" type="script" desc="Easy Text To Speech">
       <version name="1.0" author="GU-on" time="2021-05-12T13:08:31Z">
-        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/a7a00ea47929ea1159cfa23af28017e0057cf540/Scripts/PSP_TTS%20Easy.py</source>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/c644f4e380c44ab852ef762f1221709f937c27f5/Scripts/PSP_TTS%20Easy.py</source>
       </version>
     </reapack>
   </category>
