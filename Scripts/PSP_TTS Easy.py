@@ -2,7 +2,7 @@
 # * Author: GU-on
 # * Licence: GPL v3
 # * REAPER: 6.28
-# * Version: 1.0
+# * Version: 1.1
 
 # * Changelog:
 # * v1.1 (2021-05-12)
