@@ -5,7 +5,7 @@
 # * Version: 1.0
 
 # * Changelog:
-# * v1.0 (2021-05-12)
+# * v1.1 (2021-05-12)
 # 	+ Initial Release
 
 import subprocess
