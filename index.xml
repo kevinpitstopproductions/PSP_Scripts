@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="PSP_Scripts" commit="790b9c3520bf90869aea6bd6fa8841c5150e91a3">
+<index version="1" name="PSP_Scripts" commit="0f65ee4e690d8a3a0e24211c2760cc9f135de6a5">
   <category name="Scripts">
     <reapack name="PSP_Create Regions from Selected Item Source Destinations.lua" type="script" desc="Create Regions for Each Item from Source Destination Names">
       <version name="1.0" author="GU-on" time="2021-05-11T11:20:01Z">
@@ -11,6 +11,27 @@
       <version name="1.0" author="GU-on" time="2021-05-11T11:20:01Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/790b9c3520bf90869aea6bd6fa8841c5150e91a3/Scripts/PSP_Offset%20Source%20Start%20to%2050%25%20Item%20Length.lua</source>
+      </version>
+    </reapack>
+    <reapack name="PSP_Register JSON Credentials.lua" type="script" desc="GU-on Set Time After Snap Offset">
+      <version name="1.0" author="GU-on" time="2021-05-12T10:35:16Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/0173224e32a482da6f846f1a8b452319d8d2db37/Scripts/PSP_Register%20JSON%20Credentials.lua</source>
+      </version>
+    </reapack>
+    <reapack name="PSP_STT Google Cloud Services.py" type="script" desc="Speech to Text Google Cloud Services">
+      <version name="1.0" author="GU-on" time="2021-05-12T10:39:45Z">
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/0f65ee4e690d8a3a0e24211c2760cc9f135de6a5/Scripts/PSP_STT%20Google%20Cloud%20Services.py</source>
+      </version>
+    </reapack>
+    <reapack name="PSP_STT Google Default Key (testing only).py" type="script" desc="Speech to Text Google Default Key">
+      <version name="1.0" author="GU-on" time="2021-05-12T10:39:45Z">
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/0f65ee4e690d8a3a0e24211c2760cc9f135de6a5/Scripts/PSP_STT%20Google%20Default%20Key%20(testing%20only).py</source>
+      </version>
+    </reapack>
+    <reapack name="PSP_STT Sphinx (offline service).py" type="script" desc="Speech to Text Sphinx (offline service)">
+      <version name="1.0" author="GU-on" time="2021-05-12T10:39:45Z">
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/0f65ee4e690d8a3a0e24211c2760cc9f135de6a5/Scripts/PSP_STT%20Sphinx%20(offline%20service).py</source>
       </version>
     </reapack>
   </category>
