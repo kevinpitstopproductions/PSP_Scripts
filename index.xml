@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="PSP_Scripts" commit="0f65ee4e690d8a3a0e24211c2760cc9f135de6a5">
+<index version="1" name="PSP_Scripts" commit="a7a00ea47929ea1159cfa23af28017e0057cf540">
   <category name="Scripts">
     <reapack name="PSP_Create Regions from Selected Item Source Destinations.lua" type="script" desc="Create Regions for Each Item from Source Destination Names">
       <version name="1.0" author="GU-on" time="2021-05-11T11:20:01Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/790b9c3520bf90869aea6bd6fa8841c5150e91a3/Scripts/PSP_Create%20Regions%20from%20Selected%20Item%20Source%20Destinations.lua</source>
+      </version>
+    </reapack>
+    <reapack name="PSP_Install Libraries.py" type="script" desc="Library Installer">
+      <version name="1.0" author="GU-on" time="2021-05-12T13:08:31Z">
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/a7a00ea47929ea1159cfa23af28017e0057cf540/Scripts/PSP_Install%20Libraries.py</source>
       </version>
     </reapack>
     <reapack name="PSP_Offset Source Start to 50% Item Length.lua" type="script" desc="PP_Offset Source Start to 50% Item Length.lua">
@@ -32,6 +37,11 @@
     <reapack name="PSP_STT Sphinx (offline service).py" type="script" desc="Speech to Text Sphinx (offline service)">
       <version name="1.0" author="GU-on" time="2021-05-12T10:39:45Z">
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/0f65ee4e690d8a3a0e24211c2760cc9f135de6a5/Scripts/PSP_STT%20Sphinx%20(offline%20service).py</source>
+      </version>
+    </reapack>
+    <reapack name="PSP_TTS Easy.py" type="script" desc="Easy Text To Speech">
+      <version name="1.0" author="GU-on" time="2021-05-12T13:08:31Z">
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/a7a00ea47929ea1159cfa23af28017e0057cf540/Scripts/PSP_TTS%20Easy.py</source>
       </version>
     </reapack>
   </category>
