@@ -9,7 +9,7 @@
     </reapack>
     <reapack name="PSP_Install Libraries.py" type="script" desc="Library Installer">
       <version name="1.0" author="GU-on" time="2021-05-12T13:08:31Z">
-        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/c644f4e380c44ab852ef762f1221709f937c27f5/Scripts/PSP_Install%20Libraries.py</source>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/a7a00ea47929ea1159cfa23af28017e0057cf540/Scripts/PSP_Install%20Libraries.py</source>
       </version>
       <version name="1.1" author="GU-on" time="2021-05-12T13:46:07Z">
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/3dca7ca087a8f3a3e59b59206073d444b68ee936/Scripts/PSP_Install%20Libraries.py</source>
@@ -44,7 +44,7 @@
     </reapack>
     <reapack name="PSP_TTS Easy.py" type="script" desc="Easy Text To Speech">
       <version name="1.0" author="GU-on" time="2021-05-12T13:08:31Z">
-        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/c644f4e380c44ab852ef762f1221709f937c27f5/Scripts/PSP_TTS%20Easy.py</source>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/a7a00ea47929ea1159cfa23af28017e0057cf540/Scripts/PSP_TTS%20Easy.py</source>
       </version>
       <version name="1.1" author="GU-on" time="2021-05-12T13:46:07Z">
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/3dca7ca087a8f3a3e59b59206073d444b68ee936/Scripts/PSP_TTS%20Easy.py</source>
