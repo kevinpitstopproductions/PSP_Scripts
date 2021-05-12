@@ -42,6 +42,7 @@ function loop()
 
 	if (reaper.ImGui_Button(ctx, 'Apply') or reaper.ImGui_IsKeyPressed(ctx, 13)) then
 		Main(text)
+		is_complete = true
 	end
 	
 	rv, text = reaper.ImGui_InputTextMultiline( ctx, '', text, 1000, 170 )
