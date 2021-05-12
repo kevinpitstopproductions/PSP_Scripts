@@ -1,3 +1,13 @@
+# * ReaScript Name: Speech to Text Google Default Key
+# * Author: GU-on
+# * Licence: GPL v3
+# * REAPER: 6.28
+# * Version: 1.0
+
+# * Changelog:
+# * v1.0 (2021-05-12)
+# 	+ Initial Release
+
 import speech_recognition as sr
 import reapy
 
