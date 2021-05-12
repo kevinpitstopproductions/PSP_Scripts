@@ -3,13 +3,15 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.27
- * Version: 1.0
+ * Version: 1.1
 --]]
 
 --[[
  * Changelog:
  * v1.0 (2021-04-14)
 	+ Initial Release
+ * v1.1 (2021-05-12)
+	+ Bug Fixes
 --]]
 
 -- USER CONFIG AREA -----------------------------------------------------------

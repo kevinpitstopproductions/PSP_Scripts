@@ -14,8 +14,6 @@ from datetime import datetime
 import reapy
 import pyttsx3
 
-#hello 2
-
 project = reapy.Project()
 
 engine = pyttsx3.init()
