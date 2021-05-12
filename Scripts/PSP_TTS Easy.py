@@ -14,12 +14,14 @@ from datetime import datetime
 import reapy
 import pyttsx3
 
+#hello
+
 project = reapy.Project()
 
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 
-engine.setProperty('voice', voices[2].id)
+engine.setProperty('voice', voices[0].id)
 
 today = date.today()
 now = datetime.now()
