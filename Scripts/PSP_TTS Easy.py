@@ -6,7 +6,7 @@
 
 # * Changelog:
 # * v1.1 (2021-05-12)
-# 	+ Initial Release
+#   + Initial Release
 
 from datetime import date
 from datetime import datetime
@@ -19,7 +19,7 @@ project = reapy.Project()
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 
-engine.setProperty('voice', voices[0].id)
+engine.setProperty('voice', voices[4].id)
 
 today = date.today()
 now = datetime.now()
