@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="PSP_Scripts" commit="da9f7d1543efff65cfa1fcde5dcc3c86e813c60e">
+<index version="1" name="PSP_Scripts" commit="57e082f34e3562edbac3d48cef5f55f4074eb0b9">
   <category name="Scripts">
     <reapack name="PSP_Color Child Tracks of Parents Lighter.lua" type="script" desc="PSP_Color Child Tracks of Parents Lighter.lua">
       <version name="1.0" author="GU-on" time="2021-05-24T16:05:29Z">
@@ -11,6 +11,10 @@
       <version name="1.0" author="GU-on" time="2021-05-27T14:22:09Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/da9f7d1543efff65cfa1fcde5dcc3c86e813c60e/Scripts/PSP_Copy%20Item%20Properties.lua</source>
+      </version>
+      <version name="1.1" author="GU-on" time="2021-05-27T14:38:58Z">
+        <changelog><![CDATA[+ Bug Fix]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/57e082f34e3562edbac3d48cef5f55f4074eb0b9/Scripts/PSP_Copy%20Item%20Properties.lua</source>
       </version>
     </reapack>
     <reapack name="PSP_Create Regions from Selected Item Source Destinations.lua" type="script" desc="Create Regions for Each Item from Source Destination Names">
