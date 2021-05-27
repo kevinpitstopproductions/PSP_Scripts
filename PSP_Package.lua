@@ -4,7 +4,7 @@
  Author: kevin@pitstop
  REAPER: 6+
  Extensions: SWS
- Version: 1.4
+ Version: 1.4.1
  Provides:
   [Main] PSP_Install Libraries.py
   [Main] PSP_Create Regions from Selected Item Source Destinations.lua
