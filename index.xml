@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="PSP_Scripts" commit="10c91eb584d5d7786b09d13ae5d322dedbc6494e">
+<index version="1" name="PSP_Scripts" commit="e1035db235b7b35dc9be74dd893eea13b576b05b">
   <category name="Scripts">
     <reapack name="PSP_Color Child Tracks of Parents Lighter.lua" type="script" desc="PSP_Color Child Tracks of Parents Lighter.lua">
       <version name="1.0" author="GU-on" time="2021-05-24T16:05:29Z">
@@ -22,6 +22,10 @@
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/10c91eb584d5d7786b09d13ae5d322dedbc6494e/Scripts/PSP_Create%20Parent%20Item%20Aliases%20from%20Selected%20Items.lua</source>
       </version>
+      <version name="1.1" author="GU-on" time="2021-05-28T15:36:23Z">
+        <changelog><![CDATA[+ Bug Fix]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/e1035db235b7b35dc9be74dd893eea13b576b05b/Scripts/PSP_Create%20Parent%20Item%20Aliases%20from%20Selected%20Items.lua</source>
+      </version>
     </reapack>
     <reapack name="PSP_Create Regions from Selected Item Source Destinations.lua" type="script" desc="Create Regions for Each Item from Source Destination Names">
       <version name="1.0" author="GU-on" time="2021-05-11T11:20:01Z">
@@ -33,6 +37,10 @@
       <version name="1.0" author="GU-on" time="2021-05-28T10:28:24Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/10c91eb584d5d7786b09d13ae5d322dedbc6494e/Scripts/PSP_Create%20Volume%20Trim%20Automation%20Items%20from%20Selected%20Items.lua</source>
+      </version>
+      <version name="1.1" author="GU-on" time="2021-05-28T15:36:23Z">
+        <changelog><![CDATA[+ Bug Fix]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/e1035db235b7b35dc9be74dd893eea13b576b05b/Scripts/PSP_Create%20Volume%20Trim%20Automation%20Items%20from%20Selected%20Items.lua</source>
       </version>
     </reapack>
     <reapack name="PSP_Install Libraries.py" type="script" desc="Library Installer">
