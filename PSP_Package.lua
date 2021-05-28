@@ -4,7 +4,7 @@
  Author: kevin@pitstop
  REAPER: 6+
  Extensions: SWS
- Version: 1.4.1
+ Version: 1.5
  Provides:
   [Main] PSP_Install Libraries.py
   [Main] PSP_Create Regions from Selected Item Source Destinations.lua
@@ -16,6 +16,8 @@
   [Main] PSP_Color Child Tracks of Parents Lighter.lua
   [Main] PSP_Copy Item Properties.lua
   [Main] PSP_Paste Item Properties.lua
+  [Main] PSP_Create Parent Item Aliases from Selected Items.lua
+  [Main] PSP_Create Volume Trim Automation Items from Selected Items.lua 
 
  About:
   A collection of my reaper workflow scripts
@@ -30,4 +32,5 @@
    * v1.2 (2021-05-11) Bug Fixes
    * v1.3 (2021-05-24) Added Color Child Tracks script
    * v1.4 (2021-05-27) Added Item Properties Copy+Paster for Tobty
+   * v1.5 (2021-05-28) Added Item Render Helper Scripts
 ]]
