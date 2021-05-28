@@ -3,13 +3,15 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.29
- * Version: 1.0
+ * Version: 1.1
 --]]
 
 --[[
  * Changelog:
  * v1.0 (2021-05-28)
 	+ Initial Release
+ * v1.1 (2021-05-28)
+    + Bug Fix
 --]]
 
 console = true
@@ -57,7 +59,7 @@ local function AddDefaultFadesToItemsOnTrack(track)
 end -- AddDefaultFadesToItemsOnTrack
 
 local function DeleteItemsOnTrack(track)
-	for i=reaper.CountTrackMediaItems(track), 0, -1 do
+	for i=reaper.CountTrackMediaItems(track)-1, 0, -1 do
 		item = reaper.GetTrackMediaItem(track, i)
 		if item then
 			reaper.DeleteTrackMediaItem(track, item)
@@ -77,25 +79,32 @@ local function SaveSelectedItems (init_table, item_count)
 	end -- loop through selected items
 end --SaveSelectedItems
 
+function table.contains(table, element)
+  for _, value in pairs(table) do
+    if value == element then return true end
+  end
+  return false
+end -- table.contains
+
 local function CollapseBlankItemAliasesToParentTrack(init_table, track_list)
 	reaper.SelectAllMediaItems( 0, 0 ) -- deselect all items
 
 	for i, contents in ipairs(init_table) do
-		item_track = GetOutermostParentTrack(reaper.GetMediaItemTrack(contents.item)) -- Get the outermost parent
+		track = GetOutermostParentTrack(reaper.GetMediaItemTrack(contents.item)) -- Get the outermost parent
 
 	  	if #track_list == 0 then
-	  		DeleteItemsOnTrack(item_track)
-	  		table.insert(track_list, item_track)
+	  		DeleteItemsOnTrack(track)
+	  		table.insert(track_list, track)
 	  	end 
 
-	  	for _, track in ipairs(track_list) do
-	  		if track ~= item_track then
-	  			DeleteItemsOnTrack(item_track)
-	  			table.insert(track_list, item_track)
+	  	for _, spot in ipairs(track_list) do
+	  		if not table.contains(track_list, track) then
+	  			DeleteItemsOnTrack(track)
+	  			table.insert(track_list, track)
 	  		end -- end if
 	  	end -- end for
 
-	  	item = reaper.AddMediaItemToTrack(item_track)
+	  	item = reaper.AddMediaItemToTrack(track)
 	  	reaper.SetMediaItemPosition(item, contents.pos_start, 1)
 	  	reaper.SetMediaItemLength(item, (contents.pos_end - contents.pos_start), 1)
 	end -- iterate through item table
@@ -206,6 +215,8 @@ if count_sel_items > 0 then
 	CollapseBlankItemAliasesToParentTrack(init_sel_items, track_list)
 
 	for _, track in ipairs(track_list) do
+		local _, track_name = reaper.GetTrackName(track)
+		Msg(track_name)
 		MergeOverlappingItems(track)
 		SelectItemsOnTrack(track)
 		AddDefaultFadesToItemsOnTrack(track)
