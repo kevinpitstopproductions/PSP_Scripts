@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="PSP_Scripts" commit="e1035db235b7b35dc9be74dd893eea13b576b05b">
+<index version="1" name="PSP_Scripts" commit="ba5ca46651b4f835d06995360bb273fa1141cbc5">
   <category name="Scripts">
     <reapack name="PSP_Color Child Tracks of Parents Lighter.lua" type="script" desc="PSP_Color Child Tracks of Parents Lighter.lua">
       <version name="1.0" author="GU-on" time="2021-05-24T16:05:29Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/6edca2334d1d7c1f9f232e035463e35227e15406/Scripts/PSP_Color%20Child%20Tracks%20of%20Parents%20Lighter.lua</source>
+      </version>
+    </reapack>
+    <reapack name="PSP_Convert Stretch Markers To Take Markers.lua" type="script" desc="Convert Stretch Markers to Take Markers">
+      <version name="1.0" author="GU-on" time="2021-06-02T15:49:37Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/ba5ca46651b4f835d06995360bb273fa1141cbc5/Scripts/PSP_Convert%20Stretch%20Markers%20To%20Take%20Markers.lua</source>
       </version>
     </reapack>
     <reapack name="PSP_Copy Item Properties.lua" type="script" desc="Copy Item Properties">
@@ -86,6 +92,12 @@
     <reapack name="PSP_STT Sphinx (offline service).py" type="script" desc="Speech to Text Sphinx (offline service)">
       <version name="1.0" author="GU-on" time="2021-05-12T10:39:45Z">
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/0f65ee4e690d8a3a0e24211c2760cc9f135de6a5/Scripts/PSP_STT%20Sphinx%20(offline%20service).py</source>
+      </version>
+    </reapack>
+    <reapack name="PSP_Take Marker Randomzier Tool.lua" type="script" desc="Randomize Items (Take Markers)">
+      <version name="0.1" author="GU-on" time="2021-06-02T15:49:37Z">
+        <changelog><![CDATA[+ Beta Release]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/ba5ca46651b4f835d06995360bb273fa1141cbc5/Scripts/PSP_Take%20Marker%20Randomzier%20Tool.lua</source>
       </version>
     </reapack>
     <reapack name="PSP_TTS Easy.py" type="script" desc="Easy Text To Speech">
