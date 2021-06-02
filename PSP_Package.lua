@@ -4,7 +4,7 @@
  Author: kevin@pitstop
  REAPER: 6+
  Extensions: SWS
- Version: 1.5.1
+ Version: 1.6
  Provides:
   [Main] PSP_Install Libraries.py
   [Main] PSP_Create Regions from Selected Item Source Destinations.lua
@@ -18,6 +18,8 @@
   [Main] PSP_Paste Item Properties.lua
   [Main] PSP_Create Parent Item Aliases from Selected Items.lua
   [Main] PSP_Create Volume Trim Automation Items from Selected Items.lua 
+  [Main] PSP_Convert Stretch Markers To Take Markers.lua
+  [Main] PSP_Take Marker Randomzier Tool.lua
 
  About:
   A collection of my reaper workflow scripts
@@ -33,4 +35,5 @@
    * v1.3 (2021-05-24) Added Color Child Tracks script
    * v1.4 (2021-05-27) Added Item Properties Copy+Paster for Tobty
    * v1.5 (2021-05-28) Added Item Render Helper Scripts
+   * v1.6 (2021-06-02) Added Take Marker Scripts
 ]]
