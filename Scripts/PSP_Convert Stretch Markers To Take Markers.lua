@@ -31,7 +31,6 @@ if item_count > 0 then
 					--for s=s_marker_count, 0, -1 do
 					reaper.DeleteTakeStretchMarkers(take, 0, s_marker_count)
 					--end -- LOOP through stretch markers
-
 				end -- check if stretch markers
 			end -- LOOP through takes
 		end -- check if takes

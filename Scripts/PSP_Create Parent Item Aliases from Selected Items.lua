@@ -3,7 +3,7 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.29
- * Version: 1.1
+ * Version: 1.2
 --]]
 
 --[[
@@ -12,60 +12,35 @@
 	+ Initial Release
  * v1.1 (2021-05-28)
     + Bug Fix
---]]
+ * v1.2 (2021-06-07)
+	+ Prevent running on items at depth 0
+ --]]
+
+--- DEBUG
 
 console = true
 
 local function Msg(value)
 	if console then
-		reaper.ShowConsoleMsg(tostring(value) .. "\n")
-	end
-end -- Msg
+		reaper.ShowConsoleMsg(tostring(value) .. "\n") end
+end
 
-local function GetOutermostParentTrack(track) -- Gets the most parent track
+--- FUNCTIONS
+
+function table.contains(table, element)
+  for _, value in pairs(table) do
+    if value == element then return true end
+  end
+  return false
+end
+
+function reaper.GetOutermostParentTrack(track) -- Gets the most parent track
 	local current_track = track
 	while reaper.GetParentTrack( current_track ) do
 		current_track = reaper.GetParentTrack(current_track)
 	end
 	return current_track
 end -- GetOutermostParentTrack
-
-local function RenameItemsOnTrack(track)
-	for i=0, reaper.CountTrackMediaItems(track)-1 do
-		item = reaper.GetTrackMediaItem(track, i)
-		reaper.AddTakeToMediaItem( item )
-
-		_, track_name = reaper.GetSetMediaTrackInfo_String(track, "P_NAME", "", 0)
-		index = string.format("%02d", i+1)
-
-		reaper.ULT_SetMediaItemNote(item, track_name .. "_" .. index) -- set notes
-		reaper.GetSetMediaItemTakeInfo_String(reaper.GetActiveTake(item), "P_NAME", track_name .. "_" .. index, 1)
-	end -- loop through track items
-end -- RenameItemsOnTrack
-
-local function SelectItemsOnTrack(track)
-	for i=0, reaper.CountTrackMediaItems(track)-1 do
-		item = reaper.GetTrackMediaItem(track, i)
-		reaper.SetMediaItemSelected(item, true)
-	end -- loop through items on track
-end --SelectItemsOnTrack
-
-local function AddDefaultFadesToItemsOnTrack(track)
-	for i=0, reaper.CountTrackMediaItems(track)-1 do
-		item = reaper.GetTrackMediaItem(track, i)
-		reaper.SetMediaItemInfo_Value(item, "D_FADEINLEN", 0.01)
-		reaper.SetMediaItemInfo_Value(item, "D_FADEOUTLEN", 0.01)
-	end -- loop through track items
-end -- AddDefaultFadesToItemsOnTrack
-
-local function DeleteItemsOnTrack(track)
-	for i=reaper.CountTrackMediaItems(track)-1, 0, -1 do
-		item = reaper.GetTrackMediaItem(track, i)
-		if item then
-			reaper.DeleteTrackMediaItem(track, item)
-		end -- if item is valid
-	end -- loop through track items
-end -- DeleteItemsOnTrack
 
 local function SaveSelectedItems (init_table, item_count)
 	for i = 0, item_count-1 do
@@ -79,36 +54,44 @@ local function SaveSelectedItems (init_table, item_count)
 	end -- loop through selected items
 end --SaveSelectedItems
 
-function table.contains(table, element)
-  for _, value in pairs(table) do
-    if value == element then return true end
-  end
-  return false
-end -- table.contains
+local function DeleteItemsOnTrack(track)
+	for i=reaper.CountTrackMediaItems(track)-1, 0, -1 do
+		item = reaper.GetTrackMediaItem(track, i)
+		if item then
+			reaper.DeleteTrackMediaItem(track, item)
+		end -- if item is valid
+	end -- loop through track items
+end -- DeleteItemsOnTrack
 
 local function CollapseBlankItemAliasesToParentTrack(init_table, track_list)
 	reaper.SelectAllMediaItems( 0, 0 ) -- deselect all items
 
 	for i, contents in ipairs(init_table) do
-		track = GetOutermostParentTrack(reaper.GetMediaItemTrack(contents.item)) -- Get the outermost parent
+		track_depth = reaper.GetTrackDepth(reaper.GetMediaItemTrack(contents.item))
+		if track_depth ~= 0 then
+			track = reaper.GetOutermostParentTrack(reaper.GetMediaItemTrack(contents.item)) -- Get the outermost parent
 
-	  	if #track_list == 0 then
-	  		DeleteItemsOnTrack(track)
-	  		table.insert(track_list, track)
-	  	end 
+		  	if #track_list == 0 then
+		  		DeleteItemsOnTrack(track)
+		  		table.insert(track_list, track)
+		  	end 
 
-	  	for _, spot in ipairs(track_list) do
-	  		if not table.contains(track_list, track) then
-	  			DeleteItemsOnTrack(track)
-	  			table.insert(track_list, track)
-	  		end -- end if
-	  	end -- end for
+		  	for _, _ in ipairs(track_list) do
+		  		if not table.contains(track_list, track) then
+		  			DeleteItemsOnTrack(track)
+		  			table.insert(track_list, track)
+		  		end -- end if
+		  	end -- end for
 
-	  	item = reaper.AddMediaItemToTrack(track)
-	  	reaper.SetMediaItemPosition(item, contents.pos_start, 1)
-	  	reaper.SetMediaItemLength(item, (contents.pos_end - contents.pos_start), 1)
+		  	item = reaper.AddMediaItemToTrack(track)
+		  	reaper.SetMediaItemPosition(item, contents.pos_start, 1)
+		  	reaper.SetMediaItemLength(item, (contents.pos_end - contents.pos_start), 1)
+		else
+			reaper.MB("Can't select items in parent track", "Error", 0)
+			return
+		end -- check track depth
 	end -- iterate through item table
-end --CollapseBlankItemAliasesToParentTrack
+end -- CollapseBlankItemAliasesToParentTrack
 
 function MergeOverlappingItems(track) 
 	local item_mark_as_delete = {}	
@@ -196,8 +179,7 @@ function MergeOverlappingItems(track)
 	end -- if select item
 end -- MergeOverlap
 
-local function Main()
-end -- Main
+--- MAIN
 
 local count_sel_items = reaper.CountSelectedMediaItems(0)
 
@@ -215,15 +197,23 @@ if count_sel_items > 0 then
 	CollapseBlankItemAliasesToParentTrack(init_sel_items, track_list)
 
 	for _, track in ipairs(track_list) do
-		local _, track_name = reaper.GetTrackName(track)
-		Msg(track_name)
 		MergeOverlappingItems(track)
-		SelectItemsOnTrack(track)
-		AddDefaultFadesToItemsOnTrack(track)
-		RenameItemsOnTrack(track)
+		for i=0, reaper.CountTrackMediaItems(track)-1 do
+			local item = reaper.GetTrackMediaItem(track, i)
+			--SelectItemsOnTrack(track)
+			reaper.SetMediaItemSelected(item, true)
+			reaper.SetMediaItemInfo_Value(item, "D_FADEINLEN", 0.01)
+			reaper.SetMediaItemInfo_Value(item, "D_FADEOUTLEN", 0.01)
+			if not reaper.GetActiveTake(item) then reaper.AddTakeToMediaItem( item ) end
+
+			local _, track_name = reaper.GetSetMediaTrackInfo_String(track, "P_NAME", "", 0)
+
+			reaper.ULT_SetMediaItemNote(item, track_name .. "_" .. string.format("%02d", i+1)) -- set notes
+			reaper.GetSetMediaItemTakeInfo_String(
+				reaper.GetActiveTake(item), "P_NAME", track_name .. "_" .. string.format("%02d", i+1), 1)
+		end
 	end -- iterate through tracks
 
 	reaper.Undo_EndBlock("Create Parent Items", - 1)
 	reaper.PreventUIRefresh(-1)
-
 end
