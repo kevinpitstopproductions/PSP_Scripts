@@ -16,7 +16,7 @@
     <reapack name="PSP_Convert Stretch Markers To Take Markers.lua" type="script" desc="Convert Stretch Markers to Take Markers">
       <version name="1.0" author="GU-on" time="2021-06-02T15:49:37Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
-        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/8f14aaf06af3fa574b7d4f1fc52f4e657d27d255/Scripts/PSP_Convert%20Stretch%20Markers%20To%20Take%20Markers.lua</source>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/ba5ca46651b4f835d06995360bb273fa1141cbc5/Scripts/PSP_Convert%20Stretch%20Markers%20To%20Take%20Markers.lua</source>
       </version>
     </reapack>
     <reapack name="PSP_Copy Item Properties.lua" type="script" desc="Copy Item Properties">
@@ -113,7 +113,7 @@
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/a7a00ea47929ea1159cfa23af28017e0057cf540/Scripts/PSP_TTS%20Easy.py</source>
       </version>
       <version name="1.1" author="GU-on" time="2021-05-12T13:46:07Z">
-        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/6edca2334d1d7c1f9f232e035463e35227e15406/Scripts/PSP_TTS%20Easy.py</source>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/3dca7ca087a8f3a3e59b59206073d444b68ee936/Scripts/PSP_TTS%20Easy.py</source>
       </version>
     </reapack>
   </category>
