@@ -4,7 +4,7 @@
  Author: kevin@pitstop
  REAPER: 6+
  Extensions: SWS
- Version: 1.8
+ Version: 1.8.1
  Provides:
   [Main] PSP_Install Libraries.py
   [Main] PSP_Create Regions from Selected Item Source Destinations.lua
@@ -38,4 +38,5 @@
    * v1.6 (2021-06-02) Added Take Marker Scripts
    * v1.7 (2021-06-07) Added Config Tool + some bug fixes
    * v1.8 (2021-06-08) Added Item Fader
+   * v1.8.1 (2021-06-08) Small Update
 ]]

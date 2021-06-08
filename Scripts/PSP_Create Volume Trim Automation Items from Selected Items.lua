@@ -3,7 +3,7 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.29
- * Version: 1.1
+ * Version: 1.2
 --]]
 
 --[[
@@ -12,6 +12,8 @@
 	+ Initial Release
  * v1.1 (2021-05-28)
     + Bug Fix
+ * v1.2 (2021-06-08)
+    + Added config option (mute env behind automation items)
 --]]
 
 -- CONSTANTS
@@ -27,6 +29,20 @@ local function Msg(value)
         reaper.ShowConsoleMsg(tostring(value) .. "\n")
     end
 end -- Msg
+
+-- VARIABLES
+
+local section = "PSP_Scripts"
+local settings = {}
+
+local function toboolean(text)
+  if text == "true" then return true
+  else return false end
+end -- toboolean
+
+if reaper.HasExtState(section, "SD_mute_envelope") then 
+  settings.mute_envelope = toboolean(reaper.GetExtState(section, "SD_mute_envelope")) else
+  settings.mute_envelope = false end
 
 -- FUNCTIONS
 
@@ -111,7 +127,7 @@ local function ClearAutomationItems(track_list)
 
             ShowTrackEnvelope(track, envelope) 
 
-            reaper.SetEnvelopePoint( envelope, 0, 0, 0, 0, 0, 0, 0 )
+            if settings.mute_envelope then reaper.SetEnvelopePoint( envelope, 0, 0, 0, 0, 0, 0, 0 ) end
 
             for i=AI_count-1, 0, -1 do
                 reaper.GetSetAutomationItemInfo(envelope, i, "D_UISEL", 1, 1)
@@ -166,7 +182,6 @@ if sel_item_count > 0 then
 
     for _, track in ipairs(track_list) do
         _, track_name = reaper.GetTrackName(track)
-        Msg(track_name)
     end
 
     ClearAutomationSelection()

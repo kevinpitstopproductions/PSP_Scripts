@@ -10,6 +10,8 @@
  * Changelog:
  * v0.1 (2021-06-07)
  	+ Initial Release
+ * v0.2 (2021-06-08)
+ 	+ Added config option (mute env behind automation items)
 --]]
 
 --- DEBUG
@@ -37,6 +39,7 @@ end -- toboolean
 
 settings.is_random = toboolean(reaper.GetExtState(section, "SD_is_random"))
 settings.chop_end = reaper.GetExtState(section, "SD_chop_end")
+settings.mute_envelope = toboolean(reaper.GetExtState(section, "SD_mute_envelope"))
 
 reaper.defer(function()
 	ctx = reaper.ImGui_CreateContext('PSP Config', 300, 60)
@@ -62,11 +65,16 @@ function loop()
 	    	rv, settings.chop_end = reaper.ImGui_InputText(ctx, "Chop End (sec)", settings.chop_end, reaper.ImGui_InputTextFlags_CharsDecimal())
 	    	reaper.ImGui_TreePop(ctx)
 	    end -- Sub Header
+	    if reaper.ImGui_TreeNode(ctx, 'Trim Automation Items') then
+	    	rv, settings.mute_envelope = reaper.ImGui_Checkbox(ctx, "Mute envelope behind automation items", settings.mute_envelope)
+	    	reaper.ImGui_TreePop(ctx)
+	    end -- Sub Header
   	end -- Main Header
 
   	if reaper.ImGui_Button(ctx, "Save Changes") then
   		reaper.SetExtState(section, "SD_is_random", tostring(settings.is_random), 1)
   		reaper.SetExtState(section, "SD_chop_end", tonumber(settings.chop_end), 1)
+  		reaper.SetExtState(section, "SD_mute_envelope", tostring(settings.mute_envelope), 1)
   		is_finished = true
   	end
 
