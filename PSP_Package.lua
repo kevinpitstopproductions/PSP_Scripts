@@ -4,7 +4,7 @@
  Author: kevin@pitstop
  REAPER: 6+
  Extensions: SWS
- Version: 1.7
+ Version: 1.8
  Provides:
   [Main] PSP_Install Libraries.py
   [Main] PSP_Create Regions from Selected Item Source Destinations.lua
@@ -19,6 +19,7 @@
   [Main] PSP_Create Volume Trim Automation Items from Selected Items.lua 
   [Main] PSP_Convert Stretch Markers To Take Markers.lua
   [Main] PSP_Take Marker Randomizer Tool.lua
+  [Main] PSP_Item Fader.lua
 
  About:
   A collection of my reaper workflow scripts
@@ -36,4 +37,5 @@
    * v1.5 (2021-05-28) Added Item Render Helper Scripts
    * v1.6 (2021-06-02) Added Take Marker Scripts
    * v1.7 (2021-06-07) Added Config Tool + some bug fixes
+   * v1.8 (2021-06-08) Added Item Fader
 ]]

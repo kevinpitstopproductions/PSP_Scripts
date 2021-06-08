@@ -210,7 +210,7 @@ if count_sel_items > 0 then
 
 			reaper.ULT_SetMediaItemNote(item, track_name .. "_" .. string.format("%02d", i+1)) -- set notes
 			reaper.GetSetMediaItemTakeInfo_String(
-				reaper.GetActiveTake(item), "P_NAME", track_name .. "_" .. string.format("%02d", i+1), 1)
+			reaper.GetActiveTake(item), "P_NAME", track_name .. "_" .. string.format("%02d", i+1), 1)
 		end
 	end -- iterate through tracks
 

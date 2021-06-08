@@ -3,13 +3,15 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.29
- * Version: 0.2
+ * Version: 0.3
 --]]
 
 --[[
  * Changelog:
  * v0.2 (2021-06-03)
   + Beta Release
+ * v0.3 (2021-06-07)
+  + Bug Fixes
 --]]
 
 --- DEBUG
@@ -20,7 +22,7 @@ local function Msg(text)
   if console then reaper.ShowConsoleMsg(tostring(text) .. '\n') end
 end -- Msg
 
---- VARIABLEs
+--- VARIABLES
 
 local section = "PSP_Scripts"
 local settings = {}
@@ -30,8 +32,13 @@ local function toboolean(text)
   else return false end
 end -- toboolean
 
-settings.is_random = toboolean(reaper.GetExtState(section, "SD_is_random"))
-settings.chop_end = reaper.GetExtState(section, "SD_chop_end")
+if reaper.HasExtState(section, "SD_is_random") then 
+  settings.is_random = toboolean(reaper.GetExtState(section, "SD_is_random")) else
+  settings.is_random = false end
+
+if reaper.HasExtState(section, "SD_chop_end") then
+  settings.chop_end = reaper.GetExtState(section, "SD_chop_end") else
+  settings.chop_end = 0 end
 
 local take_table = {}
 local item_count = reaper.CountSelectedMediaItems(0)
@@ -70,12 +77,9 @@ if item_count > 0 then
             table.insert(take_table, entry)
 
             diff = math.abs(take_offset-(cur_take_marker-(item_start_offs*take_rate)))
-            --Msg("take offset is: " .. take_offset)
-            --Msg("cur take marker is: " .. cur_take_marker-(item_start_offs*take_rate))
             if diff < 0.00001 then
               last_take = string.gsub(take_marker_name, "tk", "")
               last_take = tonumber(last_take)
-              --Msg("last take was: " .. last_take)
             end
           end -- LOOP through take markers
 
@@ -90,11 +94,9 @@ if item_count > 0 then
             reaper.SetMediaItemLength(item, (take_table[random_number].take_marker_length/take_rate) + item_start_offs - settings.chop_end, 1)
           else
             if last_take == #take_table then -- if at end of table, start from 1 again
-              --Msg("end of takes, returning to 1")
               reaper.SetMediaItemTakeInfo_Value(take, "D_STARTOFFS", take_table[1].take_marker_start - (item_start_offs*take_rate))
               reaper.SetMediaItemLength(item, (take_table[1].take_marker_length/take_rate) + item_start_offs - settings.chop_end, 1)
             else
-              --Msg("incrementing")
               reaper.SetMediaItemTakeInfo_Value(take, "D_STARTOFFS", take_table[last_take+1].take_marker_start - (item_start_offs*take_rate))
               reaper.SetMediaItemLength(item, (take_table[last_take+1].take_marker_length/take_rate) + item_start_offs - settings.chop_end, 1)
             end
