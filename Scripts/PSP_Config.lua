@@ -3,7 +3,7 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.29
- * Version: 0.1
+ * Version: 0.2
 --]]
 
 --[[
