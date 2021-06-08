@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="PSP_Scripts" commit="cdb5d0c33fa8db72e6f9154eaff55ebbf5d26811">
+<index version="1" name="PSP_Scripts" commit="2c12de46373d714050c4d5be7c128faff5aa7105">
   <category name="Scripts">
     <reapack name="PSP_Color Child Tracks of Parents Lighter.lua" type="script" desc="PSP_Color Child Tracks of Parents Lighter.lua">
       <version name="1.0" author="GU-on" time="2021-05-24T16:05:29Z">
@@ -11,6 +11,10 @@
       <version name="0.1" author="GU-on" time="2021-06-07T09:59:59Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/cdb5d0c33fa8db72e6f9154eaff55ebbf5d26811/Scripts/PSP_Config.lua</source>
+      </version>
+      <version name="0.2" author="GU-on" time="2021-06-08T14:13:39Z">
+        <changelog><![CDATA[+ Added config option (mute env behind automation items)]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/2c12de46373d714050c4d5be7c128faff5aa7105/Scripts/PSP_Config.lua</source>
       </version>
     </reapack>
     <reapack name="PSP_Convert Stretch Markers To Take Markers.lua" type="script" desc="Convert Stretch Markers to Take Markers">
