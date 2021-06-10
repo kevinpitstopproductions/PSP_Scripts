@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="PSP_Scripts" commit="2c12de46373d714050c4d5be7c128faff5aa7105">
+<index version="1" name="PSP_Scripts" commit="69895e9281d9beee72d238a5e6a634cf0c8ae1d0">
   <category name="Scripts">
     <reapack name="PSP_Color Child Tracks of Parents Lighter.lua" type="script" desc="PSP_Color Child Tracks of Parents Lighter.lua">
       <version name="1.0" author="GU-on" time="2021-05-24T16:05:29Z">
@@ -7,7 +7,7 @@
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/6edca2334d1d7c1f9f232e035463e35227e15406/Scripts/PSP_Color%20Child%20Tracks%20of%20Parents%20Lighter.lua</source>
       </version>
     </reapack>
-    <reapack name="PSP_Config.lua" type="script" desc="Config">
+    <reapack name="PSP_Config.lua" type="script" desc="PSP_Config.lua">
       <version name="0.1" author="GU-on" time="2021-06-07T09:59:59Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/cdb5d0c33fa8db72e6f9154eaff55ebbf5d26811/Scripts/PSP_Config.lua</source>
@@ -16,14 +16,22 @@
         <changelog><![CDATA[+ Added config option (mute env behind automation items)]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/2c12de46373d714050c4d5be7c128faff5aa7105/Scripts/PSP_Config.lua</source>
       </version>
+      <version name="0.3" author="GU-on" time="2021-06-10T08:55:52Z">
+        <changelog><![CDATA[+ Added config option (mute env behind automation items)]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/69895e9281d9beee72d238a5e6a634cf0c8ae1d0/Scripts/PSP_Config.lua</source>
+      </version>
     </reapack>
-    <reapack name="PSP_Convert Stretch Markers To Take Markers.lua" type="script" desc="Convert Stretch Markers to Take Markers">
+    <reapack name="PSP_Convert Stretch Markers To Take Markers.lua" type="script" desc="PSP_Convert Stretch Markers to Take Markers.lua">
       <version name="1.0" author="GU-on" time="2021-06-02T15:49:37Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/ba5ca46651b4f835d06995360bb273fa1141cbc5/Scripts/PSP_Convert%20Stretch%20Markers%20To%20Take%20Markers.lua</source>
       </version>
+      <version name="1.1" author="GU-on" time="2021-06-10T08:55:52Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/69895e9281d9beee72d238a5e6a634cf0c8ae1d0/Scripts/PSP_Convert%20Stretch%20Markers%20To%20Take%20Markers.lua</source>
+      </version>
     </reapack>
-    <reapack name="PSP_Copy Item Properties.lua" type="script" desc="Copy Item Properties">
+    <reapack name="PSP_Copy Item Properties.lua" type="script" desc="PSP_Copy Item Properties.lua">
       <version name="1.0" author="GU-on" time="2021-05-27T14:22:09Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/da9f7d1543efff65cfa1fcde5dcc3c86e813c60e/Scripts/PSP_Copy%20Item%20Properties.lua</source>
@@ -32,8 +40,12 @@
         <changelog><![CDATA[+ Bug Fix]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/57e082f34e3562edbac3d48cef5f55f4074eb0b9/Scripts/PSP_Copy%20Item%20Properties.lua</source>
       </version>
+      <version name="1.2" author="GU-on" time="2021-06-10T08:55:52Z">
+        <changelog><![CDATA[+ Bug Fix]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/69895e9281d9beee72d238a5e6a634cf0c8ae1d0/Scripts/PSP_Copy%20Item%20Properties.lua</source>
+      </version>
     </reapack>
-    <reapack name="PSP_Create Parent Item Aliases from Selected Items.lua" type="script" desc="Create Parent Item Aliases from Selected Items">
+    <reapack name="PSP_Create Parent Item Aliases from Selected Items.lua" type="script" desc="PSP_Create Parent Item Aliases from Selected Items.lua">
       <version name="1.0" author="GU-on" time="2021-05-28T10:28:24Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/10c91eb584d5d7786b09d13ae5d322dedbc6494e/Scripts/PSP_Create%20Parent%20Item%20Aliases%20from%20Selected%20Items.lua</source>
@@ -46,14 +58,22 @@
         <changelog><![CDATA[+ Prevent running on items at depth 0]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/3710c2bc7d6c7b20a53bf194dd8d3c08974e36ad/Scripts/PSP_Create%20Parent%20Item%20Aliases%20from%20Selected%20Items.lua</source>
       </version>
+      <version name="1.3" author="GU-on" time="2021-06-10T08:55:52Z">
+        <changelog><![CDATA[+ Prevent running on items at depth 0]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/69895e9281d9beee72d238a5e6a634cf0c8ae1d0/Scripts/PSP_Create%20Parent%20Item%20Aliases%20from%20Selected%20Items.lua</source>
+      </version>
     </reapack>
-    <reapack name="PSP_Create Regions from Selected Item Source Destinations.lua" type="script" desc="Create Regions for Each Item from Source Destination Names">
+    <reapack name="PSP_Create Regions from Selected Item Source Destinations.lua" type="script" desc="PSP_Create Regions from Selected Item Source Destinations.lua">
       <version name="1.0" author="GU-on" time="2021-05-11T11:20:01Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/790b9c3520bf90869aea6bd6fa8841c5150e91a3/Scripts/PSP_Create%20Regions%20from%20Selected%20Item%20Source%20Destinations.lua</source>
       </version>
+      <version name="1.1" author="GU-on" time="2021-06-10T08:55:52Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/69895e9281d9beee72d238a5e6a634cf0c8ae1d0/Scripts/PSP_Create%20Regions%20from%20Selected%20Item%20Source%20Destinations.lua</source>
+      </version>
     </reapack>
-    <reapack name="PSP_Create Volume Trim Automation Items from Selected Items.lua" type="script" desc="Create Volume Trim Automation Items from Selected Items">
+    <reapack name="PSP_Create Volume Trim Automation Items from Selected Items.lua" type="script" desc="PSP_Create Volume Trim Automation Items from Selected Items.lua">
       <version name="1.0" author="GU-on" time="2021-05-28T10:28:24Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/10c91eb584d5d7786b09d13ae5d322dedbc6494e/Scripts/PSP_Create%20Volume%20Trim%20Automation%20Items%20from%20Selected%20Items.lua</source>
@@ -66,8 +86,12 @@
         <changelog><![CDATA[+ Added config option (mute env behind automation items)]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/cdb5d0c33fa8db72e6f9154eaff55ebbf5d26811/Scripts/PSP_Create%20Volume%20Trim%20Automation%20Items%20from%20Selected%20Items.lua</source>
       </version>
+      <version name="1.3" author="GU-on" time="2021-06-10T08:55:52Z">
+        <changelog><![CDATA[+ Added config option (mute env behind automation items)]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/69895e9281d9beee72d238a5e6a634cf0c8ae1d0/Scripts/PSP_Create%20Volume%20Trim%20Automation%20Items%20from%20Selected%20Items.lua</source>
+      </version>
     </reapack>
-    <reapack name="PSP_Install Libraries.py" type="script" desc="Library Installer">
+    <reapack name="PSP_Install Libraries.py" type="script" desc="PSP_Library Installer.py">
       <version name="1.0" author="GU-on" time="2021-05-12T13:08:31Z">
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/a7a00ea47929ea1159cfa23af28017e0057cf540/Scripts/PSP_Install%20Libraries.py</source>
       </version>
@@ -77,26 +101,41 @@
       <version name="1.2" author="GU-on" time="2021-06-07T09:59:59Z">
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/8f14aaf06af3fa574b7d4f1fc52f4e657d27d255/Scripts/PSP_Install%20Libraries.py</source>
       </version>
+      <version name="1.3" author="GU-on" time="2021-06-10T08:55:52Z">
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/69895e9281d9beee72d238a5e6a634cf0c8ae1d0/Scripts/PSP_Install%20Libraries.py</source>
+      </version>
     </reapack>
-    <reapack name="PSP_Item Fader.lua" type="script" desc="GU-on_[GE]_Item Fader">
+    <reapack name="PSP_Item Fader.lua" type="script" desc="PSP_Item Fader.lua">
       <version name="0.1" author="GU-on" time="2021-06-08T10:58:21Z">
         <changelog><![CDATA[+ Beta Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/3710c2bc7d6c7b20a53bf194dd8d3c08974e36ad/Scripts/PSP_Item%20Fader.lua</source>
       </version>
+      <version name="0.2" author="GU-on" time="2021-06-10T08:55:52Z">
+        <changelog><![CDATA[+ Beta Release]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/69895e9281d9beee72d238a5e6a634cf0c8ae1d0/Scripts/PSP_Item%20Fader.lua</source>
+      </version>
     </reapack>
-    <reapack name="PSP_Offset Source Start to 50% Item Length.lua" type="script" desc="PP_Offset Source Start to 50% Item Length.lua">
+    <reapack name="PSP_Offset Source Start to 50% Item Length.lua" type="script" desc="PSP_Offset Source Start to 50% Item Length.lua">
       <version name="1.0" author="GU-on" time="2021-05-11T11:20:01Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/790b9c3520bf90869aea6bd6fa8841c5150e91a3/Scripts/PSP_Offset%20Source%20Start%20to%2050%25%20Item%20Length.lua</source>
       </version>
+      <version name="1.1" author="GU-on" time="2021-06-10T08:55:52Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/69895e9281d9beee72d238a5e6a634cf0c8ae1d0/Scripts/PSP_Offset%20Source%20Start%20to%2050%25%20Item%20Length.lua</source>
+      </version>
     </reapack>
-    <reapack name="PSP_Paste Item Properties.lua" type="script" desc="Paste Item Properties">
+    <reapack name="PSP_Paste Item Properties.lua" type="script" desc="PSP_Paste Item Properties.lua">
       <version name="1.0" author="GU-on" time="2021-05-27T14:22:09Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/da9f7d1543efff65cfa1fcde5dcc3c86e813c60e/Scripts/PSP_Paste%20Item%20Properties.lua</source>
       </version>
+      <version name="1.1" author="GU-on" time="2021-06-10T08:55:52Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/69895e9281d9beee72d238a5e6a634cf0c8ae1d0/Scripts/PSP_Paste%20Item%20Properties.lua</source>
+      </version>
     </reapack>
-    <reapack name="PSP_Register JSON Credentials.lua" type="script" desc="GU-on Set Time After Snap Offset">
+    <reapack name="PSP_Register JSON Credentials.lua" type="script" desc="PSP_Register JSON Credentials.lua">
       <version name="1.0" author="GU-on" time="2021-05-12T10:35:16Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/0173224e32a482da6f846f1a8b452319d8d2db37/Scripts/PSP_Register%20JSON%20Credentials.lua</source>
@@ -105,18 +144,40 @@
         <changelog><![CDATA[+ Bug Fixes]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/5097c885156fae182efe5dcd695df94cb9e8dc50/Scripts/PSP_Register%20JSON%20Credentials.lua</source>
       </version>
+      <version name="1.2" author="GU-on" time="2021-06-10T08:55:52Z">
+        <changelog><![CDATA[+ Bug Fixes]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/69895e9281d9beee72d238a5e6a634cf0c8ae1d0/Scripts/PSP_Register%20JSON%20Credentials.lua</source>
+      </version>
     </reapack>
-    <reapack name="PSP_STT Google Cloud Services.py" type="script" desc="Speech to Text Google Cloud Services">
+    <reapack name="PSP_Set Time After Snap Offset.lua" type="script" desc="GU-on Set Time After Snap Offset">
+      <version name="1.0" author="GU-on" time="2021-06-10T08:55:52Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/69895e9281d9beee72d238a5e6a634cf0c8ae1d0/Scripts/PSP_Set%20Time%20After%20Snap%20Offset.lua</source>
+      </version>
+    </reapack>
+    <reapack name="PSP_Set Time Before Snap Offset.lua" type="script" desc="PSP_Set Time Before Snap Offset.lua">
+      <version name="1.1" author="GU-on" time="2021-06-10T08:55:52Z">
+        <changelog><![CDATA[+ Bug Fixes]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/69895e9281d9beee72d238a5e6a634cf0c8ae1d0/Scripts/PSP_Set%20Time%20Before%20Snap%20Offset.lua</source>
+      </version>
+    </reapack>
+    <reapack name="PSP_STT Google Cloud Services.py" type="script" desc="PSP_STT Google Cloud Services.py">
       <version name="1.0" author="GU-on" time="2021-05-12T10:39:45Z">
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/0f65ee4e690d8a3a0e24211c2760cc9f135de6a5/Scripts/PSP_STT%20Google%20Cloud%20Services.py</source>
       </version>
+      <version name="1.1" author="GU-on" time="2021-06-10T08:55:52Z">
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/69895e9281d9beee72d238a5e6a634cf0c8ae1d0/Scripts/PSP_STT%20Google%20Cloud%20Services.py</source>
+      </version>
     </reapack>
-    <reapack name="PSP_STT Google Default Key (testing only).py" type="script" desc="Speech to Text Google Default Key">
+    <reapack name="PSP_STT Google Default Key (testing only).py" type="script" desc="PSP_STT Google Default Key (testing only).py">
       <version name="1.0" author="GU-on" time="2021-05-12T10:39:45Z">
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/0f65ee4e690d8a3a0e24211c2760cc9f135de6a5/Scripts/PSP_STT%20Google%20Default%20Key%20(testing%20only).py</source>
       </version>
+      <version name="1.1" author="GU-on" time="2021-06-10T08:55:52Z">
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/69895e9281d9beee72d238a5e6a634cf0c8ae1d0/Scripts/PSP_STT%20Google%20Default%20Key%20(testing%20only).py</source>
+      </version>
     </reapack>
-    <reapack name="PSP_Take Marker Randomizer Tool.lua" type="script" desc="Randomize Items (Take Markers)">
+    <reapack name="PSP_Take Marker Randomizer Tool.lua" type="script" desc="PSP_Take Marker Randomizer Tool.lua">
       <version name="0.2" author="GU-on" time="2021-06-07T09:59:59Z">
         <changelog><![CDATA[+ Beta Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/8f14aaf06af3fa574b7d4f1fc52f4e657d27d255/Scripts/PSP_Take%20Marker%20Randomizer%20Tool.lua</source>
@@ -125,8 +186,12 @@
         <changelog><![CDATA[+ Bug Fixes]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/3710c2bc7d6c7b20a53bf194dd8d3c08974e36ad/Scripts/PSP_Take%20Marker%20Randomizer%20Tool.lua</source>
       </version>
+      <version name="0.4" author="GU-on" time="2021-06-10T08:55:52Z">
+        <changelog><![CDATA[+ Bug Fixes]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/69895e9281d9beee72d238a5e6a634cf0c8ae1d0/Scripts/PSP_Take%20Marker%20Randomizer%20Tool.lua</source>
+      </version>
     </reapack>
-    <reapack name="PSP_TTS Easy.py" type="script" desc="Easy Text To Speech">
+    <reapack name="PSP_TTS Easy.py" type="script" desc="PSP_TTS Easy.py">
       <version name="1.0" author="GU-on" time="2021-05-12T13:08:31Z">
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/a7a00ea47929ea1159cfa23af28017e0057cf540/Scripts/PSP_TTS%20Easy.py</source>
       </version>
@@ -135,6 +200,9 @@
       </version>
       <version name="1.2" author="GU-on" time="2021-06-08T10:58:21Z">
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/3710c2bc7d6c7b20a53bf194dd8d3c08974e36ad/Scripts/PSP_TTS%20Easy.py</source>
+      </version>
+      <version name="1.3" author="GU-on" time="2021-06-10T08:55:52Z">
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/69895e9281d9beee72d238a5e6a634cf0c8ae1d0/Scripts/PSP_TTS%20Easy.py</source>
       </version>
     </reapack>
   </category>
