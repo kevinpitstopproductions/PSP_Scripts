@@ -1,13 +1,13 @@
-# * ReaScript Name: Easy Text To Speech
+# * ReaScript Name: PSP_TTS Easy.py
 # * Author: GU-on
 # * Licence: GPL v3
 # * REAPER: 6.28
-# * Version: 1.2
+# * Version: 1.3
 
 # * Changelog:
 # * v1.1 (2021-05-12)
 #   + Initial Release
-# * v1.2 (2021-06-08)
+# * v1.3 (2021-06-08)
 #	+ Defaults to voice 0
 
 from datetime import date

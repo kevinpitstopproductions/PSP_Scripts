@@ -1,14 +1,14 @@
 --[[
- * ReaScript Name: Convert Stretch Markers to Take Markers
+ * ReaScript Name: PSP_Convert Stretch Markers to Take Markers.lua
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.29
- * Version: 1.0
+ * Version: 1.1
 --]]
 
 --[[
  * Changelog:
- * v1.0 (2021-06-02)
+ * v1.1 (2021-06-02)
   + Initial Release
 --]]
 

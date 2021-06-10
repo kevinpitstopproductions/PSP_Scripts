@@ -1,11 +1,11 @@
-# * ReaScript Name: Speech to Text Google Default Key
+# * ReaScript Name: PSP_STT Google Default Key (testing only).py
 # * Author: GU-on
 # * Licence: GPL v3
 # * REAPER: 6.28
-# * Version: 1.0
+# * Version: 1.1
 
 # * Changelog:
-# * v1.0 (2021-05-12)
+# * v1.1 (2021-05-12)
 # 	+ Initial Release
 
 import speech_recognition as sr
