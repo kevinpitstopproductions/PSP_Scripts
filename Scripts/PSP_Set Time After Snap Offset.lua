@@ -1,14 +1,14 @@
 --[[
- * ReaScript Name: GU-on Set Time After Snap Offset
+ * ReaScript Name: PSP_Set Time After Snap Offset.lua
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.27
- * Version: 1.0
+ * Version: 1.1
 --]]
 
 --[[
  * Changelog:
- * v1.0 (2021-04-14)
+ * v1.1 (2021-04-14)
 	+ Initial Release
 --]]
 
