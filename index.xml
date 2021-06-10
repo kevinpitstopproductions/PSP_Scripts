@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="PSP_Scripts" commit="d2d76ef66e717220c468bfd19b362986964704ef">
+<index version="1" name="PSP_Scripts" commit="69895e9281d9beee72d238a5e6a634cf0c8ae1d0">
   <category name="Scripts">
     <reapack name="PSP_Color Child Tracks of Parents Lighter.lua" type="script" desc="PSP_Color Child Tracks of Parents Lighter.lua">
       <version name="1.0" author="GU-on" time="2021-05-24T16:05:29Z">
@@ -149,14 +149,10 @@
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/69895e9281d9beee72d238a5e6a634cf0c8ae1d0/Scripts/PSP_Register%20JSON%20Credentials.lua</source>
       </version>
     </reapack>
-    <reapack name="PSP_Set Time After Snap Offset.lua" type="script" desc="PSP_Set Time After Snap Offset.lua">
+    <reapack name="PSP_Set Time After Snap Offset.lua" type="script" desc="GU-on Set Time After Snap Offset">
       <version name="1.0" author="GU-on" time="2021-06-10T08:55:52Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/69895e9281d9beee72d238a5e6a634cf0c8ae1d0/Scripts/PSP_Set%20Time%20After%20Snap%20Offset.lua</source>
-      </version>
-      <version name="1.1" author="GU-on" time="2021-06-10T08:59:23Z">
-        <changelog><![CDATA[+ Initial Release]]></changelog>
-        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/d2d76ef66e717220c468bfd19b362986964704ef/Scripts/PSP_Set%20Time%20After%20Snap%20Offset.lua</source>
       </version>
     </reapack>
     <reapack name="PSP_Set Time Before Snap Offset.lua" type="script" desc="PSP_Set Time Before Snap Offset.lua">
