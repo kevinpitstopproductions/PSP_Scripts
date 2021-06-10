@@ -1,14 +1,14 @@
 --[[
- * ReaScript Name: PSP_Item Fader.lua
+ * ReaScript Name: GU-on_[GE]_Item Fader
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.29
- * Version: 0.2
+ * Version: 0.1
 --]]
 
 --[[
  * Changelog:
- * v0.2 (2021-06-04)
+ * v0.1 (2021-06-04)
   + Beta Release
 --]]
 

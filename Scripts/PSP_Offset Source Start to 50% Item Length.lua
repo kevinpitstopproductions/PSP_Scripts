@@ -1,14 +1,14 @@
 --[[
- * ReaScript Name: PSP_Offset Source Start to 50% Item Length.lua
+ * ReaScript Name: PP_Offset Source Start to 50% Item Length.lua
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.27
- * Version: 1.1
+ * Version: 1.0
 --]]
 
 --[[
  * Changelog:
- * v1.1 (2021-04-19)
+ * v1.0 (2021-04-19)
  	+ Initial Release
 --]]
 

@@ -1,16 +1,16 @@
 --[[
- * ReaScript Name: PSP_Config.lua
+ * ReaScript Name: Config
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.29
- * Version: 0.3
+ * Version: 0.2
 --]]
 
 --[[
  * Changelog:
  * v0.1 (2021-06-07)
  	+ Initial Release
- * v0.3 (2021-06-08)
+ * v0.2 (2021-06-08)
  	+ Added config option (mute env behind automation items)
 --]]
 

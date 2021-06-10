@@ -1,14 +1,14 @@
 --[[
- * ReaScript Name: PSP_Paste Item Properties.lua
+ * ReaScript Name: Paste Item Properties
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.29
- * Version: 1.1
+ * Version: 1.0
 --]]
 
 --[[
  * Changelog:
- * v1.1 (2021-05-27)
+ * v1.0 (2021-05-27)
 	+ Initial Release
 --]]
 

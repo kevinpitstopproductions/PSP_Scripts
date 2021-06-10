@@ -1,9 +1,9 @@
 --[[
- * ReaScript Name: PSP_Create Parent Item Aliases from Selected Items.lua
+ * ReaScript Name: Create Parent Item Aliases from Selected Items
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.29
- * Version: 1.3
+ * Version: 1.2
 --]]
 
 --[[
@@ -12,7 +12,7 @@
 	+ Initial Release
  * v1.1 (2021-05-28)
     + Bug Fix
- * v1.3 (2021-06-07)
+ * v1.2 (2021-06-07)
 	+ Prevent running on items at depth 0
  --]]
 

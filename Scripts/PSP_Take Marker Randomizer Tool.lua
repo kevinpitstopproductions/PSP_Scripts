@@ -1,16 +1,16 @@
 --[[
- * ReaScript Name: PSP_Take Marker Randomizer Tool.lua
+ * ReaScript Name: Randomize Items (Take Markers)
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.29
- * Version: 0.4
+ * Version: 0.3
 --]]
 
 --[[
  * Changelog:
  * v0.2 (2021-06-03)
   + Beta Release
- * v0.4 (2021-06-07)
+ * v0.3 (2021-06-07)
   + Bug Fixes
 --]]
 

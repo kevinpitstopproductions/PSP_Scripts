@@ -1,16 +1,16 @@
 --[[
- * ReaScript Name: PSP_Register JSON Credentials.lua
+ * ReaScript Name: GU-on Set Time After Snap Offset
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.27
- * Version: 1.2
+ * Version: 1.1
 --]]
 
 --[[
  * Changelog:
  * v1.0 (2021-04-14)
 	+ Initial Release
- * v1.2 (2021-05-12)
+ * v1.1 (2021-05-12)
 	+ Bug Fixes
 --]]
 

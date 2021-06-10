@@ -1,13 +1,13 @@
-# * ReaScript Name: PSP_Library Installer.py
+# * ReaScript Name: Library Installer
 # * Author: GU-on
 # * Licence: GPL v3
 # * REAPER: 6.28
-# * Version: 1.3
+# * Version: 1.2
 
 # * Changelog:
 # * v1.1 (2021-05-12)
 # 	+ Initial Release
-# * v1.3 (2021-06-07)
+# * v1.2 (2021-06-07)
 #   + Sphinx Removed
 
 import subprocess
