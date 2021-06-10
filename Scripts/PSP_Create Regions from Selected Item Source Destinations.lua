@@ -1,14 +1,14 @@
 --[[
- * ReaScript Name: Create Regions for Each Item from Source Destination Names
+ * ReaScript Name: PSP_Create Regions from Selected Item Source Destinations.lua
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.19
- * Version: 1.0
+ * Version: 1.1
 --]]
 
 --[[
  * Changelog:
- * v1.0 (2021-01-16)
+ * v1.1 (2021-01-16)
   + Initial Release
 --]]
 

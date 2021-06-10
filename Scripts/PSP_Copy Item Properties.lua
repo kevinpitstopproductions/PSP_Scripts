@@ -1,16 +1,16 @@
 --[[
- * ReaScript Name: Copy Item Properties
+ * ReaScript Name: PSP_Copy Item Properties.lua
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.29
- * Version: 1.1
+ * Version: 1.2
 --]]
 
 --[[
  * Changelog:
  * v1.0 (2021-05-27)
 	+ Initial Release
- * v1.1 (2021-05-27)
+ * v1.2 (2021-05-27)
 	+ Bug Fix
 --]]
 

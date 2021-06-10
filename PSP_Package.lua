@@ -4,7 +4,7 @@
  Author: kevin@pitstop
  REAPER: 6+
  Extensions: SWS
- Version: 1.8.1
+ Version: 1.9
  Provides:
   [Main] PSP_Install Libraries.py
   [Main] PSP_Create Regions from Selected Item Source Destinations.lua
@@ -20,6 +20,8 @@
   [Main] PSP_Convert Stretch Markers To Take Markers.lua
   [Main] PSP_Take Marker Randomizer Tool.lua
   [Main] PSP_Item Fader.lua
+  [Main] PSP_Set Time After Snap Offset.lua
+  [Main] PSP_Set Time Before Snap Offset.lua
 
  About:
   A collection of my reaper workflow scripts
@@ -39,4 +41,5 @@
    * v1.7 (2021-06-07) Added Config Tool + some bug fixes
    * v1.8 (2021-06-08) Added Item Fader
    * v1.8.1 (2021-06-08) Small Update
+   * v1.9 (2021-06-10) Added Snap Offset Scripts + Fixed Script Names
 ]]
