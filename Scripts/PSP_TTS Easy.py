@@ -8,7 +8,7 @@
 # * v1.1 (2021-05-12)
 #   + Initial Release
 # * v1.3 (2021-06-08)
-#	+ Defaults to voice 0
+#  + Defaults to voice 0
 
 from datetime import date
 from datetime import datetime
