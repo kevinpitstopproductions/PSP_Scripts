@@ -4,7 +4,7 @@
  Author: kevin@pitstop
  REAPER: 6+
  Extensions: SWS
- Version: 1.10.1
+ Version: 1.10.2
  Provides:
   [Main] PSP_Install Libraries.py
   [Main] PSP_Create Regions from Selected Item Source Destinations.lua
@@ -43,5 +43,5 @@
    * v1.8 (2021-06-08) Added Item Fader
    * v1.8.1 (2021-06-08) Small Update
    * v1.9.1 (2021-06-10) Added Snap Offset Scripts + Fixed Script Names
-   * v1.10.1 (2021-06-18) Added Item Spacer for Cam
+   * v1.10.2 (2021-06-18) Added Item Spacer for Cam
 ]]

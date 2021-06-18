@@ -3,12 +3,12 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.29
- * Version: 0.2
+ * Version: 0.3
 --]]
 
 --[[
  * Changelog:
- * v0.2 (2021-06-18)
+ * v0.3 (2021-06-18)
   + Beta Release
 --]]
 
@@ -71,7 +71,7 @@ if rv then
     end
 end
 
-if reaper.ImGui_IsKeyDown( ctx, 32 ) then
+if reaper.ImGui_IsKeyPressed( ctx, 32 ) then
     reaper.Main_OnCommand(40044, 0)
 end
 
