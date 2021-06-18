@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="PSP_Scripts" commit="02d62d3f4dabdd9cced429c66b7dec56e9926a29">
+<index version="1" name="PSP_Scripts" commit="7fb87f6d4fa66f3e22cb3599b48ead746cf2a6f0">
   <category name="Scripts">
     <reapack name="PSP_Color Child Tracks of Parents Lighter.lua" type="script" desc="PSP_Color Child Tracks of Parents Lighter.lua">
       <version name="1.0" author="GU-on" time="2021-05-24T16:05:29Z">
@@ -123,6 +123,10 @@
       <version name="0.2" author="GU-on" time="2021-06-18T10:14:14Z">
         <changelog><![CDATA[+ Beta Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/02d62d3f4dabdd9cced429c66b7dec56e9926a29/Scripts/PSP_Item%20Spacer.lua</source>
+      </version>
+      <version name="0.3" author="GU-on" time="2021-06-18T13:51:52Z">
+        <changelog><![CDATA[+ Beta Release]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/7fb87f6d4fa66f3e22cb3599b48ead746cf2a6f0/Scripts/PSP_Item%20Spacer.lua</source>
       </version>
     </reapack>
     <reapack name="PSP_Offset Source Start to 50% Item Length.lua" type="script" desc="PSP_Offset Source Start to 50% Item Length.lua">
