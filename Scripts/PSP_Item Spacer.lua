@@ -3,12 +3,12 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.29
- * Version: 0.1
+ * Version: 0.2
 --]]
 
 --[[
  * Changelog:
- * v0.1 (2021-06-18)
+ * v0.2 (2021-06-18)
   + Beta Release
 --]]
 
@@ -50,6 +50,10 @@ reaper.ImGui_Begin(ctx, 'wnd', nil, reaper.ImGui_WindowFlags_NoDecoration())
 
 rv, max_space = reaper.ImGui_InputText( ctx, "Max Offset in Seconds", max_space, reaper.ImGui_InputTextFlags_CharsDecimal())
 
+if max_space == nil or max_space == "" then
+    max_space = 0
+end
+
 rv, item_space = reaper.ImGui_SliderDouble(ctx, "Item Offset in Seconds", item_space, 0, max_space, '%.3f', reaper.ImGui_SliderFlags_Logarithmic())
 
 if rv then
@@ -65,6 +69,10 @@ if rv then
             end
         end
     end
+end
+
+if reaper.ImGui_IsKeyDown( ctx, 32 ) then
+    reaper.Main_OnCommand(40044, 0)
 end
 
 --- GUI END
