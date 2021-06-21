@@ -3,14 +3,14 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.29
- * Version: 1.0
+ * Version: 1.1
 --]]
 
 --[[
  * Changelog:
  * v0.3 (2021-06-18)
 	+ Beta Release
- * v1.0 (2021-06-21)
+ * v1.1 (2021-06-21)
 	+ General Update
 --]]
 
@@ -39,7 +39,7 @@ local ctx = reaper.ImGui_CreateContext('Item Spacer', 507, 59)
 function loop()
 local rv
 local item_count
-local max_space
+--local max_space
 
 if reaper.ImGui_IsCloseRequested(ctx) then
     reaper.ImGui_DestroyContext(ctx)
