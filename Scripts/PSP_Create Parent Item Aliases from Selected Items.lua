@@ -3,7 +3,7 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.29
- * Version: 1.3
+ * Version: 1.4
 --]]
 
 --[[
@@ -14,18 +14,19 @@
     + Bug Fix
  * v1.3 (2021-06-07)
 	+ Prevent running on items at depth 0
+ * v1.4 (2021-06-21)
+	+ General Update
  --]]
 
---- DEBUG
+--- DEBUG ---
 
 console = true
 
-local function Msg(value)
-	if console then
-		reaper.ShowConsoleMsg(tostring(value) .. "\n") end
-end
+local function Msg(value) if console then reaper.ShowConsoleMsg(tostring(value) .. "\n") end end
 
---- FUNCTIONS
+--- VARIABLES ---
+
+--- FUNCTIONS ---
 
 function table.contains(table, element)
   for _, value in pairs(table) do
@@ -48,7 +49,7 @@ local function SaveSelectedItems (init_table, item_count)
 
 		entry.item = reaper.GetSelectedMediaItem(0, i)
 		entry.pos_start = reaper.GetMediaItemInfo_Value(entry.item, "D_POSITION")
-    	entry.pos_end = entry.pos_start + reaper.GetMediaItemInfo_Value(entry.item, "D_LENGTH")
+    entry.pos_end = entry.pos_start + reaper.GetMediaItemInfo_Value(entry.item, "D_LENGTH")
 
 		table.insert(init_table, entry)
 	end -- loop through selected items
@@ -66,7 +67,7 @@ end -- DeleteItemsOnTrack
 local function CollapseBlankItemAliasesToParentTrack(init_table, track_list)
 	reaper.SelectAllMediaItems( 0, 0 ) -- deselect all items
 
-	for i, contents in ipairs(init_table) do
+	for _, contents in ipairs(init_table) do
 		track_depth = reaper.GetTrackDepth(reaper.GetMediaItemTrack(contents.item))
 		if track_depth ~= 0 then
 			track = reaper.GetOutermostParentTrack(reaper.GetMediaItemTrack(contents.item)) -- Get the outermost parent
@@ -179,7 +180,7 @@ function MergeOverlappingItems(track)
 	end -- if select item
 end -- MergeOverlap
 
---- MAIN
+--- MAIN ---
 
 local count_sel_items = reaper.CountSelectedMediaItems(0)
 
@@ -199,8 +200,9 @@ if count_sel_items > 0 then
 	for _, track in ipairs(track_list) do
 		MergeOverlappingItems(track)
 		for i=0, reaper.CountTrackMediaItems(track)-1 do
+			-- GET
 			local item = reaper.GetTrackMediaItem(track, i)
-			--SelectItemsOnTrack(track)
+			-- SET
 			reaper.SetMediaItemSelected(item, true)
 			reaper.SetMediaItemInfo_Value(item, "D_FADEINLEN", 0.01)
 			reaper.SetMediaItemInfo_Value(item, "D_FADEOUTLEN", 0.01)

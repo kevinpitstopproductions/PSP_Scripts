@@ -10,10 +10,22 @@
  * Changelog:
  * v1.1 (2021-05-27)
 	+ Initial Release
+ * v1.2 (2021-06-21)
+	+ General Update
 --]]
 
-local function Main(item_count)
-	
+--- DEBUG ---
+
+local console = true
+
+local function Msg(text) if console then reaper.ShowConsoleMsg(tostring(text) .. '\n') end end
+
+--- VARIABLES --- 
+
+--- FUNCTIONS ---
+
+local function SetItemProperties(item_count)
+	-- GET
 	local rate = reaper.GetExtState( "PSP_CopyItemInfo", "rate")
 	local fadein = reaper.GetExtState( "PSP_CopyItemInfo", "fadein")
 	local fadeout = reaper.GetExtState( "PSP_CopyItemInfo", "fadeout")
@@ -23,10 +35,13 @@ local function Main(item_count)
 	local fadeoutslope = reaper.GetExtState( "PSP_CopyItemInfo", "fadoutslope")
 	local length = reaper.GetExtState( "PSP_CopyItemInfo", "length")
 	
+	-- SET
 	for i=0, item_count-1 do
 		local item = reaper.GetSelectedMediaItem(0, i)
+		local take = reaper.GetActiveTake(item)
 		
-		reaper.SetMediaItemTakeInfo_Value(reaper.GetActiveTake(item), "D_PLAYRATE", rate)	
+		-- todo: add support for start offset
+		reaper.SetMediaItemTakeInfo_Value(take, "D_PLAYRATE", rate)	
 		reaper.SetMediaItemInfo_Value(item, "D_FADEINLEN", fadein)	
 		reaper.SetMediaItemInfo_Value(item, "D_FADEOUTLEN", fadeout)	
 		reaper.SetMediaItemInfo_Value(item, "C_FADEINSHAPE", fadeinshape)	
@@ -34,15 +49,20 @@ local function Main(item_count)
 		reaper.SetMediaItemInfo_Value(item, "D_FADEINDIR", fadeinslope)	
 		reaper.SetMediaItemInfo_Value(item, "D_FADEOUTDIR", fadeoutslope)
 		reaper.SetMediaItemInfo_Value(item, "D_LENGTH", length)
-	end -- loop through selected items
-end -- Main
+	end
+end
+
+--- MAIN ---
 
 local item_count = reaper.CountSelectedMediaItems(0)
 
 if item_count > 0 then
+    reaper.PreventUIRefresh(1)
+    reaper.Undo_BeginBlock()
 
-	Main(item_count)
+    SetItemProperties(item_count)
 
-	reaper.UpdateArrange()
-
+    reaper.Undo_EndBlock("undo action", -1)
+    reaper.UpdateArrange()
+    reaper.PreventUIRefresh(-1)
 end

@@ -3,20 +3,26 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.27
- * Version: 1.1
+ * Version: 1.2
 --]]
 
 --[[
  * Changelog:
  * v1.1 (2021-04-19)
  	+ Initial Release
+ * v1.2 (2021-06-21)
+	+ General Update
 --]]
 
--- USER CONFIG AREA -----------------------------------------------------------
+--- DEBUG ---
 
-console = false -- true/false: display debug messages in the console
+local console = true
 
-------------------------------------------------------- END OF USER CONFIG AREA
+local function Msg(text) if console then reaper.ShowConsoleMsg(tostring(text) .. '\n') end end
+
+--- VARIABLES ---
+
+--- FUNCTIONS ---
 
 function SaveSelectedItems (table)
 	for i = 0, reaper.CountSelectedMediaItems(0)-1 do
@@ -24,36 +30,31 @@ function SaveSelectedItems (table)
 	end
 end
 
-function main()
-	for i, item in ipairs(init_sel_items) do
-		-- get
+function OffsetTakeSource(item_table)
+	for _, item in ipairs(item_table) do
+		-- GET
 		local item_length = reaper.GetMediaItemInfo_Value(item, "D_LENGTH")
 		local take = reaper.GetActiveTake(item)
 		local take_startoffs = reaper.GetMediaItemTakeInfo_Value(take, "D_STARTOFFS")
 		
-		-- set
+		-- SET
 		reaper.SetMediaItemTakeInfo_Value(take, "D_STARTOFFS", (item_length / 2))
 	end
 end
 
--- See if there is items selected
-count_sel_items = reaper.CountSelectedMediaItems(0)
+--- MAIN ---
 
-if count_sel_items > 0 then
+local item_count = reaper.CountSelectedMediaItems(0)
 
+if item_count > 0 then
 	reaper.PreventUIRefresh(1)
-
 	reaper.Undo_BeginBlock() -- Begining of the undo block. Leave it at the top of your main function.
 
-	init_sel_items =  {}
-	SaveSelectedItems(init_sel_items)
-
-	main()
+	item_table =  {}
+	SaveSelectedItems(item_table)
+	OffsetTakeSource(item_table)
 
 	reaper.Undo_EndBlock("offset source start", - 1) -- End of the undo block. Leave it at the bottom of your main function.
-
 	reaper.UpdateArrange()
-
 	reaper.PreventUIRefresh(-1)
-
 end

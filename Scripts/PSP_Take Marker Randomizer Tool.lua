@@ -3,24 +3,25 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.29
- * Version: 0.4
+ * Version: 0.5
 --]]
 
 --[[
  * Changelog:
  * v0.2 (2021-06-03)
-  + Beta Release
+	+ Beta Release
  * v0.4 (2021-06-07)
-  + Bug Fixes
+	+ Bug Fixes
+ * v1.1 (2021-06-21)
+	+ General Update
 --]]
 
---- DEBUG
+--- DEBUG ---
 
 local console = false
 
 local function Msg(text)
-  if console then reaper.ShowConsoleMsg(tostring(text) .. '\n') end
-end -- Msg
+  if console then reaper.ShowConsoleMsg(tostring(text) .. '\n') end end
 
 --- VARIABLES
 
@@ -31,6 +32,8 @@ local function toboolean(text)
   if text == "true" then return true
   else return false end
 end -- toboolean
+
+--- MAIN ---
 
 if reaper.HasExtState(section, "SD_is_random") then 
   settings.is_random = toboolean(reaper.GetExtState(section, "SD_is_random")) else

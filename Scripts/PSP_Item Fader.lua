@@ -3,22 +3,22 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.29
- * Version: 0.2
+ * Version: 1.0
 --]]
 
 --[[
  * Changelog:
  * v0.2 (2021-06-04)
-  + Beta Release
+	+ Beta Release
+ * v1.1 (2021-06-21)
+	+ General Update
 --]]
 
 --- DEBUG ---
 
 local console = true
 
-local function Msg(text)
-    if console then reaper.ShowConsoleMsg(tostring(text) .. '\n') end
-end -- Msg
+local function Msg(text) if console then reaper.ShowConsoleMsg(tostring(text) .. '\n') end end
 
 --- VARIABLES ---
 
@@ -102,6 +102,11 @@ end -- LoadPreset
 
 --- MAIN ---
 
+if not reaper.APIExists('ImGui_Begin') then
+    reaper.ShowMessageBox("ReaImGui is not installed. \n\nNavigate to Extensions→Reapack→Browse Packages, and install ReaImGui first.", "Error", 0)
+    return
+end
+
 reaper.defer(function()
     reaper.Undo_BeginBlock()
     ctx = reaper.ImGui_CreateContext('Item Fader', 433, 188)
@@ -123,9 +128,10 @@ function loop()
     reaper.ImGui_SetNextWindowSize(ctx, reaper.ImGui_Viewport_GetSize(viewport))
     rv, open = reaper.ImGui_Begin(ctx, 'Item Fader', open, window_flags) 
 
-    --- GUI START
+    --- GUI BEGIN ---
 
-    local screen_width =  reaper.ImGui_GetWindowWidth(ctx)
+    local screen_width = reaper.ImGui_GetWindowWidth(ctx)
+    local items
 
     -- [[menu]]
     if reaper.ImGui_BeginMenuBar(ctx) then
@@ -239,7 +245,7 @@ function loop()
     end
     reaper.ImGui_PopID(ctx)
 
-    --- GUI END
+    --- GUI END ---
 
     reaper.ImGui_End(ctx)
     reaper.defer(loop)

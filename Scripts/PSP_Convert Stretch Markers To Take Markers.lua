@@ -3,14 +3,28 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.29
- * Version: 1.1
+ * Version: 1.2
 --]]
 
 --[[
  * Changelog:
  * v1.1 (2021-06-02)
   + Initial Release
+ * v1.2 (2021-06-21)
+  + Bug Fix
 --]]
+
+--- DEBUG ---
+
+local console = true
+
+local function Msg(text) if console then reaper.ShowConsoleMsg(tostring(text) .. '\n') end end
+
+--- VARIABLES --- 
+
+--- FUNCTIONS ---
+
+--- MAIN ---
 
 local item_count = reaper.CountSelectedMediaItems(0)
 
@@ -24,8 +38,8 @@ if item_count > 0 then
 				local s_marker_count = reaper.GetTakeNumStretchMarkers(take)
 				if s_marker_count > 0 then
 					for s=0, s_marker_count-1 do
-						retval, pos, srcpos = reaper.GetTakeStretchMarker( take, s )
-						reaper.SetTakeMarker( take, s, "tk"..tostring(s+1), pos, 0 )
+						local _, _, srcpos = reaper.GetTakeStretchMarker( take, s )
+						reaper.SetTakeMarker( take, s, "tk"..tostring(s+1), srcpos, 0 )
 					end -- LOOP through stretch markers
 
 					--for s=s_marker_count, 0, -1 do

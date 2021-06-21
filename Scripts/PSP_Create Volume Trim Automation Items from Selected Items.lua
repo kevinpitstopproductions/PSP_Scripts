@@ -3,7 +3,7 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.29
- * Version: 1.3
+ * Version: 1.4
 --]]
 
 --[[
@@ -14,37 +14,29 @@
     + Bug Fix
  * v1.3 (2021-06-08)
     + Added config option (mute env behind automation items)
+ * v1.4 (2021-06-21)
+	+ General Update
 --]]
 
--- CONSTANTS
-
-_UNITYGAIN = 716.3
-
--- HELPERS
+--- DEBUG ---
 
 console = true
 
-local function Msg(value)
-    if console then
-        reaper.ShowConsoleMsg(tostring(value) .. "\n")
-    end
-end -- Msg
+local function Msg(value) if console then reaper.ShowConsoleMsg(tostring(value) .. "\n") end end
 
--- VARIABLES
+--- VARIABLES ---
+
+_UNITYGAIN = 716.3
 
 local section = "PSP_Scripts"
 local settings = {}
+
+--- FUNCTIONS ---
 
 local function toboolean(text)
   if text == "true" then return true
   else return false end
 end -- toboolean
-
-if reaper.HasExtState(section, "SD_mute_envelope") then 
-  settings.mute_envelope = toboolean(reaper.GetExtState(section, "SD_mute_envelope")) else
-  settings.mute_envelope = false end
-
--- FUNCTIONS
 
 local function ConvertItemFadeToEnvelopeFade(shape, fadetype)
     if fadetype == "fadein" then
@@ -77,8 +69,8 @@ function table.contains(table, element)
   return false
 end -- table.contains
 
-local function GetTrackList(track_list, sel_item_count)
-    for i=0, sel_item_count-1 do
+local function GetTrackList(track_list, item_count)
+    for i=0, item_count-1 do
         local item = reaper.GetSelectedMediaItem(0, i)
         local track = reaper.GetMediaItem_Track(item)
 
@@ -137,8 +129,8 @@ local function ClearAutomationItems(track_list)
     end -- loop through tracks
 end -- ClearAutomationItems
 
-local function AddAutomationItems(sel_item_count)
-    for i=0, sel_item_count-1 do
+local function AddAutomationItems(item_count)
+    for i=0, item_count-1 do
         local item = reaper.GetSelectedMediaItem(0, i)
         local take_name = reaper.GetTakeName(reaper.GetActiveTake(item))
         local item_start = reaper.GetMediaItemInfo_Value(item, "D_POSITION")
@@ -167,18 +159,22 @@ local function AddAutomationItems(sel_item_count)
     end -- iterate through selected items
 end --AddAutomationItems
 
--- Init
+--- MAIN ---
 
-sel_item_count = reaper.CountSelectedMediaItems(0)
+if reaper.HasExtState(section, "SD_mute_envelope") then 
+    settings.mute_envelope = toboolean(reaper.GetExtState(section, "SD_mute_envelope")) else
+    settings.mute_envelope = false end
 
-if sel_item_count > 0 then
+item_count = reaper.CountSelectedMediaItems(0)
+
+if item_count > 0 then
 
     local track_list = {}
 
     reaper.Undo_BeginBlock()
     reaper.PreventUIRefresh(1)
 
-    GetTrackList(track_list, sel_item_count)
+    GetTrackList(track_list, item_count)
 
     for _, track in ipairs(track_list) do
         _, track_name = reaper.GetTrackName(track)
@@ -186,7 +182,7 @@ if sel_item_count > 0 then
 
     ClearAutomationSelection()
     ClearAutomationItems(track_list)
-    AddAutomationItems(sel_item_count)
+    AddAutomationItems(item_count)
 
     reaper.UpdateArrange()
     reaper.Undo_EndBlock("Create Automation Items", -1)
