@@ -2,8 +2,8 @@
  * ReaScript Name: PSP_Create Volume Trim Automation Items from Selected Items.lua
  * Author: GU-on
  * Licence: GPL v3
- * REAPER: 6.29
- * Version: 1.4
+ * REAPER: 6.31
+ * Version: 1.5
 --]]
 
 --[[
@@ -16,6 +16,8 @@
     + Added config option (mute env behind automation items)
  * v1.4 (2021-06-21)
 	+ General Update
+ * v1.5 (2021-07-07)
+    + Fixed to work with selection across multiple tracks
 --]]
 
 --- DEBUG ---
@@ -36,7 +38,7 @@ local settings = {}
 local function toboolean(text)
   if text == "true" then return true
   else return false end
-end -- toboolean
+end
 
 local function ConvertItemFadeToEnvelopeFade(shape, fadetype)
     if fadetype == "fadein" then
@@ -48,8 +50,7 @@ local function ConvertItemFadeToEnvelopeFade(shape, fadetype)
         elseif shape == 5 then return 5 
         elseif shape == 6 then return 2
         else return 0 end
-    end -- fadein loop
-
+    end
     if fadetype == "fadeout" then
         if shape == 0 then return 0
         elseif shape == 1 then return 4
@@ -59,15 +60,13 @@ local function ConvertItemFadeToEnvelopeFade(shape, fadetype)
         elseif shape == 5 then return 5 
         elseif shape == 6 then return 2
         else return 0 end
-    end -- fadeout loop
-end -- ConvertItemFadeToEnvelopeFade
+    end
+end
 
 function table.contains(table, element)
-  for _, value in pairs(table) do
-    if value == element then return true end
-  end
-  return false
-end -- table.contains
+    for _, value in pairs(table) do
+        if value == element then return true end end return false
+end
 
 local function GetTrackList(track_list, item_count)
     for i=0, item_count-1 do
@@ -75,14 +74,12 @@ local function GetTrackList(track_list, item_count)
         local track = reaper.GetMediaItem_Track(item)
 
         if #track_list == 0 then
-            table.insert(track_list, track)
-        end
+            table.insert(track_list, track) end
 
         for _, spot in ipairs(track_list) do
-            if not table.contains(track_list, track) then table.insert(track_list, track) end
-        end -- loop through track list
-    end -- loop through selected items
-end -- GetTrackList
+            if not table.contains(track_list, track) then table.insert(track_list, track) end end
+    end
+end
 
 local function ShowTrackEnvelope(track, envelope)
     local _, chunk = reaper.GetEnvelopeStateChunk(envelope, "", false)
@@ -91,27 +88,26 @@ local function ShowTrackEnvelope(track, envelope)
     active, visible, armed, inLane, laneHeight, defaultShape, minValue, maxValue, centerValue, type, faderScaling, automationItemsOptions = reaper.BR_EnvGetProperties( BR_envelope )
     reaper.BR_EnvSetProperties(BR_envelope, true, true, armed, inLane, laneHeight, defaultShape, faderScaling, automationItemsOptionsIn)
     reaper.BR_EnvFree(BR_envelope, true)
-end --ShowTrackEnvelope  
+end
 
 local function ClearAutomationSelection()
     local track_count = reaper.CountTracks(0)
     for t=0, track_count-1 do
         local track = reaper.GetTrack(0, t)
         local envelope_count = reaper.CountTrackEnvelopes(track)
-            for e=0, envelope_count-1 do
-                local envelope = reaper.GetTrackEnvelope(track, e)
-                local AI_count = reaper.CountAutomationItems(envelope)
-                    for a=0, AI_count-1 do
-                        reaper.GetSetAutomationItemInfo(envelope, a, "D_UISEL", 0, 1)
-                    end -- loop through automation items
-            end -- loop through envelopes
-    end -- loop through tracks
-end -- ClearAutomationSelection
+        for e=0, envelope_count-1 do
+            local envelope = reaper.GetTrackEnvelope(track, e)
+            local AI_count = reaper.CountAutomationItems(envelope)
+            for a=0, AI_count-1 do
+                reaper.GetSetAutomationItemInfo(envelope, a, "D_UISEL", 0, 1) end
+        end
+    end
+end
 
 local function ClearAutomationItems(track_list)
     for _, track in ipairs(track_list) do
         reaper.SetOnlyTrackSelected(track)
-        reaper.Main_OnCommand("42020", 0) -- toggle Trim Volume Envelope 
+        reaper.Main_OnCommand("42020", 0) -- Track: Toggle track trim envelope visible
 
         local envelope = reaper.GetTrackEnvelopeByName(track, "Trim Volume")
         if envelope then
@@ -123,11 +119,11 @@ local function ClearAutomationItems(track_list)
 
             for i=AI_count-1, 0, -1 do
                 reaper.GetSetAutomationItemInfo(envelope, i, "D_UISEL", 1, 1)
-                reaper.Main_OnCommand("42086", 0)
-            end -- loop through automation items
-        end -- if envelope is valid
-    end -- loop through tracks
-end -- ClearAutomationItems
+                reaper.Main_OnCommand("42086", 0) -- Envelope: Delete automation items
+            end
+        end
+    end
+end
 
 local function AddAutomationItems(item_count)
     for i=0, item_count-1 do
@@ -141,23 +137,26 @@ local function AddAutomationItems(item_count)
         local item_fadeinshape = ConvertItemFadeToEnvelopeFade(reaper.GetMediaItemInfo_Value(item, "C_FADEINSHAPE"), "fadein")
         local item_fadeoutshape = ConvertItemFadeToEnvelopeFade(reaper.GetMediaItemInfo_Value(item, "C_FADEOUTSHAPE"), "fadeout")
 	
-        local track = reaper.GetMediaItemTrack(item)
+        local track =  reaper.GetMediaItem_Track( item )
         local envelope = reaper.GetTrackEnvelopeByName(track, "Trim Volume")
+
         if envelope then
             local AI_index = reaper.InsertAutomationItem(envelope, -1, item_start, item_length)
             
-            local _, AI_name = reaper.GetSetAutomationItemInfo_String(envelope, AI_index, "P_POOL_NAME", take_name, 1)
-            reaper.DeleteEnvelopePointRangeEx(envelope, i, item_start, item_end)
+            local retval, AI_name = reaper.GetSetAutomationItemInfo_String(envelope, AI_index, "P_POOL_NAME", take_name, 1)
+            if retval then
+                reaper.DeleteEnvelopePointRangeEx(envelope, AI_index, item_start, item_end)
 
-            -- reaper.InsertEnvelopePointEx(envelope, autoitem_idx, time, value, shape, tension, selected, noSortIn)
-            reaper.InsertEnvelopePointEx(envelope, i, item_start, 0, item_fadeinshape, 0, 0, 0)
-            reaper.InsertEnvelopePointEx(envelope, i, item_start+item_fadeinlength, _UNITYGAIN, 0, 0, 0, 0)
-            reaper.InsertEnvelopePointEx(envelope, i, item_end-item_fadeoutlength, _UNITYGAIN, item_fadeoutshape, 0, 0, 0)
+                -- reaper.InsertEnvelopePointEx(envelope, autoitem_idx, time, value, shape, tension, selected, noSortIn)
+                reaper.InsertEnvelopePointEx(envelope, AI_index, item_start, 0, item_fadeinshape, 0, 0, 0)
+                reaper.InsertEnvelopePointEx(envelope, AI_index, item_start+item_fadeinlength, _UNITYGAIN, 0, 0, 0, 0)
+                reaper.InsertEnvelopePointEx(envelope, AI_index, item_end-item_fadeoutlength, _UNITYGAIN, item_fadeoutshape, 0, 0, 0)
 
-            reaper.GetSetAutomationItemInfo(envelope, i, "D_UISEL", 0, 1)
-        end -- if envelope is valid
-    end -- iterate through selected items
-end --AddAutomationItems
+                reaper.GetSetAutomationItemInfo(envelope, AI_index, "D_UISEL", 0, 1)
+            end
+        end
+    end
+end
 
 --- MAIN ---
 
@@ -165,7 +164,7 @@ if reaper.HasExtState(section, "SD_mute_envelope") then
     settings.mute_envelope = toboolean(reaper.GetExtState(section, "SD_mute_envelope")) else
     settings.mute_envelope = false end
 
-item_count = reaper.CountSelectedMediaItems(0)
+local item_count = reaper.CountSelectedMediaItems(0)
 
 if item_count > 0 then
 
@@ -175,10 +174,6 @@ if item_count > 0 then
     reaper.PreventUIRefresh(1)
 
     GetTrackList(track_list, item_count)
-
-    for _, track in ipairs(track_list) do
-        _, track_name = reaper.GetTrackName(track)
-    end
 
     ClearAutomationSelection()
     ClearAutomationItems(track_list)

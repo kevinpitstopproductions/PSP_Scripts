@@ -2,8 +2,8 @@
  * ReaScript Name: PSP_Item Fader.lua
  * Author: GU-on
  * Licence: GPL v3
- * REAPER: 6.29
- * Version: 1.0
+ * REAPER: 6.31
+ * Version: 1.2
 --]]
 
 --[[
@@ -12,6 +12,8 @@
 	+ Beta Release
  * v1.1 (2021-06-21)
 	+ General Update
+ * v1.2 (2021-07-01)
+    + Upgraded to ReaImGui v5
 --]]
 
 --- DEBUG ---
@@ -25,10 +27,9 @@ local function Msg(text) if console then reaper.ShowConsoleMsg(tostring(text) ..
 section = "PSP_Scripts"
 settings = {}
 
-local window_flags =
-    reaper.ImGui_WindowFlags_NoTitleBar() | 
-    reaper.ImGui_WindowFlags_MenuBar() | 
-    reaper.ImGui_WindowFlags_NoResize()
+local window_flags = 
+    reaper.ImGui_WindowFlags_MenuBar() |
+    reaper.ImGui_WindowFlags_NoCollapse()
 
 local proj = 0
 local fade_in, fade_out = 0, 100
@@ -39,7 +40,7 @@ local is_snap_relative = false
 --- FUNCTIONS ---
 
 local function SetItemFades(fade_in, fade_out, is_snap_relative)
-    item_count = reaper.CountSelectedMediaItems(proj)
+    local item_count = reaper.CountSelectedMediaItems(proj)
 
     if item_count > 0 then
         for i=0, item_count-1 do
@@ -54,13 +55,12 @@ local function SetItemFades(fade_in, fade_out, is_snap_relative)
                 reaper.SetMediaItemInfo_Value(item, "D_FADEINLEN", item_snap_offset * (fade_in/100))
                 reaper.SetMediaItemInfo_Value(item, "D_FADEOUTLEN", item_length * (100-fade_out)/100 - item_snap_offset)
             end
-        end -- iterate through items
-    end -- check if any are items selected
-    reaper.UpdateArrange()
-end -- SetItemFades
+        end
+    end reaper.UpdateArrange()
+end
 
 local function SetFadeCurveShape(curve_shape, is_fade_in)
-    item_count = reaper.CountSelectedMediaItems(proj)
+    local item_count = reaper.CountSelectedMediaItems(proj)
 
     if item_count > 0 then
         for i=0, item_count-1 do
@@ -69,12 +69,10 @@ local function SetFadeCurveShape(curve_shape, is_fade_in)
             if is_fade_in then
                 reaper.SetMediaItemInfo_Value(item, "C_FADEINSHAPE", curve_shape)
             else
-                reaper.SetMediaItemInfo_Value(item, "C_FADEOUTSHAPE", curve_shape)
-            end
-        end -- iterate through items
-    end -- check if any items selected
-    reaper.UpdateArrange()
-end -- SetFadeCurveShape
+                reaper.SetMediaItemInfo_Value(item, "C_FADEOUTSHAPE", curve_shape) end
+        end
+    end reaper.UpdateArrange()
+end 
 
 local function SavePreset(fade_in, fade_out, fade_in_curve, fade_out_curve, preset_letter)
     reaper.SetExtState(section, "fade_in_" .. preset_letter, fade_in, 1)
@@ -98,37 +96,39 @@ local function LoadPreset(preset_letter)
         fade_out_curve = 0 end
 
     return fade_in, fade_out, fade_in_curve, fade_out_curve
-end -- LoadPreset
+end
+
+local function MenuItemSavePreset(ctx, letter)
+    if reaper.ImGui_MenuItem(ctx, 'Preset ' .. letter, nil, false) then 
+        SavePreset(fade_in, fade_out, fade_in_curve, fade_out_curve, letter) end  
+end
+
+local function MenuItemLoadPreset(ctx, letter)
+    if reaper.ImGui_MenuItem(ctx, 'Preset ' .. letter, nil, false) then
+        fade_in, fade_out, fade_in_curve, fade_out_curve = LoadPreset(letter) 
+        SetItemFades(fade_in, fade_out, is_snap_relative)
+        SetFadeCurveShape(fade_in_curve, true)
+        SetFadeCurveShape(fade_out_curve, false)
+    end
+end
 
 --- MAIN ---
 
-if not reaper.APIExists('ImGui_Begin') then
-    reaper.ShowMessageBox("ReaImGui is not installed. \n\nNavigate to Extensions→Reapack→Browse Packages, and install ReaImGui first.", "Error", 0)
-    return
-end
+if not reaper.APIExists('ImGui_GetVersion') then
+    reaper.ShowMessageBox("ReaImGui is not installed. \n\nNavigate to Extensions→Reapack→Browse Packages, and install ReaImGui first.", "Error", 0) return end
 
-reaper.defer(function()
-    reaper.Undo_BeginBlock()
-    ctx = reaper.ImGui_CreateContext('Item Fader', 433, 188)
-    viewport = reaper.ImGui_GetMainViewport(ctx)
-    draw_list = reaper.ImGui_GetWindowDrawList(ctx)
-    loop()
-end)
+local imgui_version, reaimgui_version = reaper.ImGui_GetVersion()
 
-function loop()
+if reaimgui_version:sub(0, 3) ~= "0.5" then
+    reaper.ShowMessageBox("Please ensure that you are running ReaImGui version 0.5-beta", "Error", 0) return end
+
+local ctx = reaper.ImGui_CreateContext('Item Fader', reaper.ImGui_ConfigFlags_DockingEnable())
+local size = reaper.GetAppVersion():match('OSX') and 12 or 14
+local font = reaper.ImGui_CreateFont('sans-serif', size)
+reaper.ImGui_AttachFont(ctx, font)
+
+function frame()
     local rv
-
-    if reaper.ImGui_IsCloseRequested(ctx) then
-        reaper.ImGui_DestroyContext(ctx)
-        reaper.Undo_EndBlock("Item Fader", -1)
-        return
-    end
-
-    reaper.ImGui_SetNextWindowPos(ctx, reaper.ImGui_Viewport_GetPos(viewport))
-    reaper.ImGui_SetNextWindowSize(ctx, reaper.ImGui_Viewport_GetSize(viewport))
-    rv, open = reaper.ImGui_Begin(ctx, 'Item Fader', open, window_flags) 
-
-    --- GUI BEGIN ---
 
     local screen_width = reaper.ImGui_GetWindowWidth(ctx)
     local items
@@ -144,41 +144,17 @@ function loop()
         end
         -- [[presets]]
         if reaper.ImGui_BeginMenu(ctx, 'Save') then
-            if reaper.ImGui_MenuItem(ctx, 'Preset A', nil, false) then 
-                SavePreset(fade_in, fade_out, fade_in_curve, fade_out_curve, "A") end           
-            if reaper.ImGui_MenuItem(ctx, 'Preset B', nil, false) then 
-                SavePreset(fade_in, fade_out, fade_in_curve, fade_out_curve, "B") end
-            if reaper.ImGui_MenuItem(ctx, 'Preset C', nil, false) then 
-                SavePreset(fade_in, fade_out, fade_in_curve, fade_out_curve, "C") end
-            if reaper.ImGui_MenuItem(ctx, 'Preset D', nil, false) then 
-                SavePreset(fade_in, fade_out, fade_in_curve, fade_out_curve, "D") end
+            MenuItemSavePreset(ctx, 'A')
+            MenuItemSavePreset(ctx, 'B')
+            MenuItemSavePreset(ctx, 'C')
+            MenuItemSavePreset(ctx, 'D')
             reaper.ImGui_EndMenu(ctx)
         end 
         if reaper.ImGui_BeginMenu(ctx, 'Load') then
-            if reaper.ImGui_MenuItem(ctx, 'Preset A', nil, false) then 
-                fade_in, fade_out, fade_in_curve, fade_out_curve = LoadPreset("A") 
-                SetItemFades(fade_in, fade_out, is_snap_relative)
-                SetFadeCurveShape(fade_in_curve, true)
-                SetFadeCurveShape(fade_out_curve, false)
-            end
-            if reaper.ImGui_MenuItem(ctx, 'Preset B', nil, false) then 
-                fade_in, fade_out, fade_in_curve, fade_out_curve = LoadPreset("B")
-                SetItemFades(fade_in, fade_out, is_snap_relative)
-                SetFadeCurveShape(fade_in_curve, true)
-                SetFadeCurveShape(fade_out_curve, false)
-            end
-            if reaper.ImGui_MenuItem(ctx, 'Preset C', nil, false) then
-                fade_in, fade_out, fade_in_curve, fade_out_curve = LoadPreset("C")
-                SetItemFades(fade_in, fade_out, is_snap_relative)
-                SetFadeCurveShape(fade_in_curve, true)
-                SetFadeCurveShape(fade_out_curve, false)
-            end
-            if reaper.ImGui_MenuItem(ctx, 'Preset D', nil, false) then 
-                fade_in, fade_out, fade_in_curve, fade_out_curve = LoadPreset("D")
-                SetItemFades(fade_in, fade_out, is_snap_relative)
-                SetFadeCurveShape(fade_in_curve, true)
-                SetFadeCurveShape(fade_out_curve, false)
-            end
+            MenuItemLoadPreset(ctx, 'A')
+            MenuItemLoadPreset(ctx, 'B')
+            MenuItemLoadPreset(ctx, 'C')
+            MenuItemLoadPreset(ctx, 'D')
             reaper.ImGui_EndMenu(ctx)
         end
         reaper.ImGui_EndMenuBar(ctx)
@@ -193,8 +169,7 @@ function loop()
         if is_realtime and reaper.ImGui_IsItemEdited(ctx) then
             SetItemFades(fade_in, fade_out, is_snap_relative)
         elseif reaper.ImGui_IsItemDeactivatedAfterEdit(ctx) then
-            SetItemFades(fade_in, fade_out, is_snap_relative)
-        end
+            SetItemFades(fade_in, fade_out, is_snap_relative) end
     -- [[Drag Slider B]]
     else
         reaper.ImGui_PushItemWidth(ctx, screen_width / 2 - 10)
@@ -225,28 +200,41 @@ function loop()
     reaper.ImGui_PushID(ctx, "fade_in_curve")
     reaper.ImGui_PushItemWidth(ctx, screen_width / 2 - 10)
 
-    --rv, fade_in_curve = reaper.ImGui_Combo( ctx, "", fade_in_curve, "linear\31exponential\31")
     items = "linear\31fast start\31fast end\31fast start (steep)\31fast end (steep)\31slow start/end\31bezier curve\31"
     rv, fade_in_curve = reaper.ImGui_ListBox( ctx, "", fade_in_curve, items)
     if rv then
-        SetFadeCurveShape(fade_in_curve, true)
-    end
-    reaper.ImGui_PopID(ctx)
+        SetFadeCurveShape(fade_in_curve, true) end
 
+    reaper.ImGui_PopID(ctx)
     reaper.ImGui_SameLine(ctx, 0, 4)
     reaper.ImGui_PushID(ctx, "fade_out_curve")
     reaper.ImGui_PushItemWidth(ctx, -1)
-    --rv, fade_out_curve = reaper.ImGui_Combo( ctx, "", fade_out_curve, "linear\31exponential\31")
+
     items = "linear\31fast end\31fast start\31fast end (steep)\31fast start (steep)\31slow start/end\31bezier curve\31"
     rv, fade_out_curve = reaper.ImGui_ListBox( ctx, "", fade_out_curve, items)
 
     if rv then
-        SetFadeCurveShape(fade_out_curve, false)
-    end
+        SetFadeCurveShape(fade_out_curve, false) end
+
     reaper.ImGui_PopID(ctx)
-
-    --- GUI END ---
-
-    reaper.ImGui_End(ctx)
-    reaper.defer(loop)
 end
+
+function loop()
+  reaper.ImGui_PushFont(ctx, font)
+  reaper.ImGui_SetNextWindowSize(ctx, 433, 188, reaper.ImGui_Cond_FirstUseEver())
+  local visible, open = reaper.ImGui_Begin(ctx, 'Item Fader', true, window_flags)
+
+  if visible then
+    frame()
+    reaper.ImGui_End(ctx)
+  end
+  reaper.ImGui_PopFont(ctx)
+  
+  if open then
+    reaper.defer(loop)
+  else
+    reaper.ImGui_DestroyContext(ctx)
+  end
+end
+
+reaper.defer(loop)

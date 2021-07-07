@@ -4,7 +4,7 @@
  Author: kevin@pitstop
  REAPER: 6+
  Extensions: SWS
- Version: 1.11.1
+ Version: 1.12
  Provides:
   [Main] PSP_Install Libraries.py
   [Main] PSP_Create Regions from Selected Item Source Destinations.lua
@@ -24,6 +24,7 @@
   [Main] PSP_Set Time Before Snap Offset.lua
   [Main] PSP_Item Spacer.lua
   [Main] PSP_Vegas Mode.lua
+  [Main] PSP_Take Rate Adjuster.lua
 
  About:
   A collection of my reaper workflow scripts
@@ -47,4 +48,5 @@
    * v1.10.2 (2021-06-18) Added Item Spacer for Cam
    * v1.11 (2021-06-21) Added Vegas Mode :tada:
    * v1.11.1 (2021-06-21) Bug Fix
+   * v1.12 (2021-07-07) Updated for compatibility with ReaImGui V5
 ]]
