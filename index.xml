@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="PSP_Scripts" commit="8aada8846123110c23405e832da99aeba2bec6cc">
+<index version="1" name="PSP_Scripts" commit="33b983fa48645a164f61463953fd1af1a4b13eed">
   <category name="Scripts">
     <reapack name="PSP_Color Child Tracks of Parents Lighter.lua" type="script" desc="PSP_Color Child Tracks of Parents Lighter.lua">
       <version name="1.0" author="GU-on" time="2021-05-24T16:05:29Z">
@@ -89,6 +89,12 @@
       <version name="1.4" author="GU-on" time="2021-06-21T11:57:11Z">
         <changelog><![CDATA[+ General Update]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/3cde581a4c1b9525f7bc97115c60097ffe5c25f7/Scripts/PSP_Create%20Parent%20Item%20Aliases%20from%20Selected%20Items.lua</source>
+      </version>
+    </reapack>
+    <reapack name="PSP_Create Razor Edit Regions From Parent Items.lua" type="script" desc="PSP_Create Razor Edit Regions From Parent Items.lua">
+      <version name="1.0" author="GU-on" time="2021-07-08T14:29:23Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/33b983fa48645a164f61463953fd1af1a4b13eed/Scripts/PSP_Create%20Razor%20Edit%20Regions%20From%20Parent%20Items.lua</source>
       </version>
     </reapack>
     <reapack name="PSP_Create Regions from Selected Item Source Destinations.lua" type="script" desc="PSP_Create Regions from Selected Item Source Destinations.lua">
@@ -326,6 +332,10 @@
       <version name="1.1" author="GU-on" time="2021-07-08T08:47:16Z">
         <changelog><![CDATA[+ Better error message and bug fixes]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/8aada8846123110c23405e832da99aeba2bec6cc/Scripts/PSP_Take%20Rate%20Adjuster.lua</source>
+      </version>
+      <version name="1.2" author="GU-on" time="2021-07-08T14:29:23Z">
+        <changelog><![CDATA[+ Optimised state detection (more efficient)]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/33b983fa48645a164f61463953fd1af1a4b13eed/Scripts/PSP_Take%20Rate%20Adjuster.lua</source>
       </version>
     </reapack>
     <reapack name="PSP_Template.lua" type="script" desc="Template.lua">
