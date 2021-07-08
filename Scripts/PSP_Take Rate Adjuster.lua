@@ -3,7 +3,7 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.31
- * Version: 1.1
+ * Version: 1.2
 --]]
 
 --[[
@@ -11,7 +11,9 @@
  * v1.0 (2021-07-07)
 	+ Initial Release
  * v1.1 (2021-07-08)
-    + Better error message and bug fixes
+   + Better error message and bug fixes
+ * v1.2 (2021-07-08)
+ 	+ Optimised state detection (more efficient)
 --]]
 
 --- DEBUG ---
@@ -24,6 +26,7 @@ local function Msg(text) if console then reaper.ShowConsoleMsg(tostring(text)) e
 
 local is_finished = false
 local rate_slider = 1.0
+local state_tracker = 0
 
 --- FUNCTIONS ---
 
@@ -92,7 +95,8 @@ SaveSelectedItems(init_sel_items, init_sel_take_rates)
 function frame()
   	local rv
   	if reaper.CountSelectedMediaItems(0) > 0 then
-	  	SaveSelectedItems(temp_table, temp_rate)
+  		if reaper.GetProjectStateChangeCount(0) ~= state_tracker then
+	  		SaveSelectedItems(temp_table, temp_rate) ; state_tracker = reaper.GetProjectStateChangeCount(0) end
 
 		if (DoTablesMatch(init_sel_items, temp_table) == false) then
 			SaveSelectedItems(init_sel_items, init_sel_take_rates)

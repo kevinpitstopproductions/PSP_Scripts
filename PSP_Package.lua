@@ -25,6 +25,7 @@
   [Main] PSP_Item Spacer.lua
   [Main] PSP_Vegas Mode.lua
   [Main] PSP_Take Rate Adjuster.lua
+  [Main] PSP_Create Razor Edit Regions From Parent Items.lua
 
  About:
   A collection of my reaper workflow scripts
