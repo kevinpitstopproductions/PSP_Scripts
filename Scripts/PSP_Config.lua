@@ -3,7 +3,7 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.31
- * Version: 0.5
+ * Version: 0.5.1
 --]]
 
 --[[
@@ -16,6 +16,8 @@
 	+ General Update
  * v0.5 (2021-07-07)
  	+ Upgraded to ReaImGui v5
+ * v0.5.1 (2021-07-08)
+ 	+ Better error message
 --]]
 
 --- DEBUG ---
@@ -49,7 +51,7 @@ if not reaper.APIExists('ImGui_GetVersion') then
 local imgui_version, reaimgui_version = reaper.ImGui_GetVersion()
 
 if reaimgui_version:sub(0, 3) ~= "0.5" then
-	reaper.ShowMessageBox("Please ensure that you are running ReaImGui version 0.5-beta", "Error", 0) return end
+	reaper.ShowMessageBox("Please ensure that you are running ReaImGui version 0.5 or later", "Error", 0) return end
 
 settings.is_random = toboolean(reaper.GetExtState(section, "SD_is_random"))
 settings.chop_end = reaper.GetExtState(section, "SD_chop_end")

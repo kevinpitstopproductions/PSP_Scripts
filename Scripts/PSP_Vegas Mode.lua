@@ -3,7 +3,7 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.31
- * Version: 0.2
+ * Version: 0.2.1
 --]]
 
 --[[
@@ -12,6 +12,8 @@
   + Beta Release
  * v0.2 (2021-07-07)
   + Ground-breaking improvements
+ * v0.2.1 (2021-07-08)
+    + Better error message
 --]]
 
 --- DEBUG ---
@@ -67,7 +69,7 @@ if not reaper.APIExists('ImGui_GetVersion') then
 local imgui_version, reaimgui_version = reaper.ImGui_GetVersion()
 
 if reaimgui_version:sub(0, 3) ~= "0.5" then
-    reaper.ShowMessageBox("Please ensure that you are running ReaImGui version 0.5-beta", "Error", 0) return end
+    reaper.ShowMessageBox("Please ensure that you are running ReaImGui version 0.5 or later", "Error", 0) return end
 
 local ctx = reaper.ImGui_CreateContext('My script', 0)
 local size = reaper.GetAppVersion():match('OSX') and 12 or 14

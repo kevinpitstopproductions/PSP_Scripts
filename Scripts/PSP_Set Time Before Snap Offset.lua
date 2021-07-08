@@ -3,7 +3,7 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.31
- * Version: 1.3
+ * Version: 1.3.1
 --]]
 
 --[[
@@ -16,6 +16,8 @@
 	+ General Update
  * v1.3 (2021-07-07)
  	+ Upgraded to ReaImGui v5
+ * v1.3.1 (2021-07-08)
+    + Better error message
 --]]
 
 --- DEBUG ---
@@ -78,7 +80,7 @@ if not reaper.APIExists('ImGui_GetVersion') then
 local imgui_version, reaimgui_version = reaper.ImGui_GetVersion()
 
 if reaimgui_version:sub(0, 3) ~= "0.5" then
-    reaper.ShowMessageBox("Please ensure that you are running ReaImGui version 0.5-beta", "Error", 0) return end
+    reaper.ShowMessageBox("Please ensure that you are running ReaImGui version 0.5 or later", "Error", 0) return end
 
 if reaper.HasExtState(ext_name, ext_save) then
 	text = reaper.GetExtState(ext_name, ext_save)
