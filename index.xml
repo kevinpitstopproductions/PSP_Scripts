@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="PSP_Scripts" commit="faae3d1c22b78a0060086a2a9af3b78917045bc9">
+<index version="1" name="PSP_Scripts" commit="8aada8846123110c23405e832da99aeba2bec6cc">
   <category name="Scripts">
     <reapack name="PSP_Color Child Tracks of Parents Lighter.lua" type="script" desc="PSP_Color Child Tracks of Parents Lighter.lua">
       <version name="1.0" author="GU-on" time="2021-05-24T16:05:29Z">
@@ -31,6 +31,10 @@
       <version name="0.5" author="GU-on" time="2021-07-07T09:54:44Z">
         <changelog><![CDATA[+ Upgraded to ReaImGui v5]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/faae3d1c22b78a0060086a2a9af3b78917045bc9/Scripts/PSP_Config.lua</source>
+      </version>
+      <version name="0.5.1" author="GU-on" time="2021-07-08T08:47:16Z">
+        <changelog><![CDATA[+ Better error message]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/8aada8846123110c23405e832da99aeba2bec6cc/Scripts/PSP_Config.lua</source>
       </version>
     </reapack>
     <reapack name="PSP_Convert Stretch Markers To Take Markers.lua" type="script" desc="PSP_Convert Stretch Markers to Take Markers.lua">
@@ -157,6 +161,10 @@
         <changelog><![CDATA[+ Upgraded to ReaImGui v5]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/faae3d1c22b78a0060086a2a9af3b78917045bc9/Scripts/PSP_Item%20Fader.lua</source>
       </version>
+      <version name="1.2.1" author="GU-on" time="2021-07-08T08:47:16Z">
+        <changelog><![CDATA[+ Better error message]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/8aada8846123110c23405e832da99aeba2bec6cc/Scripts/PSP_Item%20Fader.lua</source>
+      </version>
     </reapack>
     <reapack name="PSP_Item Spacer.lua" type="script" desc="PSP_Item Spacer.lua">
       <version name="0.1" author="GU-on" time="2021-06-18T09:41:47Z">
@@ -182,6 +190,10 @@
       <version name="1.2" author="GU-on" time="2021-07-07T09:54:44Z">
         <changelog><![CDATA[+ Upgraded to ReaImGui v5]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/faae3d1c22b78a0060086a2a9af3b78917045bc9/Scripts/PSP_Item%20Spacer.lua</source>
+      </version>
+      <version name="1.2.1" author="GU-on" time="2021-07-08T08:47:16Z">
+        <changelog><![CDATA[+ Better error message]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/8aada8846123110c23405e832da99aeba2bec6cc/Scripts/PSP_Item%20Spacer.lua</source>
       </version>
     </reapack>
     <reapack name="PSP_Offset Source Start to 50% Item Length.lua" type="script" desc="PSP_Offset Source Start to 50% Item Length.lua">
@@ -229,6 +241,10 @@
         <changelog><![CDATA[+ Upgraded to ReaImGui v5]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/faae3d1c22b78a0060086a2a9af3b78917045bc9/Scripts/PSP_Register%20JSON%20Credentials.lua</source>
       </version>
+      <version name="1.4.1" author="GU-on" time="2021-07-08T08:47:16Z">
+        <changelog><![CDATA[+ Better error message]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/8aada8846123110c23405e832da99aeba2bec6cc/Scripts/PSP_Register%20JSON%20Credentials.lua</source>
+      </version>
     </reapack>
     <reapack name="PSP_Set Time After Snap Offset.lua" type="script" desc="PSP_Set Time After Snap Offset.lua">
       <version name="1.1" author="GU-on" time="2021-06-10T15:05:39Z">
@@ -243,6 +259,10 @@
         <changelog><![CDATA[+ Upgraded to ReaImGui v5]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/faae3d1c22b78a0060086a2a9af3b78917045bc9/Scripts/PSP_Set%20Time%20After%20Snap%20Offset.lua</source>
       </version>
+      <version name="1.3.1" author="GU-on" time="2021-07-08T08:47:16Z">
+        <changelog><![CDATA[+ Better error message]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/8aada8846123110c23405e832da99aeba2bec6cc/Scripts/PSP_Set%20Time%20After%20Snap%20Offset.lua</source>
+      </version>
     </reapack>
     <reapack name="PSP_Set Time Before Snap Offset.lua" type="script" desc="PSP_Set Time Before Snap Offset.lua">
       <version name="1.1" author="GU-on" time="2021-06-10T15:05:39Z">
@@ -256,6 +276,10 @@
       <version name="1.3" author="GU-on" time="2021-07-07T09:54:44Z">
         <changelog><![CDATA[+ Upgraded to ReaImGui v5]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/faae3d1c22b78a0060086a2a9af3b78917045bc9/Scripts/PSP_Set%20Time%20Before%20Snap%20Offset.lua</source>
+      </version>
+      <version name="1.3.1" author="GU-on" time="2021-07-08T08:47:16Z">
+        <changelog><![CDATA[+ Better error message]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/8aada8846123110c23405e832da99aeba2bec6cc/Scripts/PSP_Set%20Time%20Before%20Snap%20Offset.lua</source>
       </version>
     </reapack>
     <reapack name="PSP_STT Google Cloud Services.py" type="script" desc="PSP_STT Google Cloud Services.py">
@@ -299,11 +323,15 @@
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/faae3d1c22b78a0060086a2a9af3b78917045bc9/Scripts/PSP_Take%20Rate%20Adjuster.lua</source>
       </version>
+      <version name="1.1" author="GU-on" time="2021-07-08T08:47:16Z">
+        <changelog><![CDATA[+ Better error message and bug fixes]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/8aada8846123110c23405e832da99aeba2bec6cc/Scripts/PSP_Take%20Rate%20Adjuster.lua</source>
+      </version>
     </reapack>
     <reapack name="PSP_Template.lua" type="script" desc="Template.lua">
       <version name="0.1" author="GU-on" time="2021-06-21T11:57:11Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
-        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/3cde581a4c1b9525f7bc97115c60097ffe5c25f7/Scripts/PSP_Template.lua</source>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/8aada8846123110c23405e832da99aeba2bec6cc/Scripts/PSP_Template.lua</source>
       </version>
     </reapack>
     <reapack name="PSP_TTS Easy.py" type="script" desc="PSP_TTS Easy.py">
@@ -331,6 +359,10 @@
       <version name="0.2" author="GU-on" time="2021-07-07T09:54:44Z">
         <changelog><![CDATA[+ Ground-breaking improvements]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/faae3d1c22b78a0060086a2a9af3b78917045bc9/Scripts/PSP_Vegas%20Mode.lua</source>
+      </version>
+      <version name="0.2.1" author="GU-on" time="2021-07-08T08:47:16Z">
+        <changelog><![CDATA[+ Better error message]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/8aada8846123110c23405e832da99aeba2bec6cc/Scripts/PSP_Vegas%20Mode.lua</source>
       </version>
     </reapack>
   </category>
