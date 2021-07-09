@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="PSP_Scripts" commit="33b983fa48645a164f61463953fd1af1a4b13eed">
+<index version="1" name="PSP_Scripts" commit="5027c665ac0dd2662d3edd2687da015127c8a81a">
   <category name="Scripts">
     <reapack name="PSP_Color Child Tracks of Parents Lighter.lua" type="script" desc="PSP_Color Child Tracks of Parents Lighter.lua">
       <version name="1.0" author="GU-on" time="2021-05-24T16:05:29Z">
@@ -95,6 +95,10 @@
       <version name="1.0" author="GU-on" time="2021-07-08T14:29:23Z">
         <changelog><![CDATA[+ Initial Release]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/33b983fa48645a164f61463953fd1af1a4b13eed/Scripts/PSP_Create%20Razor%20Edit%20Regions%20From%20Parent%20Items.lua</source>
+      </version>
+      <version name="1.1" author="GU-on" time="2021-07-09T12:30:28Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/5027c665ac0dd2662d3edd2687da015127c8a81a/Scripts/PSP_Create%20Razor%20Edit%20Regions%20From%20Parent%20Items.lua</source>
       </version>
     </reapack>
     <reapack name="PSP_Create Regions from Selected Item Source Destinations.lua" type="script" desc="PSP_Create Regions from Selected Item Source Destinations.lua">
