@@ -4,7 +4,7 @@
  Author: kevin@pitstop
  REAPER: 6+
  Extensions: SWS
- Version: 1.12.1
+ Version: 1.12.2
  Provides:
   [Main] PSP_Install Libraries.py
   [Main] PSP_Create Regions from Selected Item Source Destinations.lua
@@ -51,4 +51,5 @@
    * v1.11.1 (2021-06-21) Bug Fix
    * v1.12 (2021-07-07) Updated for compatibility with ReaImGui V5
    * v1.12.1 (2021-07-08) Bug Fix
+   * v1.12.1 (2021-07-12) Bug Fix
 ]]

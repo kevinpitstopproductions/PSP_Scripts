@@ -3,13 +3,15 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.31
- * Version: 1.1
+ * Version: 1.2
 --]]
 
 --[[
  * Changelog:
  * v1.1 (2021-07-09)
  	+ Initial Release
+ * v1.2 (2021-07-12)
+    + Bug Fix
 --]]
 
 --- DEBUG ---
@@ -44,7 +46,8 @@ for i = 0, reaper.CountSelectedMediaItems(0)-1 do
         Msg("current track depth is " .. reaper.GetTrackDepth(track))
 
         for j = track_index, reaper.CountTracks(0)-1 do
-            if reaper.GetTrackDepth(reaper.GetTrack(0, j+1)) <= reaper.GetTrackDepth(track) then break end
+            Msg("index is " .. j)
+            if j == reaper.CountTracks(0)-1 or reaper.GetTrackDepth(reaper.GetTrack(0, j+1)) <= reaper.GetTrackDepth(track) then break end
             index = index + 1
         end
 
