@@ -1,5 +1,6 @@
 --[[
  * ReaScript Name: Template.lua
+ * @noindex
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.31

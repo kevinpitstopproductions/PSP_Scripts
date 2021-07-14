@@ -3,32 +3,52 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.31
- * Version: 1.2
+ * Version: 1.3
 --]]
 
 --[[
  * Changelog:
- * v1.0 (2021-07-07)
-	+ Initial Release
- * v1.1 (2021-07-08)
-   + Better error message and bug fixes
+ * v1.3 (2021-07-14)
+	+ Added font scaling
  * v1.2 (2021-07-08)
  	+ Optimised state detection (more efficient)
+ * v1.1 (2021-07-08)
+   + Better error message and bug fixes
+ * v1.0 (2021-07-07)
+	+ Initial Release
 --]]
 
+----------------
+--- INCLUDES ---
+----------------
+
+local scripts_directory = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
+dofile(scripts_directory .. "PSP_Utils.lua") -- load shared utilities
+
+-------------
 --- DEBUG ---
+-------------
 
 local console = true
-
 local function Msg(text) if console then reaper.ShowConsoleMsg(tostring(text)) end end
 
+-----------------
 --- VARIABLES ---
+-----------------
+
+local section = "PSP_Scripts"
+local settings = {}
+
+local window_flags =
+    reaper.ImGui_WindowFlags_NoCollapse()
 
 local is_finished = false
 local rate_slider = 1.0
 local state_tracker = 0
 
+-----------------
 --- FUNCTIONS ---
+-----------------
 
 local function ResetTable(item_table)
 	if #item_table ~= nil then
@@ -69,19 +89,19 @@ end
 
 reaper.Undo_BeginBlock()
 
---- Main ---
+------------
+--- MAIN ---
+------------
 
 if not reaper.APIExists('ImGui_GetVersion') then
-	reaper.ShowMessageBox("ReaImGui is not installed. \n\nNavigate to Extensions→Reapack→Browse Packages, and install ReaImGui first.", "Error", 0) return end
+    reaper.ShowMessageBox("ReaImGui is not installed. \n\nNavigate to Extensions → Reapack → Browse Packages, and install ReaImGui first.", "Error", 0) return end
+if (utils.GetUsingReaImGuiVersion() ~= utils.GetInstalledReaImGuiVersion()) then
+    reaper.ShowMessageBox("Please ensure that you are running ReaImGui version " .. utils.GetUsingReaImGuiVersion() .. " or later", "Error", 0) return end
 
-local imgui_version, reaimgui_version = reaper.ImGui_GetVersion()
-
-if reaimgui_version:sub(0, 3) ~= "0.5" then
-	reaper.ShowMessageBox("Please ensure that you are running ReaImGui version 0.5 or later", "Error", 0) return end
+settings.font_size = tonumber(reaper.GetExtState(section, "SD_font_size")) or 14
 
 local ctx = reaper.ImGui_CreateContext('PSP Take Rate Adjuster', reaper.ImGui_ConfigFlags_DockingEnable())
-local size = reaper.GetAppVersion():match('OSX') and 12 or 14
-local font = reaper.ImGui_CreateFont('sans-serif', size)
+local font = reaper.ImGui_CreateFont('sans-serif', settings.font_size)
 reaper.ImGui_AttachFont(ctx, font)
 
 init_sel_items = {}
@@ -94,6 +114,7 @@ SaveSelectedItems(init_sel_items, init_sel_take_rates)
 
 function frame()
   	local rv
+
   	if reaper.CountSelectedMediaItems(0) > 0 then
   		if reaper.GetProjectStateChangeCount(0) ~= state_tracker then
 	  		SaveSelectedItems(temp_table, temp_rate) ; state_tracker = reaper.GetProjectStateChangeCount(0) end
@@ -103,19 +124,18 @@ function frame()
 			rate_slider = 1.0
 		end
 
+		if (reaper.ImGui_Button(ctx, 'Close')) or (reaper.ImGui_IsKeyPressed(ctx, 13)) or (reaper.ImGui_IsKeyPressed(ctx, 27)) then
+			is_finished = true end
+
 		rv, rate_slider = reaper.ImGui_DragDouble( ctx, 'rate slider', rate_slider, 0.01, 0, 10)
 
 		SetTakeRate(rate_slider)
 		reaper.UpdateArrange()
 
-		if (reaper.ImGui_Button(ctx, 'Close')) or (reaper.ImGui_IsKeyPressed(ctx, 13)) or (reaper.ImGui_IsKeyPressed(ctx, 27)) then
-			is_finished = true end
-
 		if reaper.ImGui_IsKeyPressed(ctx, 32) then -- If spacebar is pressed
 			reaper.Main_OnCommand(40044, 0) end	-- Transport: Play/stop
 	else
-		reaper.ImGui_Text(ctx, "Please select an item")
-	end
+		reaper.ImGui_Text(ctx, "Please select an item") end
 end
 
 function loop()
@@ -126,10 +146,10 @@ function loop()
   	if is_finished then
   		open = false
   	end
+
   	if visible then
-    	frame()
-    	reaper.ImGui_End(ctx)
-  	end
+    	frame() ; reaper.ImGui_End(ctx) end
+
   	reaper.ImGui_PopFont(ctx)
   
   	if open then
