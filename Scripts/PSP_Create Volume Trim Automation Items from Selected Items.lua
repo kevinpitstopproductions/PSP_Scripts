@@ -8,41 +8,36 @@
 
 --[[
  * Changelog:
- * v1.5 (2021-07-07)
-    + Fixed to work with selection across multiple tracks
- * v1.4 (2021-06-21)
-    + General Update
- * v1.3 (2021-06-08)
-    + Added config option (mute env behind automation items)
- * v1.1 (2021-05-28)
-    + Bug Fix
  * v1.0 (2021-05-28)
 	+ Initial Release
+ * v1.1 (2021-05-28)
+    + Bug Fix
+ * v1.3 (2021-06-08)
+    + Added config option (mute env behind automation items)
+ * v1.4 (2021-06-21)
+	+ General Update
+ * v1.5 (2021-07-07)
+    + Fixed to work with selection across multiple tracks
 --]]
 
--------------
 --- DEBUG ---
--------------
 
 console = true
+
 local function Msg(value) if console then reaper.ShowConsoleMsg(tostring(value) .. "\n") end end
 
------------------
 --- VARIABLES ---
------------------
 
 _UNITYGAIN = 716.3
 
 local section = "PSP_Scripts"
 local settings = {}
 
------------------
 --- FUNCTIONS ---
------------------
 
 local function toboolean(text)
-    if text == "true" then return true
-    else return false end
+  if text == "true" then return true
+  else return false end
 end
 
 local function ConvertItemFadeToEnvelopeFade(shape, fadetype)
@@ -163,15 +158,16 @@ local function AddAutomationItems(item_count)
     end
 end
 
-------------
 --- MAIN ---
-------------
 
-settings.mute_envelope = toboolean(reaper.GetExtState(section, "SD_mute_envelope")) or false
+if reaper.HasExtState(section, "SD_mute_envelope") then 
+    settings.mute_envelope = toboolean(reaper.GetExtState(section, "SD_mute_envelope")) else
+    settings.mute_envelope = false end
 
 local item_count = reaper.CountSelectedMediaItems(0)
 
 if item_count > 0 then
+
     local track_list = {}
 
     reaper.Undo_BeginBlock()
@@ -186,4 +182,5 @@ if item_count > 0 then
     reaper.UpdateArrange()
     reaper.Undo_EndBlock("Create Automation Items", -1)
     reaper.PreventUIRefresh(-1)
+
 end

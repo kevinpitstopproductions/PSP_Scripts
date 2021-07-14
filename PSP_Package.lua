@@ -1,36 +1,34 @@
 --[[
- * ReaScript Name: PSP Scripts
- * MetaPackage: true
- * Author: kevin@pitstop
- * REAPER: 6+
- * Extensions: SWS
- * Version: 1.12.8
- * Provides:
- *  [Main] PSP_Install Libraries.py
- *  [Main] PSP_Create Regions from Selected Item Source Destinations.lua
- *  [Main] PSP_Offset Source Start to 50% Item Length.lua
- *  [Main] PSP_STT Default Key (testing only).py
- *  [Main] PSP_STT Google Cloud Services.py
- *  [Main] PSP_TTS Easy.py
- *  [Main] PSP_Color Child Tracks of Parents Lighter.lua
- *  [Main] PSP_Copy Item Properties.lua
- *  [Main] PSP_Paste Item Properties.lua
- *  [Main] PSP_Create Parent Item Aliases from Selected Items.lua
- *  [Main] PSP_Create Volume Trim Automation Items from Selected Items.lua 
- *  [Main] PSP_Convert Stretch Markers To Take Markers.lua
- *  [Main] PSP_Take Marker Randomizer Tool.lua
- *  [Main] PSP_Item Fader.lua
- *  [Main] PSP_Set Time After Snap Offset.lua
- *  [Main] PSP_Set Time Before Snap Offset.lua
- *  [Main] PSP_Item Spacer.lua
- *  [Main] PSP_Vegas Mode.lua
- *  [Main] PSP_Take Rate Adjuster.lua
- *  [Main] PSP_Create Razor Edit Regions From Parent Items.lua
- *  [Main] PSP_Test Script.lua
- *  [Main] PSP_Utils.lua
- *
- * About:
- *  A collection of my reaper workflow scripts
+ ReaScript Name: PSP Scripts
+ MetaPackage: true
+ Author: kevin@pitstop
+ REAPER: 6+
+ Extensions: SWS
+ Version: 1.12.2
+ Provides:
+  [Main] PSP_Install Libraries.py
+  [Main] PSP_Create Regions from Selected Item Source Destinations.lua
+  [Main] PSP_Offset Source Start to 50% Item Length.lua
+  [Main] PSP_STT Default Key (testing only).py
+  [Main] PSP_STT Google Cloud Services.py
+  [Main] PSP_TTS Easy.py
+  [Main] PSP_Color Child Tracks of Parents Lighter.lua
+  [Main] PSP_Copy Item Properties.lua
+  [Main] PSP_Paste Item Properties.lua
+  [Main] PSP_Create Parent Item Aliases from Selected Items.lua
+  [Main] PSP_Create Volume Trim Automation Items from Selected Items.lua 
+  [Main] PSP_Convert Stretch Markers To Take Markers.lua
+  [Main] PSP_Take Marker Randomizer Tool.lua
+  [Main] PSP_Item Fader.lua
+  [Main] PSP_Set Time After Snap Offset.lua
+  [Main] PSP_Set Time Before Snap Offset.lua
+  [Main] PSP_Item Spacer.lua
+  [Main] PSP_Vegas Mode.lua
+  [Main] PSP_Take Rate Adjuster.lua
+  [Main] PSP_Create Razor Edit Regions From Parent Items.lua
+
+ About:
+  A collection of my reaper workflow scripts
 --[[
 	
 	
@@ -53,6 +51,5 @@
    * v1.11.1 (2021-06-21) Bug Fix
    * v1.12 (2021-07-07) Updated for compatibility with ReaImGui V5
    * v1.12.1 (2021-07-08) Bug Fix
-   * v1.12.2 (2021-07-12) Bug Fix
-   * v1.12.8 (2021-07-12) Testing
+   * v1.12.1 (2021-07-12) Bug Fix
 ]]

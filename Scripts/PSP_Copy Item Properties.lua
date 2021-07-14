@@ -8,28 +8,23 @@
 
 --[[
  * Changelog:
- * v1.3 (2021-06-21)
-	+ General Update
- * v1.2 (2021-05-27)
-	+ Bug Fix
  * v1.0 (2021-05-27)
 	+ Initial Release
+ * v1.2 (2021-05-27)
+	+ Bug Fix
+ * v1.3 (2021-06-21)
+	+ General Update
 --]]
 
--------------
 --- DEBUG ---
--------------
 
-local console = false
+local console = true
+
 local function Msg(text) if console then reaper.ShowConsoleMsg(tostring(text) .. '\n') end end
 
------------------
---- VARIABLES ---
------------------ 
+--- VARIABLES --- 
 
------------------
 --- FUNCTIONS ---
------------------
 
 local function SaveExtState(item_count)
 	local item = reaper.GetSelectedMediaItem(0, 0)
@@ -46,15 +41,14 @@ local function SaveExtState(item_count)
 	reaper.SetExtState( "PSP_CopyItemInfo", "length", 		reaper.GetMediaItemInfo_Value(item, "D_LENGTH"), 1 )
 end
 
-------------
 --- MAIN ---
-------------
 
 local item_count = reaper.CountSelectedMediaItems(0)
 
 if item_count > 0 then
 	if item_count > 1 then
-		Msg("Multiple items selected, first item will be used.") end
+		Msg("Multiple items selected, first item will be used.")
+	end
 
 	SaveExtState(item_count)
 end

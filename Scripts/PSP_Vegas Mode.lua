@@ -8,39 +8,21 @@
 
 --[[
  * Changelog:
- * v0.2.2 (2021-07-14)
- 	+ Added font scaling
- * v0.2.1 (2021-07-08)
-    + Better error message
- * v0.2 (2021-07-07)
-  + Ground-breaking improvements
  * v0.1 (2021-06-21)
   + Beta Release
+ * v0.2 (2021-07-07)
+  + Ground-breaking improvements
+ * v0.2.1 (2021-07-08)
+    + Better error message
 --]]
 
-----------------
---- INCLUDES ---
-----------------
-
-local scripts_directory = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
-dofile(scripts_directory .. "PSP_Utils.lua") -- load shared utilities
-
--------------
 --- DEBUG ---
--------------
 
 local console = true
+
 local function Msg(text) if console then reaper.ShowConsoleMsg(tostring(text) .. '\n') end end
 
------------------
 --- VARIABLES --- 
------------------
-
-local section = "PSP_Scripts"
-local settings = {}
-
-local window_flags =
-    reaper.ImGui_WindowFlags_NoCollapse()
 
 local counter = 1
 local is_finished = false
@@ -52,9 +34,7 @@ local time = 1
 local color_counter = 0
 local col = reaper.ColorToNative(0, 0, 0)|0x1000000
 
------------------
 --- FUNCTIONS ---
------------------
 
 local function SaveSelectedItems (init_table, item_count)
 	for i = 0, item_count-1 do
@@ -81,23 +61,23 @@ local function SaveTrackInfo (init_table, track_count)
 	end
 end
 
-------------
 --- MAIN ---
-------------
 
 if not reaper.APIExists('ImGui_GetVersion') then
-    reaper.ShowMessageBox("ReaImGui is not installed. \n\nNavigate to Extensions → Reapack → Browse Packages, and install ReaImGui first.", "Error", 0) return end
-if (utils.GetUsingReaImGuiVersion() ~= utils.GetInstalledReaImGuiVersion()) then
-    reaper.ShowMessageBox("Please ensure that you are running ReaImGui version " .. utils.GetUsingReaImGuiVersion() .. " or later", "Error", 0) return end
+    reaper.ShowMessageBox("ReaImGui is not installed. \n\nNavigate to Extensions→Reapack→Browse Packages, and install ReaImGui first.", "Error", 0) return end
 
-settings.font_size = tonumber(reaper.GetExtState(section, "SD_font_size")) or 14
+local imgui_version, reaimgui_version = reaper.ImGui_GetVersion()
+
+if reaimgui_version:sub(0, 3) ~= "0.5" then
+    reaper.ShowMessageBox("Please ensure that you are running ReaImGui version 0.5 or later", "Error", 0) return end
 
 local ctx = reaper.ImGui_CreateContext('My script', 0)
-local font = reaper.ImGui_CreateFont('sans-serif', settings.font_size)
+local size = reaper.GetAppVersion():match('OSX') and 12 or 14
+local font = reaper.ImGui_CreateFont('sans-serif', size)
 reaper.ImGui_AttachFont(ctx, font)
 
 function frame()
-  	local rv
+  local rv
 
 	if reaper.ImGui_Button(ctx, "Close & Restore") then
 		is_finished = true end
@@ -147,32 +127,33 @@ function frame()
 end
 
 function loop()
-  	reaper.ImGui_PushFont(ctx, font)
-  	reaper.ImGui_SetNextWindowSize(ctx, 300, 60, reaper.ImGui_Cond_FirstUseEver())
-  	local visible, open = reaper.ImGui_Begin(ctx, 'PSP Config', true, window_flags)
+  reaper.ImGui_PushFont(ctx, font)
+  reaper.ImGui_SetNextWindowSize(ctx, 300, 60, reaper.ImGui_Cond_FirstUseEver())
+  local visible, open = reaper.ImGui_Begin(ctx, 'PSP Config', true)
 
-  	if visible then
-    	frame() ; reaper.ImGui_End(ctx) end
-  	reaper.ImGui_PopFont(ctx)
+  if visible then
+    frame()
+    reaper.ImGui_End(ctx)
+  end
+  reaper.ImGui_PopFont(ctx)
   
-  	if is_finished then
-  		open = false end
+  if is_finished then
+  	open = false end
 
- 	if open then
-    	reaper.defer(loop)
-  	else -- reset items to original state
-		for i=0, #item_table-1 do
-			reaper.SetMediaItemInfo_Value(item_table[i+1].item, "I_CUSTOMCOLOR", item_table[i+1].color)
-			reaper.SetMediaItemInfo_Value(item_table[i+1].item, "B_MUTE", item_table[i+1].mute)
-		end
-		for t=0, #track_table-1 do
-			reaper.SetMediaTrackInfo_Value(track_table[t+1].track, "D_VOL", track_table[t+1].vol)
-			reaper.SetMediaTrackInfo_Value(track_table[t+1].track, "B_MUTE", track_table[t+1].mute)
-			reaper.SetMediaTrackInfo_Value(track_table[t+1].track, "I_SOLO", track_table[t+1].solo)
-		end
-		reaper.UpdateArrange()
-    	reaper.ImGui_DestroyContext(ctx)
-  	end
+  if open then
+    reaper.defer(loop)
+  else
+	for i=0, #item_table-1 do
+		reaper.SetMediaItemInfo_Value(item_table[i+1].item, "I_CUSTOMCOLOR", item_table[i+1].color)
+		reaper.SetMediaItemInfo_Value(item_table[i+1].item, "B_MUTE", item_table[i+1].mute)
+	end
+	for t=0, #track_table-1 do
+		reaper.SetMediaTrackInfo_Value(track_table[t+1].track, "D_VOL", track_table[t+1].vol)
+		reaper.SetMediaTrackInfo_Value(track_table[t+1].track, "B_MUTE", track_table[t+1].mute)
+		reaper.SetMediaTrackInfo_Value(track_table[t+1].track, "I_SOLO", track_table[t+1].solo)
+	end
+	reaper.UpdateArrange()
+    reaper.ImGui_DestroyContext(ctx)
+  end
 end
-
 reaper.defer(loop)
