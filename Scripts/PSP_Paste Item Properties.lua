@@ -14,18 +14,22 @@
 	+ General Update
 --]]
 
+-------------
 --- DEBUG ---
+-------------
 
 local console = true
-
 local function Msg(text) if console then reaper.ShowConsoleMsg(tostring(text) .. '\n') end end
 
---- VARIABLES --- 
+-----------------
+--- VARIABLES ---
+----------------- 
 
+-----------------
 --- FUNCTIONS ---
+-----------------
 
 local function SetItemProperties(item_count)
-	-- GET
 	local rate = reaper.GetExtState( "PSP_CopyItemInfo", "rate")
 	local fadein = reaper.GetExtState( "PSP_CopyItemInfo", "fadein")
 	local fadeout = reaper.GetExtState( "PSP_CopyItemInfo", "fadeout")
@@ -35,7 +39,6 @@ local function SetItemProperties(item_count)
 	local fadeoutslope = reaper.GetExtState( "PSP_CopyItemInfo", "fadoutslope")
 	local length = reaper.GetExtState( "PSP_CopyItemInfo", "length")
 	
-	-- SET
 	for i=0, item_count-1 do
 		local item = reaper.GetSelectedMediaItem(0, i)
 		local take = reaper.GetActiveTake(item)
@@ -52,7 +55,9 @@ local function SetItemProperties(item_count)
 	end
 end
 
+------------
 --- MAIN ---
+------------
 
 local item_count = reaper.CountSelectedMediaItems(0)
 
