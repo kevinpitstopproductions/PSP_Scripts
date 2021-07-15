@@ -2,14 +2,16 @@
  * ReaScript Name: PSP_Config.lua
  * Author: GU-on
  * Licence: GPL v3
- * REAPER: 6.31
- * Version: 0.6.3
+ * REAPER: 6.32
+ * Version: 0.7
  * Provides:
  *  [nomain] PSP_Utils.lua
 --]]
 
 --[[
  * Changelog:
+ * v0.7 (2021-07-15)
+    + Added font scaling support
  * v0.6.3 (2021-07-14)
  	- Removed utilities
  * v0.6 (2021-07-14)
@@ -64,6 +66,16 @@ local function SetExtStates()
 	reaper.SetExtState(section, "SD_font_size", settings.font_size, 1)
 end
 
+local function GetExtStates()
+    settings.is_random = toboolean(reaper.GetExtState(section, "SD_is_random")) or false
+    settings.chop_end = reaper.GetExtState(section, "SD_chop_end") or 0
+    settings.mute_envelope = toboolean(reaper.GetExtState(section, "SD_mute_envelope")) or false
+    settings.font_size = tonumber(reaper.GetExtState(section, "SD_font_size")) or 14
+    -- ensure font-scaling is clamped
+    if settings.font_size < 10 then settings.font_size = 10 end
+    if settings.font_size > 36 then settings.font_size = 36 end
+end
+
 ------------
 --- MAIN ---
 ------------
@@ -73,10 +85,7 @@ if not reaper.APIExists('ImGui_GetVersion') then
 if (utils.GetUsingReaImGuiVersion() ~= utils.GetInstalledReaImGuiVersion()) then
     reaper.ShowMessageBox("Please ensure that you are running ReaImGui version " .. utils.GetUsingReaImGuiVersion() .. " or later", "Error", 0) return end
 
-settings.is_random = toboolean(reaper.GetExtState(section, "SD_is_random")) or false
-settings.chop_end = reaper.GetExtState(section, "SD_chop_end") or 0
-settings.mute_envelope = toboolean(reaper.GetExtState(section, "SD_mute_envelope")) or false
-settings.font_size = tonumber(reaper.GetExtState(section, "SD_font_size")) or 14
+GetExtStates()
 
 local ctx = reaper.ImGui_CreateContext('PSP Config', reaper.ImGui_ConfigFlags_DockingEnable())
 local font = reaper.ImGui_CreateFont('sans-serif', settings.font_size)
@@ -88,6 +97,11 @@ function frame()
   	if reaper.ImGui_CollapsingHeader(ctx, 'Sound Design') then
   		if reaper.ImGui_TreeNode(ctx, 'General') then
   			rv, settings.font_size = reaper.ImGui_InputInt(ctx, "Font Size", settings.font_size)
+            -- ensure font-scaling is clamped (GUI-side)
+            if settings.font_size < 10 then settings.font_size = 10 end
+            if settings.font_size > 36 then settings.font_size = 36 end
+            if reaper.ImGui_IsItemHovered(ctx, flagsIn) then
+                reaper.ImGui_SetTooltip( ctx, "Font scaling will be applied after scripts are reloaded") end
   			reaper.ImGui_TreePop(ctx)
   		end
    		if reaper.ImGui_TreeNode(ctx, 'Take Marker Randomizer') then
