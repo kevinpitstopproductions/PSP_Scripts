@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="PSP_Scripts" commit="680477702062aef6ceb6ffea3d281b4bd188ea27">
+<index version="1" name="PSP_Scripts" commit="ce34519e32ead3c0330e5d92c966857b14efce62">
   <category name="Scripts">
     <reapack name="PSP_Color Child Tracks of Parents Lighter.lua" type="script" desc="PSP_Color Child Tracks of Parents Lighter.lua">
       <version name="1.0" author="GU-on" time="2021-05-24T16:05:29Z">
@@ -40,6 +40,11 @@
         <changelog><![CDATA[- Removed utilities]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/680477702062aef6ceb6ffea3d281b4bd188ea27/Scripts/PSP_Config.lua</source>
         <source file="PSP_Utils.lua">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/680477702062aef6ceb6ffea3d281b4bd188ea27/Scripts/PSP_Utils.lua</source>
+      </version>
+      <version name="0.7" author="GU-on" time="2021-07-15T08:45:17Z">
+        <changelog><![CDATA[+ Added font scaling support]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/ce34519e32ead3c0330e5d92c966857b14efce62/Scripts/PSP_Config.lua</source>
+        <source file="PSP_Utils.lua">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/ce34519e32ead3c0330e5d92c966857b14efce62/Scripts/PSP_Utils.lua</source>
       </version>
     </reapack>
     <reapack name="PSP_Convert Stretch Markers To Take Markers.lua" type="script" desc="PSP_Convert Stretch Markers to Take Markers.lua">
