@@ -3,13 +3,15 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.32
- * Version: 0.7
+ * Version: 0.8b
  * Provides:
  *  [nomain] PSP_Utils.lua
 --]]
 
 --[[
  * Changelog:
+ * v0.8b (2021-07-16)
+	+ Added parent item alias preset support
  * v0.7 (2021-07-15)
     + Added font scaling support
  * v0.6.3 (2021-07-14)
@@ -47,7 +49,8 @@ local function Msg(text) if console then reaper.ShowConsoleMsg(tostring(text)) e
 -----------------
 
 local section = "PSP_Scripts"
-local settings = {}
+local settings = {} 
+    settings.pia = {} -- parent alias items
 local is_finished = false
 local button_width = 100
 
@@ -60,20 +63,38 @@ local window_flags =
 -----------------
 
 local function SetExtStates()
+--[[GENERAL]]
+    -- Font
+    reaper.SetExtState(section, "SD_font_size", settings.font_size, 1)
+--[[SOUND DESIGN]]
+    -- Take Marker Randomizer
 	reaper.SetExtState(section, "SD_is_random", tostring(settings.is_random), 1)
 	reaper.SetExtState(section, "SD_chop_end", tonumber(settings.chop_end), 1)
+    -- Trim Automation Items
 	reaper.SetExtState(section, "SD_mute_envelope", tostring(settings.mute_envelope), 1)
-	reaper.SetExtState(section, "SD_font_size", settings.font_size, 1)
+    -- Parent Item Aliases
+    reaper.SetExtState(section, "SD-pia_has_fade_preset", tostring(settings.pia.has_fade_preset), 1)
+    reaper.SetExtState(section, "SD-pia_fade_preset", tostring(settings.pia.fade_preset), 1)
+    reaper.SetExtState(section, "SD-pia_has_name_preset", tostring(settings.pia.has_name_preset), 1)
+    reaper.SetExtState(section, "SD-pia_name_preset", tostring(settings.pia.name_preset), 1)
 end
 
 local function GetExtStates()
+--[[GENERAL]]
+    -- Font
+    settings.font_size = tonumber(reaper.GetExtState(section, "SD_font_size")) or 14
+    settings.font_size = math.clamp(settings.font_size, 10, 36)
+--[[SOUND DESIGN]]
+    -- Take Marker Randomizer
     settings.is_random = toboolean(reaper.GetExtState(section, "SD_is_random")) or false
     settings.chop_end = reaper.GetExtState(section, "SD_chop_end") or 0
+    -- Trim Automation Items
     settings.mute_envelope = toboolean(reaper.GetExtState(section, "SD_mute_envelope")) or false
-    settings.font_size = tonumber(reaper.GetExtState(section, "SD_font_size")) or 14
-    -- ensure font-scaling is clamped
-    if settings.font_size < 10 then settings.font_size = 10 end
-    if settings.font_size > 36 then settings.font_size = 36 end
+    -- Parent Item Aliases
+    settings.pia.has_fade_preset = toboolean(reaper.GetExtState(section, "SD-pia_has_fade_preset")) or false
+    settings.pia.fade_preset = reaper.GetExtState(section, "SD-pia_fade_preset")
+    settings.pia.has_name_preset = toboolean(reaper.GetExtState(section, "SD-pia_has_name_preset")) or false
+    settings.pia.name_preset = reaper.GetExtState(section, "SD-pia_name_preset")
 end
 
 ------------
@@ -94,16 +115,17 @@ reaper.ImGui_AttachFont(ctx, font)
 function frame()
   	local rv
 
-  	if reaper.ImGui_CollapsingHeader(ctx, 'Sound Design') then
-  		if reaper.ImGui_TreeNode(ctx, 'General') then
-  			rv, settings.font_size = reaper.ImGui_InputInt(ctx, "Font Size", settings.font_size)
-            -- ensure font-scaling is clamped (GUI-side)
-            if settings.font_size < 10 then settings.font_size = 10 end
-            if settings.font_size > 36 then settings.font_size = 36 end
+    if reaper.ImGui_CollapsingHeader(ctx, 'General') then
+        if reaper.ImGui_TreeNode(ctx, 'Font') then
+            rv, settings.font_size = reaper.ImGui_InputInt(ctx, "Font Size", settings.font_size)
             if reaper.ImGui_IsItemHovered(ctx, flagsIn) then
                 reaper.ImGui_SetTooltip( ctx, "Font scaling will be applied after scripts are reloaded") end
-  			reaper.ImGui_TreePop(ctx)
-  		end
+            settings.font_size = math.clamp(settings.font_size, 10, 36)
+            reaper.ImGui_TreePop(ctx)
+        end
+    end
+
+  	if reaper.ImGui_CollapsingHeader(ctx, 'Sound Design') then
    		if reaper.ImGui_TreeNode(ctx, 'Take Marker Randomizer') then
 	    	rv, settings.is_random = reaper.ImGui_Checkbox(ctx, "Is Random", settings.is_random)
 	    	rv, settings.chop_end = reaper.ImGui_InputText(ctx, "Chop End (sec)", settings.chop_end, reaper.ImGui_InputTextFlags_CharsDecimal())
@@ -113,6 +135,19 @@ function frame()
 	    	rv, settings.mute_envelope = reaper.ImGui_Checkbox(ctx, "Mute envelope behind automation items", settings.mute_envelope)
 	    	reaper.ImGui_TreePop(ctx)
 	    end
+        if reaper.ImGui_TreeNode(ctx, 'Parent Item Aliases') then
+            -- auto fades
+            rv, settings.pia.has_fade_preset = reaper.ImGui_Checkbox(ctx, "Has Fade Preset", settings.pia.has_fade_preset)
+            if settings.pia.has_fade_preset then
+                rv, settings.pia.fade_preset = reaper.ImGui_InputInt(ctx, "Fade Preset", settings.pia.fade_preset) end
+            settings.pia.fade_preset = math.clamp(settings.pia.fade_preset, 1, 4)         
+            -- auto name
+            rv, settings.pia.has_name_preset = reaper.ImGui_Checkbox(ctx, "Has Name Preset", settings.pia.has_name_preset)
+            if settings.pia.has_name_preset then
+                rv, settings.pia.name_preset = reaper.ImGui_InputInt(ctx, "Name Preset", settings.pia.name_preset) end  
+            settings.pia.name_preset = math.clamp(settings.pia.name_preset, 1, 4)  
+            reaper.ImGui_TreePop(ctx)
+        end
   	end
 
   	if reaper.ImGui_GetWindowWidth(ctx) < 300 then
@@ -136,7 +171,6 @@ end
 
 function loop()
   	reaper.ImGui_PushFont(ctx, font)
-  	-- reaper.ImGui_SetNextWindowSize(ctx, 300, 60, reaper.ImGui_Cond_FirstUseEver())
   	local visible, open = reaper.ImGui_Begin(ctx, 'PSP Config', true, window_flags)
 
   	if is_finished then

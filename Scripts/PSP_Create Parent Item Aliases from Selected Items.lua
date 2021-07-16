@@ -18,6 +18,13 @@
 	+ Initial Release
  --]]
 
+----------------
+--- INCLUDES ---
+----------------
+
+local scripts_directory = ({reaper.get_action_context()})[2]:match("^(.*[/\\])")
+dofile(scripts_directory .. "PSP_Utils.lua") -- load shared utilities
+
 -------------
 --- DEBUG ---
 -------------
@@ -28,6 +35,9 @@ local function Msg(value) if console then reaper.ShowConsoleMsg(tostring(value) 
 -----------------
 --- VARIABLES ---
 -----------------
+
+section = "PSP_Scripts"
+settings = {}
 
 -----------------
 --- FUNCTIONS ---
@@ -185,6 +195,34 @@ if count_sel_items > 0 then
 			reaper.ULT_SetMediaItemNote(item, track_name .. "_" .. string.format("%02d", i+1)) -- set notes
 			reaper.GetSetMediaItemTakeInfo_String(
 			reaper.GetActiveTake(item), "P_NAME", track_name .. "_" .. string.format("%02d", i+1), 1)
+		end
+
+-- auto fade
+		local has_fade_preset = toboolean(reaper.GetExtState(section, "SD-pia_has_fade_preset")) or false
+		if has_fade_preset then
+			local fade_preset = reaper.GetExtState(section, "SD-pia_fade_preset") or 0
+			if reaper.file_exists( scripts_directory .. "/" .. "PSP_Item Fader.lua") then
+				reaper.SetExtState(section, "runitemfadergui", "false", true) -- turn gui off
+				dofile(scripts_directory .. "PSP_Item Fader.lua") -- load shared utilities
+				itemaliasext.ItemFader(fade_preset) -- run function
+				reaper.SetExtState(section, "runitemfadergui", "true", true) -- turn gui back on
+			end
+		end
+-- auto name
+		local has_name_preset = toboolean(reaper.GetExtState(section, "SD-pia_has_name_preset")) or false
+		if has_name_preset then
+			local name_preset = reaper.GetExtState(section, "SD-pia_name_preset") or 0
+			if reaper.file_exists( scripts_directory .. "/" .. "PSP_Item Namer.lua") then
+				reaper.SetExtState(section, "runitemnamergui", "false", true) -- turn gui off
+				dofile(scripts_directory .. "PSP_Item Namer.lua") -- load shared utilities
+				itemaliasext.ItemNamer(name_preset) -- run function
+				reaper.SetExtState(section, "runitemnamergui", "true", true) -- turn gui back on
+			end
+			for i=0, reaper.CountSelectedMediaItems(0)-1 do
+				local item = reaper.GetSelectedMediaItem(0, i)
+				local _, notes = reaper.GetSetMediaItemTakeInfo_String(reaper.GetActiveTake(item), "P_NAME", "", false )
+				reaper.GetSetMediaItemInfo_String(item, "P_NOTES", notes, true)
+			end
 		end
 	end
 
