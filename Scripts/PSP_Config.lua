@@ -3,14 +3,14 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.32
- * Version: 0.8b
+ * Version: 0.8
  * Provides:
  *  [nomain] PSP_Utils.lua
 --]]
 
 --[[
  * Changelog:
- * v0.8b (2021-07-16)
+ * v0.8 (2021-07-16)
 	+ Added parent item alias preset support
  * v0.7 (2021-07-15)
     + Added font scaling support
