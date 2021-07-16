@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="PSP_Scripts" commit="ce34519e32ead3c0330e5d92c966857b14efce62">
+<index version="1" name="PSP_Scripts" commit="5a2bb97478cb4215f223cf294041dee4ebe8e733">
   <category name="Scripts">
     <reapack name="PSP_Color Child Tracks of Parents Lighter.lua" type="script" desc="PSP_Color Child Tracks of Parents Lighter.lua">
       <version name="1.0" author="GU-on" time="2021-05-24T16:05:29Z">
@@ -45,6 +45,10 @@
         <changelog><![CDATA[+ Added font scaling support]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/ce34519e32ead3c0330e5d92c966857b14efce62/Scripts/PSP_Config.lua</source>
         <source file="PSP_Utils.lua">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/ce34519e32ead3c0330e5d92c966857b14efce62/Scripts/PSP_Utils.lua</source>
+      </version>
+      <version name="0.8b" author="GU-on" time="2021-07-16T11:49:57Z">
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/5a2bb97478cb4215f223cf294041dee4ebe8e733/Scripts/PSP_Config.lua</source>
+        <source file="PSP_Utils.lua">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/5a2bb97478cb4215f223cf294041dee4ebe8e733/Scripts/PSP_Utils.lua</source>
       </version>
     </reapack>
     <reapack name="PSP_Convert Stretch Markers To Take Markers.lua" type="script" desc="PSP_Convert Stretch Markers to Take Markers.lua">
@@ -98,7 +102,7 @@
       </version>
       <version name="1.4" author="GU-on" time="2021-06-21T11:57:11Z">
         <changelog><![CDATA[+ General Update]]></changelog>
-        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/680477702062aef6ceb6ffea3d281b4bd188ea27/Scripts/PSP_Create%20Parent%20Item%20Aliases%20from%20Selected%20Items.lua</source>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/5a2bb97478cb4215f223cf294041dee4ebe8e733/Scripts/PSP_Create%20Parent%20Item%20Aliases%20from%20Selected%20Items.lua</source>
       </version>
     </reapack>
     <reapack name="PSP_Create Razor Edit Regions From Parent Items.lua" type="script" desc="PSP_Create Razor Edit Regions From Parent Items.lua">
@@ -196,6 +200,15 @@
       <version name="1.3" author="GU-on" time="2021-07-14T16:43:54Z">
         <changelog><![CDATA[+ Added font scaling]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/680477702062aef6ceb6ffea3d281b4bd188ea27/Scripts/PSP_Item%20Fader.lua</source>
+      </version>
+      <version name="1.4b" author="GU-on" time="2021-07-16T11:49:57Z">
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/5a2bb97478cb4215f223cf294041dee4ebe8e733/Scripts/PSP_Item%20Fader.lua</source>
+      </version>
+    </reapack>
+    <reapack name="PSP_Item Namer.lua" type="script" desc="PSP_Item Namer.lua">
+      <version name="0.1" author="GU-on" time="2021-07-16T11:49:57Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/5a2bb97478cb4215f223cf294041dee4ebe8e733/Scripts/PSP_Item%20Namer.lua</source>
       </version>
     </reapack>
     <reapack name="PSP_Item Spacer.lua" type="script" desc="PSP_Item Spacer.lua">
