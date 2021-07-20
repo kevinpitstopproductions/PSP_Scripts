@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="PSP_Scripts" commit="dcad6d9ae844285c9a85c1729183ac7d1b956791">
+<index version="1" name="PSP_Scripts" commit="8b029c1bf5503812db9f7c68486107e6b9766709">
   <category name="Scripts">
     <reapack name="PSP_Color Child Tracks of Parents Lighter.lua" type="script" desc="PSP_Color Child Tracks of Parents Lighter.lua">
       <version name="1.0" author="GU-on" time="2021-05-24T16:05:29Z">
@@ -424,12 +424,6 @@
       <version name="1.3" author="GU-on" time="2021-07-14T16:43:54Z">
         <changelog><![CDATA[+ Added font scaling]]></changelog>
         <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/680477702062aef6ceb6ffea3d281b4bd188ea27/Scripts/PSP_Take%20Rate%20Adjuster.lua</source>
-      </version>
-    </reapack>
-    <reapack name="PSP_Test Script.lua" type="script" desc="PSP_Test Script.lua">
-      <version name="0.3" author="GU-on" time="2021-07-15T08:24:19Z">
-        <changelog><![CDATA[+ Added improvements]]></changelog>
-        <source main="main">https://github.com/kevinpitstopproductions/PSP_Scripts/raw/680477702062aef6ceb6ffea3d281b4bd188ea27/Scripts/PSP_Test%20Script.lua</source>
       </version>
     </reapack>
     <reapack name="PSP_TTS Easy.py" type="script" desc="PSP_TTS Easy.py">
