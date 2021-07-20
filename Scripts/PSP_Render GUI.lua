@@ -106,10 +106,16 @@ local function todo()
 	reaper.PreventUIRefresh(1)
 	reaper.Undo_BeginBlock()
 
-	Msg("button pressed")
+	local path = reaper.GetProjectPath("")
+	for i=0, reaper.CountSelectedMediaItems(0)-1 do
+    	local item = reaper.GetSelectedMediaItem(0, i)
+    	local _, item_name = reaper.GetSetMediaItemInfo_String(item, "P_NOTES", "", false)
+    	local file_address = path .. "\\" .. item_name .. ".wav"
+    	file_address = string.gsub(file_address, "\\", "\\\\") -- correct formatting issues
+    	os.remove(file_address)
+	end
+
 	reaper.Main_OnCommand(42230, 0)
-	
-	Msg(reaper.ImGui_Col_Button())
 
 	reaper.Undo_EndBlock("undo action", -1)
 	reaper.UpdateArrange()
@@ -127,7 +133,7 @@ if (utils.GetUsingReaImGuiVersion() ~= utils.GetInstalledReaImGuiVersion()) then
 
 settings.font_size = tonumber(reaper.GetExtState(section, "SD_font_size")) or 14
 
-local ctx = reaper.ImGui_CreateContext('Template', reaper.ImGui_ConfigFlags_DockingEnable())
+local ctx = reaper.ImGui_CreateContext('PSP Item Navigator', reaper.ImGui_ConfigFlags_DockingEnable())
 local font = reaper.ImGui_CreateFont('sans-serif', settings.font_size)
 reaper.ImGui_AttachFont(ctx, font)
 
@@ -140,7 +146,7 @@ function frame()
 		SaveParentItemsToTable(item_table)
 	end
 
-	if reaper.ImGui_Button(ctx, "Button") then
+	if reaper.ImGui_Button(ctx, "Quick Render") then
 		todo() end
 
 	if reaper.ImGui_BeginTable(ctx, "Items", 3, reaper.ImGui_TableFlags_Resizable() | reaper.ImGui_TableFlags_NoSavedSettings() | reaper.ImGui_TableFlags_SizingFixedFit()) then
@@ -187,7 +193,9 @@ end
 function loop()
 	reaper.ImGui_PushFont(ctx, font)
 	reaper.ImGui_SetNextWindowSize(ctx, 300, 60, reaper.ImGui_Cond_FirstUseEver())
-	local visible, open = reaper.ImGui_Begin(ctx, 'My window', true, window_flags)
+	reaper.ImGui_SetNextWindowDockID(ctx, -1, reaper.ImGui_Cond_Once())
+
+	local visible, open = reaper.ImGui_Begin(ctx, 'PSP Item Navigator', true, window_flags)
 	
 	if visible then
 		frame() ; reaper.ImGui_End(ctx) end

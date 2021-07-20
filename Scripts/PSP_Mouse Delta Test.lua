@@ -1,21 +1,18 @@
 --[[
- * ReaScript Name: PSP_Realtime Test.lua
- * @noindex
+ * ReaScript Name: Template.lua
+ * NoIndex: true
  * Author: GU-on
  * Licence: GPL v3
- * REAPER: 6.31
- * Version: 0.1
+ * REAPER: 6.32
+ * Version: 0.2
 --]]
 
 --[[
  * Changelog:
+ * v0.2 (2021-07-20)
+    + Updated and refactored
  * v0.1 (2021-07-07)
  	+ Initial Release
---]]
-
---[[
- * About:
- * Real-time color change test using delta time
 --]]
 
 ----------------
@@ -37,19 +34,22 @@ local function Msg(text) if console then reaper.ShowConsoleMsg(tostring(text) ..
 -----------------
 
 local section = "PSP_Scripts"
-local settings = {}
+local settings = {} 
 
 local window_flags =
     reaper.ImGui_WindowFlags_NoCollapse()
 
-local color_scale = 1
-local r, g, b = 0, 0, 0
-local h, s, v = 0, 0, 0
-local index = 0
+local last_val = 0
+local scale = 5
 
 -----------------
 --- FUNCTIONS ---
 -----------------
+
+-- https://www.love2d.org/forums/viewtopic.php?p=198129#p198129
+function lerp(from, to, t)
+  return t < 0.5 and from + (to-from)*t or to + (from-to)*(1-t)
+end
 
 local function todo()
     reaper.PreventUIRefresh(1)
@@ -78,31 +78,25 @@ local font = reaper.ImGui_CreateFont('sans-serif', settings.font_size)
 reaper.ImGui_AttachFont(ctx, font)
 
 function frame()
-    local rv
+    if reaper.ImGui_Button(ctx, "Button") then
+        todo() end
 
-    index = index + reaper.ImGui_GetDeltaTime(ctx)
-    if index > 1 then
-        index = 0 end
+    local t = reaper.ImGui_GetDeltaTime(ctx)
+    local track = reaper.GetSelectedTrack(0, 0)
+    local x, y = 0, 0
+    if reaper.ImGui_IsMouseDown(ctx, reaper.ImGui_MouseButton_Right()) then
+        x, y = reaper.ImGui_GetMouseDelta(ctx) end
+    local val = math.abs(x) + math.abs(y)
+    val = math.map(val, 0, 255, 0, 1)
+    val = lerp(last_val, val, t * scale)
+    val = math.clamp(val, 0, 1)
 
-    h = index --_, h = reaper.ImGui_DragDouble(ctx, "H", h, 0.01, 0, 1)
-    _, s = reaper.ImGui_DragDouble(ctx, "S", s, 0.01, 0, 1)
-    _, v = reaper.ImGui_DragDouble(ctx, "V", v, 0.01, 0, 1)
-    _, a = reaper.ImGui_DragDouble(ctx, "A", a, 0.01, 0, 1)
+    last_val = val
 
-    rv, r, g, b = reaper.ImGui_ColorConvertHSVtoRGB(h, s, v, a)
-
-    r = math.ceil(math.map(r, 0, 1, 0, 255))
-    g = math.ceil(math.map(g, 0, 1, 0, 255))
-    b = math.ceil(math.map(b, 0, 1, 0, 255))
-
-    local color =  reaper.ColorToNative( r, g, b )|0x1000000
-    local items = "rv " .. tostring(rv) .. "\31" .. "r " .. tostring(r) .. "\31" .. "g " .. tostring(g) .. "\31" .. "b " .. tostring(b) .. "\31"
-    local rv, current_item = reaper.ImGui_ListBox(ctx, "rgb", current_item, items)
-
-    for i=0, reaper.CountMediaItems(0)-1 do
-        local item = reaper.GetMediaItem(0, i)
-        reaper.SetMediaItemInfo_Value(item, "I_CUSTOMCOLOR", color)
-    end
+    _, scale = reaper.ImGui_DragDouble(ctx, "Scale", scale, 0.01, 0, 10)
+    reaper.ImGui_Text(ctx, val)
+    if track then
+        reaper.SetMediaTrackInfo_Value(track, "D_VOL", val) end
 end
 
 function loop()
@@ -117,9 +111,10 @@ function loop()
     
     if open then
         reaper.defer(loop)
-        reaper.UpdateArrange()
     else
-        reaper.ImGui_DestroyContext(ctx) end
+        reaper.SetMediaTrackInfo_Value( reaper.GetSelectedTrack(0, 0), "D_VOL", 0 )
+        reaper.ImGui_DestroyContext(ctx) 
+    end
 end
 
 reaper.defer(loop)
