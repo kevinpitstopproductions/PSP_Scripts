@@ -3,11 +3,13 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.32
- * Version: 0.1
+ * Version: 0.2
 --]]
 
 --[[
  * Changelog:
+ * v0.2 (2021-07-20)
+    + Added preset saving/loading
  * v0.1 (2021-06-21)
     + Initial Release
 --]]
@@ -209,8 +211,7 @@ local function SavePreset(text, preset_letter)
 end
 
 local function LoadPreset(preset_letter)
-    text = reaper.GetExtState(section, "SD-in_wildcard_string" .. preset_letter) or ''
-    return text
+    return reaper.GetExtState(section, "SD-in_wildcard_string" .. preset_letter) or ''
 end
 
 local function MenuItemSavePreset(ctx ,text, letter)
@@ -219,9 +220,13 @@ local function MenuItemSavePreset(ctx ,text, letter)
 end
 
 local function MenuItemLoadPreset(ctx, letter)
-    if reaper.ImGui_MenuItem(ctx, 'Preset ' .. letter, nil, false) then
-        text = LoadPreset(letter) end
-    return text
+    local text = LoadPreset(letter)
+    local rv = reaper.ImGui_MenuItem(ctx, 'Preset ' .. letter, nil, false)
+    local is_clicked = reaper.ImGui_IsItemEdited( ctx )
+    local should_process = true
+    if reaper.ImGui_IsItemHovered(ctx) then
+        reaper.ImGui_SetTooltip(ctx, LoadPreset(letter)) end
+    return is_clicked, text 
 end
 
 local function GetCurrentTooltips()
@@ -496,10 +501,14 @@ local function GUI_MODE()
                 reaper.ImGui_EndMenu(ctx)
             end 
             if reaper.ImGui_BeginMenu(ctx, 'Load') then
-                input_string = MenuItemLoadPreset(ctx, '1')
-                input_string = MenuItemLoadPreset(ctx, '2')
-                input_string = MenuItemLoadPreset(ctx, '3')
-                input_string = MenuItemLoadPreset(ctx, '4')
+                if MenuItemLoadPreset(ctx, '1') then
+                    _, input_string = MenuItemLoadPreset(ctx, '1') end
+                if MenuItemLoadPreset(ctx, '2') then
+                    _, input_string = MenuItemLoadPreset(ctx, '2') end
+                if MenuItemLoadPreset(ctx, '3') then
+                    _, input_string = MenuItemLoadPreset(ctx, '3') end
+                if MenuItemLoadPreset(ctx, '4') then
+                    _, input_string = MenuItemLoadPreset(ctx, '4') end
                 reaper.ImGui_EndMenu(ctx)
             end
             reaper.ImGui_EndMenuBar(ctx)

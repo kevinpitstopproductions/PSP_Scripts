@@ -3,11 +3,13 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.29
- * Version: 1.4.1
+ * Version: 1.4.2
 --]]
 
 --[[
  * Changelog:
+ * v1.4.2 (2021-07-20)
+ 	+ Refactored
  * v1.4.1 (2021-07-16)
  	+ Bug Fix + Added preset support
  * v1.4 (2021-06-21)
@@ -44,12 +46,6 @@ settings = {}
 -----------------
 --- FUNCTIONS ---
 -----------------
-
-function table.contains(table, element)
-  	for _, value in pairs(table) do
-    	if value == element then return true end end
-  	return false
-end
 
 function GetOutermostParentTrack(track) -- Gets the most parent track
 	local current_track = track
@@ -107,89 +103,60 @@ end
 
 function MergeOverlappingItems(track) 
 	local item_mark_as_delete = {}	
-	local B_item_start = 0
 	local B_item_end = 0
-	local merge_items = 0
 	local first_item_start = 0
-	local first = true
 	local item_mark_as_delete_length = 0
-	local group_id = 1
-	local A_group = 0
-	local B_group = 0
 	local deletion_index = 0
-	local in_group = false
 	
 	local media_item_on_track = reaper.CountTrackMediaItems(track)
 
 	if media_item_on_track > 0 then
 	
-		-- INITIALIZE loop through items on track
 		for i = 0, media_item_on_track-1  do
+			local A_item = reaper.GetTrackMediaItem(track, i)
+			local A_take = reaper.GetActiveTake(A_item)
 
-		-- GET ITEMS
-		A_item = reaper.GetTrackMediaItem(track, i) -- Get selected item i
-		A_take = reaper.GetActiveTake(A_item)
-
-		if A_take == nil then -- If the item is a "text" item
-
-			A_item_start = reaper.GetMediaItemInfo_Value(A_item, "D_POSITION")
-			A_item_length = reaper.GetMediaItemInfo_Value(A_item, "D_LENGTH")
-			A_item_end = A_item_start + A_item_length
-
-			if first == true then --If first item in the loop
-				first = false
-			end
+			if A_take == nil then
+				local A_item_start = reaper.GetMediaItemInfo_Value(A_item, "D_POSITION")
+				local A_item_length = reaper.GetMediaItemInfo_Value(A_item, "D_LENGTH")
+				local A_item_end = A_item_start + A_item_length
 			
-			if first == false and A_item_start < B_item_end then -- Compare the name, the start-end, and the color of the current item and the previous one
-
-				item_mark_as_delete_length = item_mark_as_delete_length + 1
-				deletion_index = deletion_index + 1
-				item_mark_as_delete[deletion_index] = A_item
+				if A_item_start < B_item_end then 
+					item_mark_as_delete_length = item_mark_as_delete_length + 1
+					deletion_index = deletion_index + 1
+					item_mark_as_delete[deletion_index] = A_item
 				
-				if B_item_end > A_item_end then -- If item is included inside the previous one
-					A_item_end = B_item_end -- then consider that the end of the actual item is the end of previous one
-				end
+					if B_item_end > A_item_end then
+						A_item_end = B_item_end end
 
-				if i == media_item_on_track-1 then -- If item is the last of the loop
-					first_item_length = A_item_end - first_item_start
-					reaper.SetMediaItemInfo_Value(first_item, "D_LENGTH", first_item_length)
-				end
-
-			else -- if in a new group
-					
-				if i > 0 and first == false then -- If it's not the first item
-
-					first_item_length = B_item_end - first_item_start
-
-					if i == media_item_on_track-1 then -- If actual item is the last of the loop
-						first_item_length = B_item_end - first_item_start
+					if i == media_item_on_track-1 then
+						first_item_length = A_item_end - first_item_start
+						reaper.SetMediaItemInfo_Value(first_item, "D_LENGTH", first_item_length)
 					end
+				else	
+					if i > 0 then
+						first_item_length = B_item_end - first_item_start
 
-					reaper.SetMediaItemInfo_Value(first_item, "D_LENGTH", first_item_length)
-					group_id = group_id + 1
+						if i == media_item_on_track-1 then
+							first_item_length = B_item_end - first_item_start end
+
+						reaper.SetMediaItemInfo_Value(first_item, "D_LENGTH", first_item_length)
+					end
+					
+					first_item = A_item
+					first_item_start = A_item_start
 				end
 
-				first = true
-				first_item = A_item
-				first_item_start = A_item_start
+				B_item = A_item
+				B_item_length = A_item_length
+				B_item_end = A_item_end
 			end
+		end
 
-			-- "Previous item" infos for A/B comparaison
-			B_item = A_item
-			B_item_start = A_item_start
-			B_item_length = A_item_length
-			B_item_end = A_item_end
-			B_group = group_id
-
-			end -- end if a text item
-
-		end -- end loop through selected items
-
-		for j = 1, item_mark_as_delete_length do -- Loop throught item marked as "to be deleted"
-			reaper.DeleteTrackMediaItem(track, item_mark_as_delete[j]) --track is always A
-		end			
-	end -- if select item
-end -- MergeOverlap
+		for j = 1, item_mark_as_delete_length do
+			reaper.DeleteTrackMediaItem(track, item_mark_as_delete[j]) end			
+	end
+end
 
 ------------
 --- MAIN ---
@@ -210,6 +177,7 @@ if count_sel_items > 0 then
 
 	for _, track in ipairs(track_list) do
 		MergeOverlappingItems(track)
+-- default naming etc.
 		for i=0, reaper.CountTrackMediaItems(track)-1 do
 			local item = reaper.GetTrackMediaItem(track, i)
 
@@ -246,6 +214,7 @@ if count_sel_items > 0 then
 				itemaliasext.ItemNamer(name_preset) -- run function
 				reaper.SetExtState(section, "runitemnamergui", "true", true) -- turn gui back on
 			end
+-- name to notes
 			for i=0, reaper.CountSelectedMediaItems(0)-1 do
 				local item = reaper.GetSelectedMediaItem(0, i)
 				local _, notes = reaper.GetSetMediaItemTakeInfo_String(reaper.GetActiveTake(item), "P_NAME", "", false )

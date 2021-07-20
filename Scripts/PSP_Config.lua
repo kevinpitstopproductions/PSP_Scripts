@@ -3,13 +3,15 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.32
- * Version: 0.8
+ * Version: 0.9
  * Provides:
  *  [nomain] PSP_Utils.lua
 --]]
 
 --[[
  * Changelog:
+ * v0.9 (2021-07-20)
+    + General Improvements
  * v0.8 (2021-07-16)
 	+ Added parent item alias preset support
  * v0.7 (2021-07-15)
@@ -65,11 +67,11 @@ local window_flags =
 local function SetExtStates()
 --[[GENERAL]]
     -- Font
-    reaper.SetExtState(section, "SD_font_size", settings.font_size, 1)
+    reaper.SetExtState(section, "SD_font_size", tostring(settings.font_size), 1)
 --[[SOUND DESIGN]]
     -- Take Marker Randomizer
 	reaper.SetExtState(section, "SD_is_random", tostring(settings.is_random), 1)
-	reaper.SetExtState(section, "SD_chop_end", tonumber(settings.chop_end), 1)
+	reaper.SetExtState(section, "SD_chop_end", tostring(settings.chop_end), 1)
     -- Trim Automation Items
 	reaper.SetExtState(section, "SD_mute_envelope", tostring(settings.mute_envelope), 1)
     -- Parent Item Aliases
@@ -87,14 +89,14 @@ local function GetExtStates()
 --[[SOUND DESIGN]]
     -- Take Marker Randomizer
     settings.is_random = toboolean(reaper.GetExtState(section, "SD_is_random")) or false
-    settings.chop_end = reaper.GetExtState(section, "SD_chop_end") or 0
+    settings.chop_end = tonumber(reaper.GetExtState(section, "SD_chop_end")) or 0
     -- Trim Automation Items
     settings.mute_envelope = toboolean(reaper.GetExtState(section, "SD_mute_envelope")) or false
     -- Parent Item Aliases
     settings.pia.has_fade_preset = toboolean(reaper.GetExtState(section, "SD-pia_has_fade_preset")) or false
-    settings.pia.fade_preset = reaper.GetExtState(section, "SD-pia_fade_preset")
+    settings.pia.fade_preset = tonumber(reaper.GetExtState(section, "SD-pia_fade_preset")) or 1
     settings.pia.has_name_preset = toboolean(reaper.GetExtState(section, "SD-pia_has_name_preset")) or false
-    settings.pia.name_preset = reaper.GetExtState(section, "SD-pia_name_preset")
+    settings.pia.name_preset = tonumber(reaper.GetExtState(section, "SD-pia_name_preset")) or 1
 end
 
 ------------

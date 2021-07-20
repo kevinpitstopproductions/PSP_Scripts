@@ -2,12 +2,14 @@
  * ReaScript Name: PSP_Vegas Mode.lua
  * Author: GU-on
  * Licence: GPL v3
- * REAPER: 6.31
- * Version: 0.2.1
+ * REAPER: 6.32
+ * Version: 1.0
 --]]
 
 --[[
  * Changelog:
+ * v1.0 (2021-07-20)
+ 	+ Full release, fully working, includes control sliders
  * v0.2.2 (2021-07-14)
  	+ Added font scaling
  * v0.2.1 (2021-07-08)
@@ -42,15 +44,17 @@ local settings = {}
 local window_flags =
     reaper.ImGui_WindowFlags_NoCollapse()
 
-local counter = 1
 local is_finished = false
 local is_stored = false
 local is_tracks_stored = false
 local item_table = {}
 local track_table = {}
-local time = 1
-local color_counter = 0
-local col = reaper.ColorToNative(0, 0, 0)|0x1000000
+local time = 0
+local speed = 1
+local do_item_changes = false
+
+local r, g, b = 1, 1, 1
+local h, s, v, a = 1, 1, 1, 1
 
 -----------------
 --- FUNCTIONS ---
@@ -81,6 +85,8 @@ local function SaveTrackInfo (init_table, track_count)
 	end
 end
 
+
+
 ------------
 --- MAIN ---
 ------------
@@ -92,6 +98,8 @@ if (utils.GetUsingReaImGuiVersion() ~= utils.GetInstalledReaImGuiVersion()) then
 
 settings.font_size = tonumber(reaper.GetExtState(section, "SD_font_size")) or 14
 
+reaper.Undo_BeginBlock()
+
 local ctx = reaper.ImGui_CreateContext('My script', 0)
 local font = reaper.ImGui_CreateFont('sans-serif', settings.font_size)
 reaper.ImGui_AttachFont(ctx, font)
@@ -102,11 +110,29 @@ function frame()
 	if reaper.ImGui_Button(ctx, "Close & Restore") then
 		is_finished = true end
 
-	time = time + 0.04
+	time = time + reaper.ImGui_GetDeltaTime(ctx) * speed
 
-	counter = counter + 1
+    if time > 1 then
+    	time = 0
+    	do_item_changes = true
+    end
 
-	if time > 1 then to=0 end
+    h = time --_, h = reaper.ImGui_DragDouble(ctx, "H", h, 0.01, 0, 1)
+
+    _, s = reaper.ImGui_DragDouble(ctx, "Saturation", s, 0.01, 0, 1)
+    _, v = reaper.ImGui_DragDouble(ctx, "Value", v, 0.01, 0, 1)
+    _, a = reaper.ImGui_DragDouble(ctx, "Alpha", a, 0.01, 0, 1)
+    _, speed = reaper.ImGui_DragDouble(ctx, "Speed", speed, 0.01, 0, 10)
+
+    reaper.ImGui_Text(ctx, "Use at your own risk. Do use Reaper while this script is active.")
+
+    rv, r, g, b = reaper.ImGui_ColorConvertHSVtoRGB(h, s, v, a)
+
+    r = math.ceil(math.map(r, 0, 1, 0, 255))
+    g = math.ceil(math.map(g, 0, 1, 0, 255))
+    b = math.ceil(math.map(b, 0, 1, 0, 255))
+
+    local color = reaper.ColorToNative( r, g, b )|0x1000000
 
 	local item_count = reaper.CountMediaItems(0)
 	if item_count > 0 then
@@ -116,16 +142,17 @@ function frame()
 				is_stored = true
 			end
 
-			item = reaper.GetMediaItem(0, i)
-			take = reaper.GetActiveTake(item)
+			local item = reaper.GetMediaItem(0, i)
+			local take = reaper.GetActiveTake(item)
 
-			reaper.SetMediaItemInfo_Value(item, "I_CUSTOMCOLOR", reaper.ImGui_ColorConvertHSVtoRGB( time, 1, 0.6, 1.0 ))
+			reaper.SetMediaItemInfo_Value(item, "I_CUSTOMCOLOR", color)
 
-			if counter % 20 == 0 then
+			if do_item_changes then
 				rand = math.random(2)-1
 				reaper.SetMediaItemInfo_Value(item, "B_MUTE", rand)
 			end
 		end
+		do_item_changes = false
 	end
 
 	local track_count = reaper.CountTracks(0)
@@ -149,7 +176,7 @@ end
 function loop()
   	reaper.ImGui_PushFont(ctx, font)
   	reaper.ImGui_SetNextWindowSize(ctx, 300, 60, reaper.ImGui_Cond_FirstUseEver())
-  	local visible, open = reaper.ImGui_Begin(ctx, 'PSP Config', true, window_flags)
+  	local visible, open = reaper.ImGui_Begin(ctx, 'Vegas Mode!🥰', true, window_flags)
 
   	if visible then
     	frame() ; reaper.ImGui_End(ctx) end
@@ -161,14 +188,13 @@ function loop()
  	if open then
     	reaper.defer(loop)
   	else -- reset items to original state
-		for i=0, #item_table-1 do
-			reaper.SetMediaItemInfo_Value(item_table[i+1].item, "I_CUSTOMCOLOR", item_table[i+1].color)
-			reaper.SetMediaItemInfo_Value(item_table[i+1].item, "B_MUTE", item_table[i+1].mute)
+  		reaper.Undo_EndBlock("vegas mode chaos", 0)
+		for i=1, #item_table do
+			reaper.SetMediaItemInfo_Value(item_table[i].item, "I_CUSTOMCOLOR", item_table[i].color)
+			reaper.SetMediaItemInfo_Value(item_table[i].item, "B_MUTE", item_table[i].mute)
 		end
-		for t=0, #track_table-1 do
-			reaper.SetMediaTrackInfo_Value(track_table[t+1].track, "D_VOL", track_table[t+1].vol)
-			reaper.SetMediaTrackInfo_Value(track_table[t+1].track, "B_MUTE", track_table[t+1].mute)
-			reaper.SetMediaTrackInfo_Value(track_table[t+1].track, "I_SOLO", track_table[t+1].solo)
+		for t=1, #track_table do
+			reaper.SetMediaTrackInfo_Value(track_table[t].track, "D_VOL", track_table[t].vol)
 		end
 		reaper.UpdateArrange()
     	reaper.ImGui_DestroyContext(ctx)
