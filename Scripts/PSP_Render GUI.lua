@@ -102,7 +102,7 @@ local function SaveParentItemsToTable(item_table)
 	end
 end
 
-local function todo()
+local function todo() -- delete old files and render new
 	reaper.PreventUIRefresh(1)
 	reaper.Undo_BeginBlock()
 

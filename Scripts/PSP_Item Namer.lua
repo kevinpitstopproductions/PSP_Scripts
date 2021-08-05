@@ -3,11 +3,13 @@
  * Author: GU-on
  * Licence: GPL v3
  * REAPER: 6.32
- * Version: 0.2
+ * Version: 0.3
 --]]
 
 --[[
  * Changelog:
+ * v0.3 (2021-08-05)
+    + Added load last state
  * v0.2 (2021-07-20)
     + Added preset saving/loading
  * v0.1 (2021-06-21)
@@ -425,6 +427,7 @@ local function GUI_MODE()
         reaper.ShowMessageBox("Please ensure that you are running ReaImGui version " .. utils.GetUsingReaImGuiVersion() .. " or later", "Error", 0) return end
 
     settings.font_size = tonumber(reaper.GetExtState(section, "SD_font_size")) or 14
+    input_string = reaper.GetExtState(section, "SD_Item_Namer_Default") or ""
 
     local ctx = reaper.ImGui_CreateContext('Item Namer', reaper.ImGui_ConfigFlags_DockingEnable())
     local font = reaper.ImGui_CreateFont('sans-serif', settings.font_size)
@@ -522,6 +525,7 @@ local function GUI_MODE()
             reaper.Undo_BeginBlock()
 
             main()
+            reaper.SetExtState(section, "SD_Item_Namer_Default", input_string, true)
 
             reaper.Undo_EndBlock("undo action", -1)
             reaper.UpdateArrange()

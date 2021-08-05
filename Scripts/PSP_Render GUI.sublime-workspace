@@ -1,0 +1,776 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Double",
+				"reaper.ImGui_DragDouble"
+			],
+			[
+				"reaImGui_Time",
+				"reaper.ImGui_GetDeltaTime"
+			],
+			[
+				"GetSelected",
+				"reaper.GetSelectedTrack"
+			],
+			[
+				"Undo",
+				"reaper.Undo_EndBlock"
+			],
+			[
+				"ImGuiDrag",
+				"reaper.ImGui_DragDouble"
+			],
+			[
+				"Command",
+				"reaper.Main_OnCommand"
+			],
+			[
+				"CountSelected",
+				"reaper.CountSelectedMediaItems"
+			],
+			[
+				"Show",
+				"reaper.ShowConsoleMsg"
+			],
+			[
+				"GetProject",
+				"reaper.GetProjectPath"
+			],
+			[
+				"Men",
+				"MenuItemLoadPreset"
+			],
+			[
+				"is",
+				"is_clicked"
+			],
+			[
+				"ImGui_Time",
+				"reaper.ImGui_GetDeltaTime"
+			],
+			[
+				"ImGuiColor",
+				"reaper.ImGui_ColorConvertHSVtoRGB"
+			],
+			[
+				"is_",
+				"is_gui"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"snap",
+				"is_snap_relative"
+			],
+			[
+				"has",
+				"has_name"
+			],
+			[
+				"fade",
+				"fade_preset"
+			],
+			[
+				"auto",
+				"has_auto_name"
+			],
+			[
+				"timeis",
+				"timesig_num"
+			],
+			[
+				"time",
+				"timesig_num"
+			],
+			[
+				"bp",
+				"bpcurrent"
+			],
+			[
+				"tim",
+				"timesig_num"
+			],
+			[
+				"ImGuiHovered",
+				"reaper.ImGui_IsItemHovered"
+			],
+			[
+				"GetE",
+				"GetExtStates"
+			],
+			[
+				"ImGuiSliderFlag",
+				"reaper.ImGui_SliderFlags_NoInput"
+			],
+			[
+				"SetE",
+				"SetExtStates"
+			],
+			[
+				"SetMediaItem",
+				"reaper.SetMediaItemPosition"
+			],
+			[
+				"mid",
+				"mid_index"
+			],
+			[
+				"CountSele",
+				"reaper.CountSelectedMediaItems"
+			],
+			[
+				"GetMediaItem",
+				"reaper.GetMediaItem_Track"
+			],
+			[
+				"GetTrackInfoValu",
+				"reaper.GetMediaTrackInfo_Value"
+			],
+			[
+				"track",
+				"track_depth"
+			],
+			[
+				"track_",
+				"track_depth"
+			],
+			[
+				"tra",
+				"track_index"
+			],
+			[
+				"razo",
+				"razor_edit"
+			],
+			[
+				"item",
+				"item_end"
+			],
+			[
+				"ra",
+				"razor_edit_table"
+			],
+			[
+				"raz",
+				"razor_edit_table"
+			],
+			[
+				"getitemtrack",
+				"reaper.GetMediaItemTrack"
+			],
+			[
+				"GetProjeh",
+				"reaper.GetProjectStateChangeCount"
+			],
+			[
+				"GetWin",
+				"reaper.ImGui_GetWindowHeight"
+			],
+			[
+				"GetSource",
+				"reaper.GetMediaItemTake_Source"
+			],
+			[
+				"GetChanne",
+				"reaper.GetMediaSourceNumChannels"
+			],
+			[
+				"GetSample",
+				"reaper.GetMediaSourceSampleRate"
+			],
+			[
+				"ImGuiEndMenu",
+				"reaper.ImGui_EndMenuBar"
+			],
+			[
+				"ImGuiMen",
+				"reaper.ImGui_EndMenu"
+			],
+			[
+				"ImGui_Menu",
+				"reaper.ImGui_WindowFlags_MenuBar"
+			],
+			[
+				"wind",
+				"window_flags"
+			],
+			[
+				"iteco",
+				"itemcount"
+			],
+			[
+				"channel",
+				"source_channels"
+			],
+			[
+				"soure",
+				"source_channels"
+			],
+			[
+				"window",
+				"windowSize"
+			],
+			[
+				"trac",
+				"trackvar"
+			],
+			[
+				"tem",
+				"tempo_count"
+			],
+			[
+				"GetTe",
+				"GetTempoAndTimeSignature"
+			],
+			[
+				"Loudness",
+				"reaper.NF_AnalyzeTakeLoudness_IntegratedOnly"
+			],
+			[
+				"item_",
+				"item_notes"
+			],
+			[
+				"reg",
+				"region_name"
+			],
+			[
+				"fx",
+				"fxX_name"
+			],
+			[
+				"GetTrack",
+				"GetTrackAtLevel"
+			],
+			[
+				"pare",
+				"parentest_track"
+			],
+			[
+				"GetMediaItemTakeInfo",
+				"reaper.GetSetMediaItemTakeInfo_String"
+			],
+			[
+				"ti",
+				"timesignature"
+			],
+			[
+				"pro",
+				"projecttimesignature"
+			],
+			[
+				"projec",
+				"projecttempo"
+			],
+			[
+				"project",
+				"GetProjectName"
+			],
+			[
+				"tool",
+				"tooltip"
+			],
+			[
+				"mont",
+				"month"
+			],
+			[
+				"GetP",
+				"GetOutermostParentTrack"
+			],
+			[
+				"marker",
+				"marker_table"
+			],
+			[
+				"regi",
+				"region_table"
+			],
+			[
+				"GetPRoj",
+				"reaper.GetProjectName"
+			],
+			[
+				"getname",
+				"reaper.GetTakeName"
+			],
+			[
+				"ImGuiKey",
+				"reaper.ImGui_IsKeyPressed"
+			],
+			[
+				"GetMedia",
+				"reaper.GetMediaItem_Track"
+			],
+			[
+				"getsetstring",
+				"reaper.GetSetMediaTrackInfo_String"
+			],
+			[
+				"sour",
+				"source_filename"
+			],
+			[
+				"ImGuiLine",
+				"reaper.ImGui_SameLine"
+			],
+			[
+				"ImGui",
+				"reaper.ImGui_Button"
+			],
+			[
+				"trakc",
+				"track_counter"
+			],
+			[
+				"random",
+				"random_solo"
+			],
+			[
+				"co",
+				"command_text"
+			],
+			[
+				"command",
+				"command_id"
+			],
+			[
+				"comman",
+				"command_name"
+			],
+			[
+				"ImGuiGetWi",
+				"reaper.ImGui_GetWindowWidth"
+			],
+			[
+				"SetMedia",
+				"reaper.SetMediaItemInfo_Value"
+			],
+			[
+				"GetMediaItem_",
+				"reaper.GetMediaItemInfo_Value"
+			],
+			[
+				"ImgGetWin",
+				"reaper.ImGui_GetWindowWidth"
+			],
+			[
+				"consol",
+				"reaper.ShowConsoleMsg"
+			],
+			[
+				"CountSelec",
+				"reaper.CountSelectedMediaItems"
+			],
+			[
+				"GetSele",
+				"reaper.GetSelectedMediaItem"
+			],
+			[
+				"fadeout",
+				"fade_out_curve"
+			],
+			[
+				"fade_",
+				"fade_out_curve_"
+			],
+			[
+				"fadein",
+				"fade_in_curve"
+			],
+			[
+				"SetTrackVal",
+				"reaper.SetMediaTrackInfo_Value"
+			],
+			[
+				"GetTrackInfoVa",
+				"reaper.GetMediaTrackInfo_Value"
+			],
+			[
+				"fad",
+				"fade_out_curve"
+			],
+			[
+				"cur",
+				"fade_in_curve"
+			],
+			[
+				"Addbez",
+				"reaper.ImGui_DrawList_AddBezierQuadratic"
+			],
+			[
+				"Set",
+				"SetFadeCurveShape"
+			],
+			[
+				"fadei",
+				"fade_in_cruve"
+			],
+			[
+				"SD_",
+				"SD_chop_end"
+			],
+			[
+				"TrackValu",
+				"reaper.GetMediaTrackInfo_Value"
+			],
+			[
+				"CountItem",
+				"reaper.CountMediaItems"
+			],
+			[
+				"GetSetString",
+				"reaper.GetSetMediaItemInfo_String"
+			],
+			[
+				"CountSelecte",
+				"reaper.CountSelectedMediaItems"
+			],
+			[
+				"ImGui_GetWindow",
+				"reaper.ImGui_GetWindowSize"
+			],
+			[
+				"SetWidth",
+				"reaper.ImGui_PushItemWidth"
+			],
+			[
+				"Line",
+				"reaper.ImGui_SameLine"
+			],
+			[
+				"is_r",
+				"is_snap_relative"
+			],
+			[
+				"ImGui_POP",
+				"reaper.ImGui_PopID"
+			],
+			[
+				"ImgPush",
+				"reaper.ImGui_PushID"
+			],
+			[
+				"ImGuiBeign",
+				"reaper.ImGui_BeginCombo"
+			],
+			[
+				"new",
+				"reaper.new_array"
+			],
+			[
+				"te",
+				"temp_fade_in"
+			],
+			[
+				"is_a",
+				"is_snap_relative"
+			],
+			[
+				"GetMed",
+				"reaper.GetMediaItemInfo_Value"
+			],
+			[
+				"ImGui_WindowFlags",
+				"reaper.ImGui_WindowFlags_NoResize"
+			],
+			[
+				"ImGui_WidnowF",
+				"reaper.ImGui_WindowFlags_MenuBar"
+			],
+			[
+				"ImGui_EndMen",
+				"reaper.ImGui_EndMenuBar"
+			],
+			[
+				"ImGu",
+				"reaper.ImGui_Button"
+			],
+			[
+				"rand",
+				"random_number"
+			],
+			[
+				"GetEx",
+				"reaper.GetExtState"
+			],
+			[
+				"r",
+				"reaper"
+			],
+			[
+				"dif",
+				"dif_b"
+			],
+			[
+				"Native",
+				"reaper.ColorToNative"
+			],
+			[
+				"CountSel",
+				"reaper.CountSelectedMediaItems"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"package",
+				"Package Control: Add Repository"
+			],
+			[
+				"git",
+				"Package Control: Install Package"
+			],
+			[
+				"isntall",
+				"Package Control: Install Package"
+			],
+			[
+				"install pa",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Vegas Mode.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/PSP_Package.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Mouse Delta Test.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Render GUI.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Test Script.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Utils.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Item Spacer.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Item Namer.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Item Fader.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Config.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Create Parent Item Aliases from Selected Items.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Template.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Realtime Test.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/GU-on WIP/WIP_PSP_Render Test.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/Reaper/Scripts/GU-on WIP/GU-on_WIP_Pitch Detector_v2.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/ReaTeam Extensions/API/ReaImGui_Demo.lua",
+		"/C/Users/Kevin Doran/Desktop/REAPER/Scripts/GU-on WIP/GU-on_WIP_Item Render Helper.lua",
+		"/C/Users/Kevin Doran/Desktop/REAPER/Scripts/PSP_Scripts/Scripts/PSP_Create Parent Item Aliases from Selected Items.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/PSP_Scripts/Scripts/PSP_Create Parent Item Aliases from Selected Items.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/PSP_Scripts/Scripts/PSP_Item Fader.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/Reaper/Scripts/GU-on WIP/GU-on_WIP Test.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Create Razor Edit Regions From Parent Items.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Create Volume Trim Automation Items from Selected Items.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Create Regions from Selected Item Source Destinations.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Set Time After Snap Offset.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Item Alias Extension.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/GU-on WIP/GU-on_WIP_delete.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/GU-on WIP/GU-on_WIP_RMS CSD Tool.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Item Fader (external).lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Take Rate Adjuster.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Utilities.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Register JSON Credentials.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Set Time Before Snap Offset.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Color Child Tracks of Parents Lighter.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Convert Stretch Markers To Take Markers.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Copy Item Properties.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Offset Source Start to 50% Item Length.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Paste Item Properties.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Take Marker Randomizer Tool.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_STT Google Cloud Services.py",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/GU-on WIP/WIP_GU-on_ThemeColorTest.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/GU-on WIP/WIP_GU-on_Item Curve Spacer.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/Reaper/Scripts/ReaTeam Scripts/Razor Edit/js_Razor edit - Enclose selected media items and automation items in minimal razor areas.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/GU-on WIP/GU-on_WIP Test.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/Reaper/Scripts/GU-on WIP/WIP_GU-on_Item Namer.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/GU-on WIP/WIP_GU-on_Item Namer.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/PSP_Scripts/Scripts/PSP_Config.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/X-Raym Advanced Renamers/Items Properties/X-Raym_Rename selected items with patterns_v2.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/GU-on WIP/GU-on_WIP_Pitch Detector_v2.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/Reaper/Scripts/ReaTeam Extensions/API/ReaImGui_Demo.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/PSP_Scripts/Scripts/PSP_Copy Item Properties.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/PSP_Scripts/Scripts/PSP_Template.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/PSP_Scripts/Scripts/PSP_Set Time After Snap Offset.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/GU-on WIP/WIP_GU-on_Show Armed Action.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/GU-on WIP/GU-on_WIP_Pitch Detector.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_TTS Easy.py",
+		"/C/Users/Kevin Doran/AppData/Roaming/Reaper/Scripts/PSP_Scripts/PSP_Vegas Mode.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/Reaper/Scripts/GU-on WIP/GU-on_Item Spacer.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/Reaper/Scripts/GU-on WIP/GU-on_WIP_Item Render Helper.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/GU-on WIP/WIP_GU-on_[GE]_Item Fader.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/Reaper/Scripts/PSP_Scripts/Scripts/PSP_Paste Item Properties.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/Reaper/Scripts/PSP_Scripts/Scripts/PSP_Take Marker Randomizer Tool.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/Reaper/Scripts/PSP_Scripts/Scripts/PSP_Item Fader.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/Reaper/Scripts/PSP_Scripts/Scripts/PSP_Set Time After Snap Offset.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/PSP_Scripts/PSP_Vegas Mode.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/lua/Simon_Dalzell_Sample_Namer.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Install Libraries.py",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_WIP_Convert Stretch Markers To Take Markers.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/PSP_Scripts/PSP_WIP_Create Parent Item Aliases from Selected Items.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/GU-on WIP/GU-on_WIP_Item Fader.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/Reaper/Scripts/PSP_Scripts/PSP_WIP_Take Marker Randomzier Tool.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/PSP_Scripts/PSP_WIP_Config.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/Reaper/Scripts/PSP_Scripts/PSP_WIP_Convert Stretch Markers To Take Markers.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/Reaper/Scripts/PSP_Scripts/Scripts/PSP_Create Parent Item Aliases from Selected Items.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/Reaper/Scripts/PSP_Scripts/Scripts/PSP_Create Volume Trim Automation Items from Selected Items.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/Reaper/Scripts/PSP_Scripts/Scripts/PSP_Take Marker Randomzier Tool.lua",
+		"/C/Users/Kevin Doran/Documents/repos/Reaper/PSP_Scripts/Scripts/PSP_Take Marker Randomzier Tool.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/GU-on WIP/GU-on_WIP_Item Render Helper.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/Reaper/Scripts/GU-on WIP/GU-on_WIP_Take Marker Randomzier Tool.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/GU-on WIP/GU-on_WIP_Convert Stretch Markers To Take Markers.lua",
+		"/C/Users/Kevin Doran/AppData/Roaming/REAPER/Scripts/ReaTeam Scripts/Items Editing/cool_MK Slicer.lua",
+		"/C/Users/Kevin Doran/Desktop/test.lua"
+	],
+	"find":
+	{
+		"height": 40.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "PSP_Render GUI.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

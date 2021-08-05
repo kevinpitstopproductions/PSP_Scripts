@@ -96,7 +96,8 @@ function frame()
     _, scale = reaper.ImGui_DragDouble(ctx, "Scale", scale, 0.01, 0, 10)
     reaper.ImGui_Text(ctx, val)
     if track then
-        reaper.SetMediaTrackInfo_Value(track, "D_VOL", val) end
+        -- Maybe this? reaper.TakeFX_SetParamNormalized( take, fx, param, value )
+        -- reaper.SetMediaTrackInfo_Value(track, "D_VOL", val) end
 end
 
 function loop()

@@ -4,7 +4,7 @@
  Author: kevin@pitstop
  REAPER: 6+
  Extensions: SWS
- Version: 1.15
+ Version: 1.16
  Provides:
   [Main] PSP_Install Libraries.py
   [Main] PSP_Create Regions from Selected Item Source Destinations.lua
@@ -56,4 +56,5 @@
    * v1.13 (2021-07-15) Font Scaling support fully added
    * v1.14b (2021-07-16) Added Item Namer + Parent Item Alias preset support
    * v1.15 (2021-07-21) Parent Item Alias preset support fully working + a few bug fixes
+   * v1.16 (2021-08-05) Item Namer remembers last entry
 ]]
